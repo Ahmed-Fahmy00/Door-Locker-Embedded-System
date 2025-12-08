@@ -1,0 +1,11 @@
+# ninja log v5
+1	279	7869137411216782	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/main.o	46bc0de5daa220ec
+1	150	7869137423658971	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/components/keypad.o	a68ac24507f2a080
+32	174	7869137423714126	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/lib/startup_ewarm.o	615b908ec8f006ec
+38	207	7869137424089992	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/components/potentiometer.o	2dd436acd7b164c6
+10	226	7869137424225524	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/components/lcd.o	c24a2cad994b2c72
+26	241	7869137424049932	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/MCAL/systick.o	54ee183974398adf
+17	268	7869137424563983	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/frontend.o	a5dc82d4ed64419c
+51	280	7869137424704407	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/uart_comm.o	7e036c237018e475
+46	293	7869137424679210	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Obj/MCAL/dio.o	95edf0a7039da962
+305	560	7869137427812367	C:/Users/Ahmed Fahmy/Downloads/embedded project/Demo/Debug/Exe/Demo.out	18f3e81c1f617daf
