@@ -1,8 +1,4 @@
 /*****************************************************************************
- * File: main.c
- * Description: Door Locker Security System - HMI_ECU Entry Point
- * TM4C123GH6PM - Frontend Microcontroller
- * 
  * Hardware Configuration:
  *   - LCD: I2C0 (PB2=SCL, PB3=SDA)
  *   - Keypad: Rows PC4-PC7, Columns PB6, PA4, PA3, PA2
@@ -10,7 +6,6 @@
  *   - UART1: PB0=Rx, PB1=Tx (Communication with Control_ECU)
  *   - RGB LED: PF1, PF2, PF3 (onboard)
  *****************************************************************************/
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "driverlib/sysctl.h"
@@ -30,9 +25,7 @@ int main(void)
     /* Initialize SysTick for delays (16MHz / 16000 = 1ms tick) */
     SysTick_Init(16000, SYSTICK_NOINT);
 
-    /* Start the frontend application */
-    Frontend_Start();
+    Frontend_Start(); /* Start the frontend application */
 
-    /* Should never reach here */
-    while (1) {}
+    while (1) {}/* Should never reach here */
 }

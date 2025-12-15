@@ -3,7 +3,6 @@
  * I2C0: PB2 (SCL), PB3 (SDA)
  * PCF8574 backpack + HD44780 LCD in 4-bit mode
  *****************************************************************************/
-
 #include <stdint.h>
 #include "../lib/tm4c123gh6pm.h"
 #include "../MCAL/systick.h"
@@ -127,14 +126,8 @@ void LCD_Clear(void)
     DelayMs(2);
 }
 
-void LCD_Home(void)
-{
-    LCD_Command(LCD_CMD_HOME);
-}
-
 void LCD_SetCursor(uint8_t row, uint8_t col)
 {
     uint8_t addr = (row == 0) ? col : (0x40 + col);
     LCD_Command(LCD_CMD_SET_DDRAM | addr);
 }
-

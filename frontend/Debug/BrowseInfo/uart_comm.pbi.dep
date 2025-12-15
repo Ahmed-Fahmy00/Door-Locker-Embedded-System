@@ -1,13 +1,14 @@
 C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\Debug\BrowseInfo\uart_comm.pbi: \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\uart_comm.c \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend/uart_comm.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\yvals.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Defaults.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Normal.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdbool.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend/lib/tm4c123gh6pm.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ysizet.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stddef.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ysizet.h
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\MCAL\systick.h \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\lib\tm4c123gh6pm.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdbool.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\yvals.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdint.h \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\uart_comm.h \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\uart_comm.c

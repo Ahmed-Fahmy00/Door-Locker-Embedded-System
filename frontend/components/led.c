@@ -15,7 +15,6 @@ void LED_Init(void)
     DIO_Init(PORTF, PIN2, OUTPUT);
     DIO_Init(PORTF, PIN3, OUTPUT);
     
-    /* Start with LED off */
     LED_Off();
 }
 

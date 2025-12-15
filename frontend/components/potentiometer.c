@@ -2,7 +2,6 @@
  * File: potentiometer.c
  * Description: ADC Driver for Potentiometer on PB5 (AIN11)
  *****************************************************************************/
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "potentiometer.h"

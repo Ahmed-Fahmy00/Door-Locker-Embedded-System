@@ -31,7 +31,6 @@ void LED_Blue(void);
 void LED_Yellow(void);
 void LED_Cyan(void);
 
-/* Blink LED a specified number of times */
 void LED_Blink(uint8_t color, uint8_t times, uint16_t delayMs);
 
 #endif /* LED_H_ */

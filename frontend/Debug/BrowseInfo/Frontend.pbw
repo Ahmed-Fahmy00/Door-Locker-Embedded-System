@@ -3393,129 +3393,215 @@
     "scope": null
   },
   {
-    "ID": "c:keypad.h@489@macro@KEYPAD_H",
+    "ID": "c:@keypad_codes",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "keypad_codes",
+    "location": {
+      "column": "12",
+      "line": "13",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "keypad_codes",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:keypad.c@528@macro@KEYPAD_ROW_PORT",
     "What": "MacroDef",
     "defdec": "Def",
-    "display": "KEYPAD_H",
+    "display": "KEYPAD_ROW_PORT",
     "location": {
       "column": "9",
-      "line": "17",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "line": "20",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
-    "name": "KEYPAD_H",
-    "origin": "user_include",
+    "name": "KEYPAD_ROW_PORT",
+    "origin": "project_file",
     "scope": null
   },
   {
-    "ID": "c:@keypad_codes",
+    "ID": "c:keypad.c@row_pins",
     "What": "Variable",
-    "defdec": "Dec",
-    "display": "keypad_codes",
-    "location": {
-      "column": "19",
-      "line": "21",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
-    },
-    "name": "keypad_codes",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@keypad_codes",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "keypad_codes",
-    "location": {
-      "column": "19",
-      "line": "21",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
-    },
-    "name": "keypad_codes",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.h@573@macro@KEYPAD_ROWS",
-    "What": "MacroDef",
     "defdec": "Def",
-    "display": "KEYPAD_ROWS",
+    "display": "row_pins",
+    "location": {
+      "column": "22",
+      "line": "21",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "row_pins",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@SA@ColPin_t",
+    "What": "Struct",
+    "defdec": "Def",
+    "display": "",
     "location": {
       "column": "9",
       "line": "23",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
-    "name": "KEYPAD_ROWS",
-    "origin": "user_include",
+    "members": [
+      {
+        "ID": "c:@SA@ColPin_t@FI@port",
+        "What": "FieldDecl",
+        "defdec": "Def",
+        "display": "port",
+        "location": {
+          "column": "13",
+          "line": "24",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+        },
+        "name": "port",
+        "origin": "project_file",
+        "scope": "_anonymous_keypad_c_23_9"
+      },
+      {
+        "ID": "c:@SA@ColPin_t@FI@pin",
+        "What": "FieldDecl",
+        "defdec": "Def",
+        "display": "pin",
+        "location": {
+          "column": "13",
+          "line": "25",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+        },
+        "name": "pin",
+        "origin": "project_file",
+        "scope": "_anonymous_keypad_c_23_9"
+      }
+    ],
+    "name": "",
+    "origin": "project_file",
     "scope": null
   },
   {
-    "ID": "c:keypad.h@596@macro@KEYPAD_COLS",
-    "What": "MacroDef",
+    "ID": "c:@T@ColPin_t",
+    "What": "Typedef",
     "defdec": "Def",
-    "display": "KEYPAD_COLS",
+    "display": "struct ColPin_t",
     "location": {
-      "column": "9",
-      "line": "24",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "column": "3",
+      "line": "26",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
-    "name": "KEYPAD_COLS",
-    "origin": "user_include",
+    "name": "ColPin_t",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:keypad.c@col_pins",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "col_pins",
+    "location": {
+      "column": "23",
+      "line": "28",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "col_pins",
+    "origin": "project_file",
     "scope": null
   },
   {
     "ID": "c:@F@Keypad_Init",
     "What": "Function",
-    "defdec": "Dec",
+    "defdec": "Def",
     "display": "void Keypad_Init(void)",
     "location": {
       "column": "6",
-      "line": "27",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "line": "35",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
     "name": "Keypad_Init",
-    "origin": "user_include",
+    "origin": "project_file",
     "scope": null
   },
   {
-    "ID": "c:@F@Keypad_Init",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void Keypad_Init(void)",
+    "ID": "c:keypad.c@983@F@Keypad_Init@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
     "location": {
-      "column": "6",
-      "line": "27",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "column": "18",
+      "line": "38",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
-    "name": "Keypad_Init",
-    "origin": "user_include",
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:keypad.c@1196@F@Keypad_Init@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "18",
+      "line": "44",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "i",
+    "origin": "project_file",
     "scope": null
   },
   {
     "ID": "c:@F@Keypad_GetKey",
     "What": "Function",
-    "defdec": "Dec",
+    "defdec": "Def",
     "display": "char Keypad_GetKey(void)",
     "location": {
       "column": "6",
-      "line": "30",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "line": "50",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
     "name": "Keypad_GetKey",
-    "origin": "user_include",
+    "origin": "project_file",
     "scope": null
   },
   {
-    "ID": "c:@F@Keypad_GetKey",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "char Keypad_GetKey(void)",
+    "ID": "c:keypad.c@1397@F@Keypad_GetKey@col",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "col",
     "location": {
-      "column": "6",
-      "line": "30",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
+      "column": "13",
+      "line": "52",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
     },
-    "name": "Keypad_GetKey",
-    "origin": "user_include",
+    "name": "col",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:keypad.c@1397@F@Keypad_GetKey@row",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "row",
+    "location": {
+      "column": "18",
+      "line": "52",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "row",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:keypad.c@1397@F@Keypad_GetKey@c",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "c",
+    "location": {
+      "column": "23",
+      "line": "52",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+    },
+    "name": "c",
+    "origin": "project_file",
     "scope": null
   },
   {
@@ -3981,285 +4067,101 @@
     "scope": null
   },
   {
-    "ID": "c:@keypad_codes",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "keypad_codes",
-    "location": {
-      "column": "12",
-      "line": "15",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "keypad_codes",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@696@macro@KEYPAD_ROW_PORT",
+    "ID": "c:keypad.h@410@macro@KEYPAD_H",
     "What": "MacroDef",
     "defdec": "Def",
-    "display": "KEYPAD_ROW_PORT",
+    "display": "KEYPAD_H",
     "location": {
       "column": "9",
-      "line": "23",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "line": "13",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
-    "name": "KEYPAD_ROW_PORT",
-    "origin": "project_file",
+    "name": "KEYPAD_H",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:keypad.c@row_pins",
+    "ID": "c:@keypad_codes",
     "What": "Variable",
-    "defdec": "Def",
-    "display": "row_pins",
+    "defdec": "Dec",
+    "display": "keypad_codes",
     "location": {
-      "column": "22",
-      "line": "24",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "column": "19",
+      "line": "17",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
-    "name": "row_pins",
-    "origin": "project_file",
+    "name": "keypad_codes",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@SA@ColPin_t",
-    "What": "Struct",
-    "defdec": "Def",
-    "display": "",
-    "location": {
-      "column": "9",
-      "line": "32",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "members": [
-      {
-        "ID": "c:@SA@ColPin_t@FI@port",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "port",
-        "location": {
-          "column": "13",
-          "line": "33",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-        },
-        "name": "port",
-        "origin": "project_file",
-        "scope": "_anonymous_keypad_c_32_9"
-      },
-      {
-        "ID": "c:@SA@ColPin_t@FI@pin",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "pin",
-        "location": {
-          "column": "13",
-          "line": "34",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-        },
-        "name": "pin",
-        "origin": "project_file",
-        "scope": "_anonymous_keypad_c_32_9"
-      }
-    ],
-    "name": "",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@T@ColPin_t",
-    "What": "Typedef",
-    "defdec": "Def",
-    "display": "struct ColPin_t",
-    "location": {
-      "column": "3",
-      "line": "35",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "ColPin_t",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@col_pins",
+    "ID": "c:@keypad_codes",
     "What": "Variable",
-    "defdec": "Def",
-    "display": "col_pins",
+    "defdec": "Dec",
+    "display": "keypad_codes",
     "location": {
-      "column": "23",
-      "line": "37",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "column": "19",
+      "line": "17",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
-    "name": "col_pins",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@F@Keypad_Delay",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void Keypad_Delay(volatile uint32_t)",
-    "location": {
-      "column": "13",
-      "line": "45",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "Keypad_Delay",
-    "origin": "project_file",
+    "name": "keypad_codes",
+    "origin": "user_include",
     "scope": null
   },
   {
     "ID": "c:@F@Keypad_Init",
     "What": "Function",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "void Keypad_Init(void)",
     "location": {
       "column": "6",
-      "line": "52",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "line": "20",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
     "name": "Keypad_Init",
-    "origin": "project_file",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:keypad.c@1312@F@Keypad_Init@i",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "i",
-    "location": {
-      "column": "13",
-      "line": "54",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "i",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@F@Keypad_AnyKeyPressed",
+    "ID": "c:@F@Keypad_Init",
     "What": "Function",
-    "defdec": "Def",
-    "display": "uint8_t Keypad_AnyKeyPressed(void)",
-    "location": {
-      "column": "16",
-      "line": "70",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "Keypad_AnyKeyPressed",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@1854@F@Keypad_AnyKeyPressed@col",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "col",
-    "location": {
-      "column": "13",
-      "line": "72",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "col",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@1854@F@Keypad_AnyKeyPressed@row",
-    "What": "Variable",
     "defdec": "Dec",
-    "display": "row",
+    "display": "void Keypad_Init(void)",
     "location": {
-      "column": "18",
-      "line": "72",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "column": "6",
+      "line": "20",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
-    "name": "row",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@1971@F@Keypad_AnyKeyPressed@c",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "c",
-    "location": {
-      "column": "22",
-      "line": "76",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "c",
-    "origin": "project_file",
+    "name": "Keypad_Init",
+    "origin": "user_include",
     "scope": null
   },
   {
     "ID": "c:@F@Keypad_GetKey",
     "What": "Function",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "char Keypad_GetKey(void)",
     "location": {
       "column": "6",
-      "line": "97",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "line": "23",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
     "name": "Keypad_GetKey",
-    "origin": "project_file",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:keypad.c@2595@F@Keypad_GetKey@col",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "col",
-    "location": {
-      "column": "13",
-      "line": "99",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "col",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@2595@F@Keypad_GetKey@row",
-    "What": "Variable",
+    "ID": "c:@F@Keypad_GetKey",
+    "What": "Function",
     "defdec": "Dec",
-    "display": "row",
+    "display": "char Keypad_GetKey(void)",
     "location": {
-      "column": "18",
-      "line": "99",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
+      "column": "6",
+      "line": "23",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.h"
     },
-    "name": "row",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@2595@F@Keypad_GetKey@c",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "c",
-    "location": {
-      "column": "23",
-      "line": "99",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "c",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:keypad.c@2621@F@Keypad_GetKey@key",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "key",
-    "location": {
-      "column": "10",
-      "line": "100",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\keypad.c"
-    },
-    "name": "key",
-    "origin": "project_file",
+    "name": "Keypad_GetKey",
+    "origin": "user_include",
     "scope": null
   },
   {
@@ -96887,13 +96789,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@427@macro@I2C_CMD_SINGLE_SEND",
+    "ID": "c:lcd.c@425@macro@I2C_CMD_SINGLE_SEND",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "I2C_CMD_SINGLE_SEND",
     "location": {
       "column": "9",
-      "line": "13",
+      "line": "12",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "I2C_CMD_SINGLE_SEND",
@@ -96901,13 +96803,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@519@macro@MCS_BUSY",
+    "ID": "c:lcd.c@517@macro@MCS_BUSY",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "MCS_BUSY",
     "location": {
       "column": "9",
-      "line": "16",
+      "line": "15",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "MCS_BUSY",
@@ -96915,13 +96817,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@544@macro@MCS_ERROR",
+    "ID": "c:lcd.c@542@macro@MCS_ERROR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "MCS_ERROR",
     "location": {
       "column": "9",
-      "line": "17",
+      "line": "16",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "MCS_ERROR",
@@ -96929,13 +96831,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@569@macro@MCS_STOP",
+    "ID": "c:lcd.c@567@macro@MCS_STOP",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "MCS_STOP",
     "location": {
       "column": "9",
-      "line": "18",
+      "line": "17",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "MCS_STOP",
@@ -96949,7 +96851,7 @@
     "display": "void I2C0_Init(void)",
     "location": {
       "column": "13",
-      "line": "21",
+      "line": "20",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "I2C0_Init",
@@ -96963,7 +96865,7 @@
     "display": "void I2C0_Write(uint8_t)",
     "location": {
       "column": "13",
-      "line": "22",
+      "line": "21",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "I2C0_Write",
@@ -96977,7 +96879,7 @@
     "display": "void LCD_WriteNibble(uint8_t, uint8_t)",
     "location": {
       "column": "13",
-      "line": "23",
+      "line": "22",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteNibble",
@@ -96991,7 +96893,7 @@
     "display": "void LCD_WriteByte(uint8_t, uint8_t)",
     "location": {
       "column": "13",
-      "line": "24",
+      "line": "23",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteByte",
@@ -97005,7 +96907,7 @@
     "display": "void I2C0_Init(void)",
     "location": {
       "column": "13",
-      "line": "26",
+      "line": "25",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "I2C0_Init",
@@ -97013,13 +96915,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@835@F@I2C0_Init@delay",
+    "ID": "c:lcd.c@833@F@I2C0_Init@delay",
     "What": "Variable",
     "defdec": "Def",
     "display": "delay",
     "location": {
       "column": "23",
-      "line": "28",
+      "line": "27",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "delay",
@@ -97033,7 +96935,7 @@
     "display": "void I2C0_Write(uint8_t)",
     "location": {
       "column": "13",
-      "line": "51",
+      "line": "50",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "I2C0_Write",
@@ -97047,7 +96949,7 @@
     "display": "void LCD_WriteNibble(uint8_t, uint8_t)",
     "location": {
       "column": "13",
-      "line": "66",
+      "line": "65",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteNibble",
@@ -97055,13 +96957,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@1933@F@LCD_WriteNibble@data",
+    "ID": "c:lcd.c@1931@F@LCD_WriteNibble@data",
     "What": "Variable",
     "defdec": "Def",
     "display": "data",
     "location": {
       "column": "13",
-      "line": "68",
+      "line": "67",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "data",
@@ -97075,7 +96977,7 @@
     "display": "void LCD_WriteByte(uint8_t, uint8_t)",
     "location": {
       "column": "13",
-      "line": "77",
+      "line": "76",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteByte",
@@ -97089,7 +96991,7 @@
     "display": "void LCD_WriteChar(char)",
     "location": {
       "column": "6",
-      "line": "83",
+      "line": "82",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteChar",
@@ -97103,7 +97005,7 @@
     "display": "void LCD_WriteString(const char *)",
     "location": {
       "column": "6",
-      "line": "88",
+      "line": "87",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_WriteString",
@@ -97117,7 +97019,7 @@
     "display": "void LCD_Command(uint8_t)",
     "location": {
       "column": "6",
-      "line": "95",
+      "line": "94",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_Command",
@@ -97131,7 +97033,7 @@
     "display": "void LCD_Init(void)",
     "location": {
       "column": "6",
-      "line": "103",
+      "line": "102",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_Init",
@@ -97145,24 +97047,10 @@
     "display": "void LCD_Clear(void)",
     "location": {
       "column": "6",
-      "line": "124",
+      "line": "123",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_Clear",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@LCD_Home",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void LCD_Home(void)",
-    "location": {
-      "column": "6",
-      "line": "130",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
-    },
-    "name": "LCD_Home",
     "origin": "project_file",
     "scope": null
   },
@@ -97173,7 +97061,7 @@
     "display": "void LCD_SetCursor(uint8_t, uint8_t)",
     "location": {
       "column": "6",
-      "line": "135",
+      "line": "129",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "LCD_SetCursor",
@@ -97181,13 +97069,13 @@
     "scope": null
   },
   {
-    "ID": "c:lcd.c@3291@F@LCD_SetCursor@addr",
+    "ID": "c:lcd.c@3228@F@LCD_SetCursor@addr",
     "What": "Variable",
     "defdec": "Def",
     "display": "addr",
     "location": {
       "column": "13",
-      "line": "137",
+      "line": "131",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.c"
     },
     "name": "addr",
@@ -97433,41 +97321,13 @@
     "scope": null
   },
   {
-    "ID": "c:@F@LCD_Home",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void LCD_Home(void)",
-    "location": {
-      "column": "6",
-      "line": "33",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
-    },
-    "name": "LCD_Home",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@LCD_Home",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void LCD_Home(void)",
-    "location": {
-      "column": "6",
-      "line": "33",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
-    },
-    "name": "LCD_Home",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
     "ID": "c:@F@LCD_SetCursor",
     "What": "Function",
     "defdec": "Dec",
     "display": "void LCD_SetCursor(uint8_t, uint8_t)",
     "location": {
       "column": "6",
-      "line": "34",
+      "line": "33",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_SetCursor",
@@ -97481,7 +97341,7 @@
     "display": "void LCD_SetCursor(uint8_t, uint8_t)",
     "location": {
       "column": "6",
-      "line": "34",
+      "line": "33",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_SetCursor",
@@ -97495,7 +97355,7 @@
     "display": "void LCD_WriteChar(char)",
     "location": {
       "column": "6",
-      "line": "35",
+      "line": "34",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_WriteChar",
@@ -97509,7 +97369,7 @@
     "display": "void LCD_WriteChar(char)",
     "location": {
       "column": "6",
-      "line": "35",
+      "line": "34",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_WriteChar",
@@ -97523,7 +97383,7 @@
     "display": "void LCD_WriteString(const char *)",
     "location": {
       "column": "6",
-      "line": "36",
+      "line": "35",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_WriteString",
@@ -97537,7 +97397,7 @@
     "display": "void LCD_WriteString(const char *)",
     "location": {
       "column": "6",
-      "line": "36",
+      "line": "35",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_WriteString",
@@ -97551,7 +97411,7 @@
     "display": "void LCD_Command(uint8_t)",
     "location": {
       "column": "6",
-      "line": "37",
+      "line": "36",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_Command",
@@ -97565,7 +97425,7 @@
     "display": "void LCD_Command(uint8_t)",
     "location": {
       "column": "6",
-      "line": "37",
+      "line": "36",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\lcd.h"
     },
     "name": "LCD_Command",
@@ -98027,7 +97887,7 @@
     "display": "void LED_Blink(uint8_t, uint8_t, uint16_t)",
     "location": {
       "column": "6",
-      "line": "35",
+      "line": "34",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.h"
     },
     "name": "LED_Blink",
@@ -98041,7 +97901,7 @@
     "display": "void LED_Blink(uint8_t, uint8_t, uint16_t)",
     "location": {
       "column": "6",
-      "line": "35",
+      "line": "34",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.h"
     },
     "name": "LED_Blink",
@@ -98069,7 +97929,7 @@
     "display": "void LED_SetColor(uint8_t)",
     "location": {
       "column": "6",
-      "line": "22",
+      "line": "21",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_SetColor",
@@ -98083,7 +97943,7 @@
     "display": "void LED_Off(void)",
     "location": {
       "column": "6",
-      "line": "31",
+      "line": "30",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Off",
@@ -98097,7 +97957,7 @@
     "display": "void LED_Red(void)",
     "location": {
       "column": "6",
-      "line": "36",
+      "line": "35",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Red",
@@ -98111,7 +97971,7 @@
     "display": "void LED_Green(void)",
     "location": {
       "column": "6",
-      "line": "41",
+      "line": "40",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Green",
@@ -98125,7 +97985,7 @@
     "display": "void LED_Blue(void)",
     "location": {
       "column": "6",
-      "line": "46",
+      "line": "45",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Blue",
@@ -98139,7 +97999,7 @@
     "display": "void LED_Yellow(void)",
     "location": {
       "column": "6",
-      "line": "51",
+      "line": "50",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Yellow",
@@ -98153,7 +98013,7 @@
     "display": "void LED_Cyan(void)",
     "location": {
       "column": "6",
-      "line": "56",
+      "line": "55",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Cyan",
@@ -98167,7 +98027,7 @@
     "display": "void LED_Blink(uint8_t, uint8_t, uint16_t)",
     "location": {
       "column": "6",
-      "line": "61",
+      "line": "60",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "LED_Blink",
@@ -98175,13 +98035,13 @@
     "scope": null
   },
   {
-    "ID": "c:led.c@1320@F@LED_Blink@i",
+    "ID": "c:led.c@1290@F@LED_Blink@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "13",
-      "line": "63",
+      "line": "62",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\led.c"
     },
     "name": "i",
@@ -120311,13 +120171,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@508@macro@POT_MIN_VAL",
+    "ID": "c:potentiometer.c@506@macro@POT_MIN_VAL",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "POT_MIN_VAL",
     "location": {
       "column": "9",
-      "line": "17",
+      "line": "16",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "POT_MIN_VAL",
@@ -120325,13 +120185,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@531@macro@POT_MAX_VAL",
+    "ID": "c:potentiometer.c@529@macro@POT_MAX_VAL",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "POT_MAX_VAL",
     "location": {
       "column": "9",
-      "line": "18",
+      "line": "17",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "POT_MAX_VAL",
@@ -120339,13 +120199,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@557@macro@TIMER_MIN_SEC",
+    "ID": "c:potentiometer.c@555@macro@TIMER_MIN_SEC",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "TIMER_MIN_SEC",
     "location": {
       "column": "9",
-      "line": "19",
+      "line": "18",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "TIMER_MIN_SEC",
@@ -120353,13 +120213,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@582@macro@TIMER_MAX_SEC",
+    "ID": "c:potentiometer.c@580@macro@TIMER_MAX_SEC",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "TIMER_MAX_SEC",
     "location": {
       "column": "9",
-      "line": "20",
+      "line": "19",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "TIMER_MAX_SEC",
@@ -120373,7 +120233,7 @@
     "display": "void ADC0_Init_PE3(void)",
     "location": {
       "column": "6",
-      "line": "22",
+      "line": "21",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "ADC0_Init_PE3",
@@ -120387,7 +120247,7 @@
     "display": "uint32_t ReadPotentiometer(void)",
     "location": {
       "column": "10",
-      "line": "43",
+      "line": "42",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "ReadPotentiometer",
@@ -120395,13 +120255,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@1374@F@ReadPotentiometer@value",
+    "ID": "c:potentiometer.c@1372@F@ReadPotentiometer@value",
     "What": "Variable",
     "defdec": "Def",
     "display": "value",
     "location": {
       "column": "14",
-      "line": "45",
+      "line": "44",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "value",
@@ -120415,7 +120275,7 @@
     "display": "uint32_t GetScaledTimeout(void)",
     "location": {
       "column": "10",
-      "line": "55",
+      "line": "54",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "GetScaledTimeout",
@@ -120423,13 +120283,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@1626@F@GetScaledTimeout@rawValue",
+    "ID": "c:potentiometer.c@1624@F@GetScaledTimeout@rawValue",
     "What": "Variable",
     "defdec": "Def",
     "display": "rawValue",
     "location": {
       "column": "14",
-      "line": "57",
+      "line": "56",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "rawValue",
@@ -120437,13 +120297,13 @@
     "scope": null
   },
   {
-    "ID": "c:potentiometer.c@1672@F@GetScaledTimeout@scaledValue",
+    "ID": "c:potentiometer.c@1670@F@GetScaledTimeout@scaledValue",
     "What": "Variable",
     "defdec": "Def",
     "display": "scaledValue",
     "location": {
       "column": "14",
-      "line": "58",
+      "line": "57",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\components\\potentiometer.c"
     },
     "name": "scaledValue",
@@ -122439,13 +122299,97 @@
     "scope": null
   },
   {
+    "ID": "c:@msTicks",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "msTicks",
+    "location": {
+      "column": "19",
+      "line": "12",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "msTicks",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:systick.c@interruptMode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "interruptMode",
+    "location": {
+      "column": "16",
+      "line": "13",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "interruptMode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysTick_Init",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SysTick_Init(uint32_t, uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "18",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "SysTick_Init",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@DelayMs",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void DelayMs(uint32_t)",
+    "location": {
+      "column": "6",
+      "line": "36",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "DelayMs",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:systick.c@1375@F@DelayMs@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "23",
+      "line": "39",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SystickHandler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SystickHandler(void)",
+    "location": {
+      "column": "6",
+      "line": "49",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
+    },
+    "name": "SystickHandler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:frontend.c@currentState",
     "What": "Variable",
     "defdec": "Def",
     "display": "currentState",
     "location": {
       "column": "25",
-      "line": "19",
+      "line": "13",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "currentState",
@@ -122459,7 +122403,7 @@
     "display": "passwordBuffer",
     "location": {
       "column": "13",
-      "line": "22",
+      "line": "14",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "passwordBuffer",
@@ -122473,7 +122417,7 @@
     "display": "confirmBuffer",
     "location": {
       "column": "13",
-      "line": "23",
+      "line": "15",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "confirmBuffer",
@@ -122487,24 +122431,10 @@
     "display": "attemptCount",
     "location": {
       "column": "16",
-      "line": "26",
+      "line": "16",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "attemptCount",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.c@doorTimeout",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "doorTimeout",
-    "location": {
-      "column": "16",
-      "line": "29",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
-    },
-    "name": "doorTimeout",
     "origin": "project_file",
     "scope": null
   },
@@ -122515,7 +122445,7 @@
     "display": "isFirstTime",
     "location": {
       "column": "13",
-      "line": "32",
+      "line": "17",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "isFirstTime",
@@ -122529,7 +122459,7 @@
     "display": "void showMessage(const char *, const char *)",
     "location": {
       "column": "13",
-      "line": "37",
+      "line": "20",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "showMessage",
@@ -122543,7 +122473,7 @@
     "display": "char waitForKey(void)",
     "location": {
       "column": "13",
-      "line": "48",
+      "line": "32",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "waitForKey",
@@ -122551,13 +122481,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@1474@F@waitForKey@key",
+    "ID": "c:frontend.c@902@F@waitForKey@key",
     "What": "Variable",
     "defdec": "Def",
     "display": "key",
     "location": {
       "column": "10",
-      "line": "50",
+      "line": "34",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "key",
@@ -122571,7 +122501,7 @@
     "display": "bool getPasswordFromKeypad(char *)",
     "location": {
       "column": "13",
-      "line": "57",
+      "line": "42",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "getPasswordFromKeypad",
@@ -122579,13 +122509,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@1630@F@getPasswordFromKeypad@i",
+    "ID": "c:frontend.c@1106@F@getPasswordFromKeypad@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "13",
-      "line": "59",
+      "line": "44",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "i",
@@ -122593,13 +122523,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@1650@F@getPasswordFromKeypad@key",
+    "ID": "c:frontend.c@1126@F@getPasswordFromKeypad@key",
     "What": "Variable",
     "defdec": "Def",
     "display": "key",
     "location": {
       "column": "10",
-      "line": "60",
+      "line": "45",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "key",
@@ -122613,7 +122543,7 @@
     "display": "bool stringsMatch(const char *, const char *, uint8_t)",
     "location": {
       "column": "13",
-      "line": "85",
+      "line": "71",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "stringsMatch",
@@ -122621,13 +122551,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@2299@F@stringsMatch@i",
+    "ID": "c:frontend.c@1810@F@stringsMatch@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "18",
-      "line": "87",
+      "line": "73",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "i",
@@ -122641,7 +122571,7 @@
     "display": "void handleWelcome(void)",
     "location": {
       "column": "13",
-      "line": "97",
+      "line": "80",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleWelcome",
@@ -122655,7 +122585,7 @@
     "display": "void handleSignup(void)",
     "location": {
       "column": "13",
-      "line": "114",
+      "line": "95",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleSignup",
@@ -122663,13 +122593,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@3169@F@handleSignup@done",
+    "ID": "c:frontend.c@2298@F@handleSignup@done",
     "What": "Variable",
     "defdec": "Def",
     "display": "done",
     "location": {
       "column": "10",
-      "line": "116",
+      "line": "97",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "done",
@@ -122677,13 +122607,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@3798@F@handleSignup@status",
+    "ID": "c:frontend.c@2848@F@handleSignup@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "21",
-      "line": "137",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122697,7 +122627,7 @@
     "display": "void handleMainMenu(void)",
     "location": {
       "column": "13",
-      "line": "165",
+      "line": "140",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleMainMenu",
@@ -122705,13 +122635,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@4805@F@handleMainMenu@key",
+    "ID": "c:frontend.c@3633@F@handleMainMenu@key",
     "What": "Variable",
     "defdec": "Def",
     "display": "key",
     "location": {
       "column": "10",
-      "line": "167",
+      "line": "142",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "key",
@@ -122725,7 +122655,7 @@
     "display": "void handleSignin(void)",
     "location": {
       "column": "13",
-      "line": "197",
+      "line": "159",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleSignin",
@@ -122733,13 +122663,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@5973@F@handleSignin@status",
+    "ID": "c:frontend.c@4460@F@handleSignin@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "13",
-      "line": "210",
+      "line": "172",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122747,13 +122677,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@6994@F@handleSignin@buffer",
+    "ID": "c:frontend.c@5258@F@handleSignin@buffer",
     "What": "Variable",
     "defdec": "Def",
     "display": "buffer",
     "location": {
       "column": "18",
-      "line": "237",
+      "line": "197",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "buffer",
@@ -122767,7 +122697,7 @@
     "display": "void handleChangePassword(void)",
     "location": {
       "column": "13",
-      "line": "250",
+      "line": "208",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleChangePassword",
@@ -122775,13 +122705,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@7901@F@handleChangePassword@status",
+    "ID": "c:frontend.c@5912@F@handleChangePassword@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "13",
-      "line": "265",
+      "line": "223",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122795,7 +122725,7 @@
     "display": "void handleSetTimeout(void)",
     "location": {
       "column": "13",
-      "line": "349",
+      "line": "297",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleSetTimeout",
@@ -122803,13 +122733,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@10314@F@handleSetTimeout@buffer",
+    "ID": "c:frontend.c@7810@F@handleSetTimeout@buffer",
     "What": "Variable",
     "defdec": "Def",
     "display": "buffer",
     "location": {
       "column": "10",
-      "line": "351",
+      "line": "299",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "buffer",
@@ -122817,13 +122747,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@10336@F@handleSetTimeout@key",
+    "ID": "c:frontend.c@7832@F@handleSetTimeout@key",
     "What": "Variable",
     "defdec": "Def",
     "display": "key",
     "location": {
       "column": "10",
-      "line": "352",
+      "line": "300",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "key",
@@ -122831,13 +122761,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@10355@F@handleSetTimeout@newTimeout",
+    "ID": "c:frontend.c@7851@F@handleSetTimeout@newTimeout",
     "What": "Variable",
     "defdec": "Def",
     "display": "newTimeout",
     "location": {
       "column": "14",
-      "line": "353",
+      "line": "301",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "newTimeout",
@@ -122845,13 +122775,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@11201@F@handleSetTimeout@status",
+    "ID": "c:frontend.c@8623@F@handleSetTimeout@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "17",
-      "line": "383",
+      "line": "329",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122865,7 +122795,7 @@
     "display": "void handleDoorOpen(void)",
     "location": {
       "column": "13",
-      "line": "434",
+      "line": "375",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleDoorOpen",
@@ -122873,13 +122803,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@12954@F@handleDoorOpen@buffer",
+    "ID": "c:frontend.c@10019@F@handleDoorOpen@buffer",
     "What": "Variable",
     "defdec": "Def",
     "display": "buffer",
     "location": {
       "column": "10",
-      "line": "436",
+      "line": "377",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "buffer",
@@ -122887,13 +122817,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@12976@F@handleDoorOpen@remaining",
+    "ID": "c:frontend.c@10041@F@handleDoorOpen@remaining",
     "What": "Variable",
     "defdec": "Def",
     "display": "remaining",
     "location": {
       "column": "13",
-      "line": "437",
+      "line": "378",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "remaining",
@@ -122901,13 +122831,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@13004@F@handleDoorOpen@status",
+    "ID": "c:frontend.c@10069@F@handleDoorOpen@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "13",
-      "line": "438",
+      "line": "379",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122915,13 +122845,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@13025@F@handleDoorOpen@retryCount",
+    "ID": "c:frontend.c@10090@F@handleDoorOpen@retryCount",
     "What": "Variable",
     "defdec": "Def",
     "display": "retryCount",
     "location": {
       "column": "13",
-      "line": "439",
+      "line": "380",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "retryCount",
@@ -122935,7 +122865,7 @@
     "display": "void handleDoorClosing(void)",
     "location": {
       "column": "13",
-      "line": "490",
+      "line": "414",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleDoorClosing",
@@ -122949,7 +122879,7 @@
     "display": "void handleLockout(void)",
     "location": {
       "column": "13",
-      "line": "511",
+      "line": "428",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "handleLockout",
@@ -122957,13 +122887,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@15318@F@handleLockout@buffer",
+    "ID": "c:frontend.c@11386@F@handleLockout@buffer",
     "What": "Variable",
     "defdec": "Def",
     "display": "buffer",
     "location": {
       "column": "10",
-      "line": "513",
+      "line": "430",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "buffer",
@@ -122971,13 +122901,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@15340@F@handleLockout@lockoutTime",
+    "ID": "c:frontend.c@11408@F@handleLockout@lockoutTime",
     "What": "Variable",
     "defdec": "Def",
     "display": "lockoutTime",
     "location": {
       "column": "13",
-      "line": "514",
+      "line": "431",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "lockoutTime",
@@ -122985,13 +122915,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@15370@F@handleLockout@status",
+    "ID": "c:frontend.c@11438@F@handleLockout@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "13",
-      "line": "515",
+      "line": "432",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "status",
@@ -122999,13 +122929,13 @@
     "scope": null
   },
   {
-    "ID": "c:frontend.c@15391@F@handleLockout@retryCount",
+    "ID": "c:frontend.c@11459@F@handleLockout@retryCount",
     "What": "Variable",
     "defdec": "Def",
     "display": "retryCount",
     "location": {
       "column": "13",
-      "line": "516",
+      "line": "433",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "retryCount",
@@ -123019,7 +122949,7 @@
     "display": "void Frontend_Start(void)",
     "location": {
       "column": "6",
-      "line": "579",
+      "line": "478",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
     },
     "name": "Frontend_Start",
@@ -123027,27 +122957,13 @@
     "scope": null
   },
   {
-    "ID": "c:@F@Frontend_GetState",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "Frontend_State_t Frontend_GetState(void)",
-    "location": {
-      "column": "18",
-      "line": "627",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.c"
-    },
-    "name": "Frontend_GetState",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.h@461@macro@UART_COMM_H",
+    "ID": "c:uart_comm.h@432@macro@UART_COMM_H",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "UART_COMM_H",
     "location": {
       "column": "9",
-      "line": "12",
+      "line": "9",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_COMM_H",
@@ -123055,13 +122971,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@559@macro@PASSWORD_LENGTH",
+    "ID": "c:uart_comm.h@530@macro@PASSWORD_LENGTH",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "PASSWORD_LENGTH",
     "location": {
       "column": "9",
-      "line": "18",
+      "line": "15",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "PASSWORD_LENGTH",
@@ -123069,13 +122985,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@590@macro@MAX_ATTEMPTS",
+    "ID": "c:uart_comm.h@557@macro@MAX_ATTEMPTS",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "MAX_ATTEMPTS",
     "location": {
       "column": "9",
-      "line": "19",
+      "line": "16",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "MAX_ATTEMPTS",
@@ -123083,13 +122999,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@806@macro@SOF_REQUEST",
+    "ID": "c:uart_comm.h@609@macro@SOF_REQUEST",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "SOF_REQUEST",
     "location": {
       "column": "9",
-      "line": "24",
+      "line": "19",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "SOF_REQUEST",
@@ -123097,13 +123013,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@877@macro@SOF_RESPONSE",
+    "ID": "c:uart_comm.h@680@macro@SOF_RESPONSE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "SOF_RESPONSE",
     "location": {
       "column": "9",
-      "line": "25",
+      "line": "20",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "SOF_RESPONSE",
@@ -123111,13 +123027,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1163@macro@CMD_INIT_PASSWORD",
+    "ID": "c:uart_comm.h@809@macro@CMD_INIT_PASSWORD",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_INIT_PASSWORD",
     "location": {
       "column": "9",
-      "line": "30",
+      "line": "23",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_INIT_PASSWORD",
@@ -123125,13 +123041,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1239@macro@CMD_AUTH",
+    "ID": "c:uart_comm.h@885@macro@CMD_AUTH",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_AUTH",
     "location": {
       "column": "9",
-      "line": "31",
+      "line": "24",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_AUTH",
@@ -123139,13 +123055,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1308@macro@CMD_SET_TIMEOUT",
+    "ID": "c:uart_comm.h@954@macro@CMD_SET_TIMEOUT",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_SET_TIMEOUT",
     "location": {
       "column": "9",
-      "line": "32",
+      "line": "25",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_SET_TIMEOUT",
@@ -123153,13 +123069,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1373@macro@CMD_CHANGE_PASSWORD",
+    "ID": "c:uart_comm.h@1019@macro@CMD_CHANGE_PASSWORD",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_CHANGE_PASSWORD",
     "location": {
       "column": "9",
-      "line": "33",
+      "line": "26",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_CHANGE_PASSWORD",
@@ -123167,13 +123083,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1436@macro@CMD_GET_TIMEOUT",
+    "ID": "c:uart_comm.h@1082@macro@CMD_GET_TIMEOUT",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_GET_TIMEOUT",
     "location": {
       "column": "9",
-      "line": "34",
+      "line": "27",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_GET_TIMEOUT",
@@ -123181,13 +123097,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1501@macro@CMD_CLOSE_DOOR",
+    "ID": "c:uart_comm.h@1147@macro@CMD_CLOSE_DOOR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_CLOSE_DOOR",
     "location": {
       "column": "9",
-      "line": "35",
+      "line": "28",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_CLOSE_DOOR",
@@ -123195,13 +123111,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1573@macro@CMD_OPEN_DOOR",
+    "ID": "c:uart_comm.h@1219@macro@CMD_OPEN_DOOR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "CMD_OPEN_DOOR",
     "location": {
       "column": "9",
-      "line": "36",
+      "line": "29",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "CMD_OPEN_DOOR",
@@ -123209,13 +123125,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1838@macro@AUTH_MODE_CHECK_ONLY",
+    "ID": "c:uart_comm.h@1327@macro@AUTH_MODE_CHECK_ONLY",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "AUTH_MODE_CHECK_ONLY",
     "location": {
       "column": "9",
-      "line": "41",
+      "line": "32",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "AUTH_MODE_CHECK_ONLY",
@@ -123223,13 +123139,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@1906@macro@AUTH_MODE_OPEN_DOOR",
+    "ID": "c:uart_comm.h@1395@macro@AUTH_MODE_OPEN_DOOR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "AUTH_MODE_OPEN_DOOR",
     "location": {
       "column": "9",
-      "line": "42",
+      "line": "33",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "AUTH_MODE_OPEN_DOOR",
@@ -123237,13 +123153,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@2198@macro@STATUS_OK",
+    "ID": "c:uart_comm.h@1494@macro@STATUS_OK",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "STATUS_OK",
     "location": {
       "column": "9",
-      "line": "47",
+      "line": "36",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "STATUS_OK",
@@ -123251,13 +123167,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@2253@macro@STATUS_ERROR",
+    "ID": "c:uart_comm.h@1549@macro@STATUS_ERROR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "STATUS_ERROR",
     "location": {
       "column": "9",
-      "line": "48",
+      "line": "37",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "STATUS_ERROR",
@@ -123265,13 +123181,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@2314@macro@STATUS_AUTH_FAIL",
+    "ID": "c:uart_comm.h@1610@macro@STATUS_AUTH_FAIL",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "STATUS_AUTH_FAIL",
     "location": {
       "column": "9",
-      "line": "49",
+      "line": "38",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "STATUS_AUTH_FAIL",
@@ -123279,13 +123195,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.h@2400@macro@STATUS_UNKNOWN_CMD",
+    "ID": "c:uart_comm.h@1696@macro@STATUS_UNKNOWN_CMD",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "STATUS_UNKNOWN_CMD",
     "location": {
       "column": "9",
-      "line": "50",
+      "line": "39",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "STATUS_UNKNOWN_CMD",
@@ -123299,7 +123215,7 @@
     "display": "void UART_Init(void)",
     "location": {
       "column": "6",
-      "line": "57",
+      "line": "42",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_Init",
@@ -123313,7 +123229,7 @@
     "display": "void UART_Init(void)",
     "location": {
       "column": "6",
-      "line": "57",
+      "line": "42",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_Init",
@@ -123327,7 +123243,7 @@
     "display": "uint8_t UART_InitPassword(const char *)",
     "location": {
       "column": "9",
-      "line": "60",
+      "line": "45",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_InitPassword",
@@ -123341,7 +123257,7 @@
     "display": "uint8_t UART_InitPassword(const char *)",
     "location": {
       "column": "9",
-      "line": "60",
+      "line": "45",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_InitPassword",
@@ -123355,7 +123271,7 @@
     "display": "uint8_t UART_Authenticate(const char *, uint8_t)",
     "location": {
       "column": "9",
-      "line": "63",
+      "line": "47",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_Authenticate",
@@ -123369,7 +123285,7 @@
     "display": "uint8_t UART_Authenticate(const char *, uint8_t)",
     "location": {
       "column": "9",
-      "line": "63",
+      "line": "47",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_Authenticate",
@@ -123377,41 +123293,13 @@
     "scope": null
   },
   {
-    "ID": "c:@F@UART_AuthenticateWithTimeout",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "uint8_t UART_AuthenticateWithTimeout(const char *, uint8_t, uint8_t *)",
-    "location": {
-      "column": "9",
-      "line": "66",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
-    },
-    "name": "UART_AuthenticateWithTimeout",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UART_AuthenticateWithTimeout",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "uint8_t UART_AuthenticateWithTimeout(const char *, uint8_t, uint8_t *)",
-    "location": {
-      "column": "9",
-      "line": "66",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
-    },
-    "name": "UART_AuthenticateWithTimeout",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
     "ID": "c:@F@UART_SetTimeout",
     "What": "Function",
     "defdec": "Dec",
     "display": "uint8_t UART_SetTimeout(uint8_t)",
     "location": {
       "column": "9",
-      "line": "69",
+      "line": "49",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_SetTimeout",
@@ -123425,7 +123313,7 @@
     "display": "uint8_t UART_SetTimeout(uint8_t)",
     "location": {
       "column": "9",
-      "line": "69",
+      "line": "49",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_SetTimeout",
@@ -123439,7 +123327,7 @@
     "display": "uint8_t UART_ChangePassword(const char *)",
     "location": {
       "column": "9",
-      "line": "72",
+      "line": "51",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_ChangePassword",
@@ -123453,7 +123341,7 @@
     "display": "uint8_t UART_ChangePassword(const char *)",
     "location": {
       "column": "9",
-      "line": "72",
+      "line": "51",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_ChangePassword",
@@ -123467,7 +123355,7 @@
     "display": "uint8_t UART_GetTimeout(uint8_t *)",
     "location": {
       "column": "9",
-      "line": "75",
+      "line": "53",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_GetTimeout",
@@ -123481,7 +123369,7 @@
     "display": "uint8_t UART_GetTimeout(uint8_t *)",
     "location": {
       "column": "9",
-      "line": "75",
+      "line": "53",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_GetTimeout",
@@ -123495,7 +123383,7 @@
     "display": "uint8_t UART_CloseDoor(void)",
     "location": {
       "column": "9",
-      "line": "78",
+      "line": "55",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_CloseDoor",
@@ -123509,7 +123397,7 @@
     "display": "uint8_t UART_CloseDoor(void)",
     "location": {
       "column": "9",
-      "line": "78",
+      "line": "55",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_CloseDoor",
@@ -123523,7 +123411,7 @@
     "display": "uint8_t UART_OpenDoor(void)",
     "location": {
       "column": "9",
-      "line": "81",
+      "line": "57",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_OpenDoor",
@@ -123537,10 +123425,208 @@
     "display": "uint8_t UART_OpenDoor(void)",
     "location": {
       "column": "9",
-      "line": "81",
+      "line": "57",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.h"
     },
     "name": "UART_OpenDoor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:frontend.h@28@macro@FRONTEND_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "FRONTEND_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+    },
+    "name": "FRONTEND_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@EA@Frontend_State_t",
+    "What": "Enum",
+    "defdec": "Def",
+    "display": "",
+    "fields": [
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_WELCOME",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_WELCOME",
+        "location": {
+          "column": "5",
+          "line": "8",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_WELCOME",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_SIGNUP",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_SIGNUP",
+        "location": {
+          "column": "5",
+          "line": "9",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_SIGNUP",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_MAIN_MENU",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_MAIN_MENU",
+        "location": {
+          "column": "5",
+          "line": "10",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_MAIN_MENU",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_SIGNIN",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_SIGNIN",
+        "location": {
+          "column": "5",
+          "line": "11",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_SIGNIN",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_CHANGE_PASSWORD",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_CHANGE_PASSWORD",
+        "location": {
+          "column": "5",
+          "line": "12",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_CHANGE_PASSWORD",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_SET_TIMEOUT",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_SET_TIMEOUT",
+        "location": {
+          "column": "5",
+          "line": "13",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_SET_TIMEOUT",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_DOOR_OPEN",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_DOOR_OPEN",
+        "location": {
+          "column": "5",
+          "line": "14",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_DOOR_OPEN",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_DOOR_CLOSING",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_DOOR_CLOSING",
+        "location": {
+          "column": "5",
+          "line": "15",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_DOOR_CLOSING",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@EA@Frontend_State_t@STATE_LOCKOUT",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "STATE_LOCKOUT",
+        "location": {
+          "column": "5",
+          "line": "16",
+          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+        },
+        "name": "STATE_LOCKOUT",
+        "origin": "user_include",
+        "scope": null
+      }
+    ],
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+    },
+    "name": "",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@T@Frontend_State_t",
+    "What": "Typedef",
+    "defdec": "Def",
+    "display": "enum Frontend_State_t",
+    "location": {
+      "column": "3",
+      "line": "17",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+    },
+    "name": "Frontend_State_t",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Frontend_Start",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Frontend_Start(void)",
+    "location": {
+      "column": "6",
+      "line": "19",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+    },
+    "name": "Frontend_Start",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Frontend_Start",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void Frontend_Start(void)",
+    "location": {
+      "column": "6",
+      "line": "19",
+      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
+    },
+    "name": "Frontend_Start",
     "origin": "user_include",
     "scope": null
   },
@@ -123993,386 +124079,6 @@
     "scope": null
   },
   {
-    "ID": "c:@msTicks",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "msTicks",
-    "location": {
-      "column": "19",
-      "line": "12",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "msTicks",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:systick.c@interruptMode",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "interruptMode",
-    "location": {
-      "column": "16",
-      "line": "13",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "interruptMode",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SysTick_Init",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SysTick_Init(uint32_t, uint8_t)",
-    "location": {
-      "column": "6",
-      "line": "18",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "SysTick_Init",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@DelayMs",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void DelayMs(uint32_t)",
-    "location": {
-      "column": "6",
-      "line": "36",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "DelayMs",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:systick.c@1375@F@DelayMs@i",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "i",
-    "location": {
-      "column": "23",
-      "line": "39",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "i",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SystickHandler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SystickHandler(void)",
-    "location": {
-      "column": "6",
-      "line": "49",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\MCAL\\systick.c"
-    },
-    "name": "SystickHandler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@355@macro@FRONTEND_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "FRONTEND_H",
-    "location": {
-      "column": "9",
-      "line": "8",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "FRONTEND_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@EA@Frontend_State_t",
-    "What": "Enum",
-    "defdec": "Def",
-    "display": "",
-    "fields": [
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_WELCOME",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_WELCOME",
-        "location": {
-          "column": "5",
-          "line": "15",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_WELCOME",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_SIGNUP",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_SIGNUP",
-        "location": {
-          "column": "5",
-          "line": "16",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_SIGNUP",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_MAIN_MENU",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_MAIN_MENU",
-        "location": {
-          "column": "5",
-          "line": "17",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_MAIN_MENU",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_SIGNIN",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_SIGNIN",
-        "location": {
-          "column": "5",
-          "line": "18",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_SIGNIN",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_CHANGE_PASSWORD",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_CHANGE_PASSWORD",
-        "location": {
-          "column": "5",
-          "line": "19",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_CHANGE_PASSWORD",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_SET_TIMEOUT",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_SET_TIMEOUT",
-        "location": {
-          "column": "5",
-          "line": "20",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_SET_TIMEOUT",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_DOOR_OPEN",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_DOOR_OPEN",
-        "location": {
-          "column": "5",
-          "line": "21",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_DOOR_OPEN",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_DOOR_CLOSING",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_DOOR_CLOSING",
-        "location": {
-          "column": "5",
-          "line": "22",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_DOOR_CLOSING",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@EA@Frontend_State_t@STATE_LOCKOUT",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "STATE_LOCKOUT",
-        "location": {
-          "column": "5",
-          "line": "23",
-          "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-        },
-        "name": "STATE_LOCKOUT",
-        "origin": "user_include",
-        "scope": null
-      }
-    ],
-    "location": {
-      "column": "9",
-      "line": "14",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@T@Frontend_State_t",
-    "What": "Typedef",
-    "defdec": "Def",
-    "display": "enum Frontend_State_t",
-    "location": {
-      "column": "3",
-      "line": "24",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "Frontend_State_t",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@702@macro@KEY_SIGNIN",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "KEY_SIGNIN",
-    "location": {
-      "column": "9",
-      "line": "27",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "KEY_SIGNIN",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@735@macro@KEY_CHANGE_PASS",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "KEY_CHANGE_PASS",
-    "location": {
-      "column": "9",
-      "line": "28",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "KEY_CHANGE_PASS",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@768@macro@KEY_SET_TIMEOUT",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "KEY_SET_TIMEOUT",
-    "location": {
-      "column": "9",
-      "line": "29",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "KEY_SET_TIMEOUT",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@801@macro@KEY_SAVE",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "KEY_SAVE",
-    "location": {
-      "column": "9",
-      "line": "30",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "KEY_SAVE",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:frontend.h@834@macro@KEY_CANCEL",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "KEY_CANCEL",
-    "location": {
-      "column": "9",
-      "line": "31",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "KEY_CANCEL",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@Frontend_Start",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void Frontend_Start(void)",
-    "location": {
-      "column": "6",
-      "line": "34",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "Frontend_Start",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@Frontend_Start",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void Frontend_Start(void)",
-    "location": {
-      "column": "6",
-      "line": "34",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "Frontend_Start",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@Frontend_GetState",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "Frontend_State_t Frontend_GetState(void)",
-    "location": {
-      "column": "18",
-      "line": "37",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "Frontend_GetState",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@Frontend_GetState",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "Frontend_State_t Frontend_GetState(void)",
-    "location": {
-      "column": "18",
-      "line": "37",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\frontend.h"
-    },
-    "name": "Frontend_GetState",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
     "ID": "c:ysizet.h@111@macro@_YSIZET_H",
     "What": "MacroDef",
     "defdec": "Def",
@@ -124463,7 +124169,7 @@
     "display": "int main(void)",
     "location": {
       "column": "5",
-      "line": "20",
+      "line": "15",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\main.c"
     },
     "name": "main",
@@ -124471,13 +124177,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@833@macro@UART_TIMEOUT_LOOPS",
+    "ID": "c:uart_comm.c@298@macro@UART_TIMEOUT_LOOPS",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "UART_TIMEOUT_LOOPS",
     "location": {
       "column": "9",
-      "line": "23",
+      "line": "12",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_TIMEOUT_LOOPS",
@@ -124485,13 +124191,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@907@macro@UART_MAX_RETRIES",
+    "ID": "c:uart_comm.c@336@macro@UART_MAX_RETRIES",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "UART_MAX_RETRIES",
     "location": {
       "column": "9",
-      "line": "24",
+      "line": "13",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_MAX_RETRIES",
@@ -124499,44 +124205,16 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@973@macro@UART_SOF_SEARCH_MAX",
+    "ID": "c:uart_comm.c@368@macro@UART_SOF_SEARCH_MAX",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "UART_SOF_SEARCH_MAX",
     "location": {
       "column": "9",
-      "line": "25",
+      "line": "14",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_SOF_SEARCH_MAX",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@1047@macro@UART_DELAY_SHORT",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "UART_DELAY_SHORT",
-    "location": {
-      "column": "9",
-      "line": "26",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "UART_DELAY_SHORT",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@1111@macro@UART_DELAY_LONG",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "UART_DELAY_LONG",
-    "location": {
-      "column": "9",
-      "line": "27",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "UART_DELAY_LONG",
     "origin": "project_file",
     "scope": null
   },
@@ -124547,24 +124225,10 @@
     "display": "consecutiveFailures",
     "location": {
       "column": "16",
-      "line": "32",
+      "line": "16",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "consecutiveFailures",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@F@UART_Delay",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void UART_Delay(volatile uint32_t)",
-    "location": {
-      "column": "13",
-      "line": "37",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "UART_Delay",
     "origin": "project_file",
     "scope": null
   },
@@ -124575,7 +124239,7 @@
     "display": "void UART_Reinit(void)",
     "location": {
       "column": "13",
-      "line": "47",
+      "line": "19",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_Reinit",
@@ -124589,7 +124253,7 @@
     "display": "void UART_FlushRx(void)",
     "location": {
       "column": "13",
-      "line": "78",
+      "line": "35",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_FlushRx",
@@ -124603,7 +124267,7 @@
     "display": "uint8_t UART_SendByte(uint8_t)",
     "location": {
       "column": "16",
-      "line": "91",
+      "line": "44",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_SendByte",
@@ -124611,13 +124275,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@3195@F@UART_SendByte@timeout",
+    "ID": "c:uart_comm.c@1059@F@UART_SendByte@timeout",
     "What": "Variable",
     "defdec": "Def",
     "display": "timeout",
     "location": {
       "column": "14",
-      "line": "93",
+      "line": "46",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "timeout",
@@ -124631,7 +124295,7 @@
     "display": "void UART_WaitTxComplete(void)",
     "location": {
       "column": "13",
-      "line": "108",
+      "line": "56",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_WaitTxComplete",
@@ -124639,13 +124303,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@3695@F@UART_WaitTxComplete@timeout",
+    "ID": "c:uart_comm.c@1324@F@UART_WaitTxComplete@timeout",
     "What": "Variable",
     "defdec": "Def",
     "display": "timeout",
     "location": {
       "column": "14",
-      "line": "110",
+      "line": "58",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "timeout",
@@ -124659,7 +124323,7 @@
     "display": "uint8_t UART_ReceiveByteTimeout(uint8_t *)",
     "location": {
       "column": "16",
-      "line": "126",
+      "line": "69",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_ReceiveByteTimeout",
@@ -124667,13 +124331,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@4366@F@UART_ReceiveByteTimeout@timeout",
+    "ID": "c:uart_comm.c@1672@F@UART_ReceiveByteTimeout@timeout",
     "What": "Variable",
     "defdec": "Def",
     "display": "timeout",
     "location": {
       "column": "14",
-      "line": "128",
+      "line": "71",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "timeout",
@@ -124681,13 +124345,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@4410@F@UART_ReceiveByteTimeout@dr",
+    "ID": "c:uart_comm.c@1716@F@UART_ReceiveByteTimeout@dr",
     "What": "Variable",
     "defdec": "Def",
     "display": "dr",
     "location": {
       "column": "14",
-      "line": "129",
+      "line": "72",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "dr",
@@ -124701,7 +124365,7 @@
     "display": "uint8_t UART_SendPacket(uint8_t, const uint8_t *, uint8_t)",
     "location": {
       "column": "16",
-      "line": "153",
+      "line": "90",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_SendPacket",
@@ -124709,13 +124373,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@5160@F@UART_SendPacket@len",
+    "ID": "c:uart_comm.c@2170@F@UART_SendPacket@len",
     "What": "Variable",
     "defdec": "Def",
     "display": "len",
     "location": {
       "column": "13",
-      "line": "155",
+      "line": "92",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "len",
@@ -124723,13 +124387,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@5195@F@UART_SendPacket@i",
+    "ID": "c:uart_comm.c@2205@F@UART_SendPacket@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "13",
-      "line": "156",
+      "line": "93",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "i",
@@ -124743,7 +124407,7 @@
     "display": "uint8_t UART_ReceiveResponse(uint8_t *, uint8_t *)",
     "location": {
       "column": "16",
-      "line": "183",
+      "line": "112",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_ReceiveResponse",
@@ -124751,13 +124415,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6069@F@UART_ReceiveResponse@byte",
+    "ID": "c:uart_comm.c@2746@F@UART_ReceiveResponse@byte",
     "What": "Variable",
     "defdec": "Def",
     "display": "byte",
     "location": {
       "column": "13",
-      "line": "185",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "byte",
@@ -124765,13 +124429,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6088@F@UART_ReceiveResponse@len",
+    "ID": "c:uart_comm.c@2746@F@UART_ReceiveResponse@len",
     "What": "Variable",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "len",
     "location": {
-      "column": "13",
-      "line": "186",
+      "column": "19",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "len",
@@ -124779,13 +124443,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6106@F@UART_ReceiveResponse@cmd",
+    "ID": "c:uart_comm.c@2746@F@UART_ReceiveResponse@cmd",
     "What": "Variable",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "cmd",
     "location": {
-      "column": "13",
-      "line": "187",
+      "column": "24",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "cmd",
@@ -124793,13 +124457,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6124@F@UART_ReceiveResponse@status",
+    "ID": "c:uart_comm.c@2746@F@UART_ReceiveResponse@status",
     "What": "Variable",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "status",
     "location": {
-      "column": "13",
-      "line": "188",
+      "column": "29",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "status",
@@ -124807,13 +124471,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6145@F@UART_ReceiveResponse@i",
+    "ID": "c:uart_comm.c@2746@F@UART_ReceiveResponse@i",
     "What": "Variable",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "i",
     "location": {
-      "column": "13",
-      "line": "189",
+      "column": "37",
+      "line": "114",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "i",
@@ -124821,13 +124485,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@6161@F@UART_ReceiveResponse@sofRetries",
+    "ID": "c:uart_comm.c@2786@F@UART_ReceiveResponse@sofRetries",
     "What": "Variable",
     "defdec": "Def",
     "display": "sofRetries",
     "location": {
       "column": "13",
-      "line": "190",
+      "line": "115",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "sofRetries",
@@ -124835,13 +124499,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@7180@F@UART_ReceiveResponse@dataBytes",
+    "ID": "c:uart_comm.c@3395@F@UART_ReceiveResponse@dataBytes",
     "What": "Variable",
     "defdec": "Def",
     "display": "dataBytes",
     "location": {
       "column": "13",
-      "line": "233",
+      "line": "131",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "dataBytes",
@@ -124855,7 +124519,7 @@
     "display": "uint8_t UART_SendCommandWithRetry(uint8_t, const uint8_t *, uint8_t, uint8_t *, uint8_t *)",
     "location": {
       "column": "16",
-      "line": "251",
+      "line": "144",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_SendCommandWithRetry",
@@ -124863,13 +124527,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@7958@F@UART_SendCommandWithRetry@retry",
+    "ID": "c:uart_comm.c@3896@F@UART_SendCommandWithRetry@retry",
     "What": "Variable",
     "defdec": "Def",
     "display": "retry",
     "location": {
       "column": "13",
-      "line": "255",
+      "line": "146",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "retry",
@@ -124877,13 +124541,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@7978@F@UART_SendCommandWithRetry@status",
+    "ID": "c:uart_comm.c@3896@F@UART_SendCommandWithRetry@status",
     "What": "Variable",
-    "defdec": "Def",
+    "defdec": "Dec",
     "display": "status",
     "location": {
-      "column": "13",
-      "line": "256",
+      "column": "20",
+      "line": "146",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "status",
@@ -124897,7 +124561,7 @@
     "display": "void UART_Init(void)",
     "location": {
       "column": "6",
-      "line": "295",
+      "line": "174",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_Init",
@@ -124911,7 +124575,7 @@
     "display": "uint8_t UART_InitPassword(const char *)",
     "location": {
       "column": "9",
-      "line": "341",
+      "line": "199",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_InitPassword",
@@ -124919,13 +124583,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@10488@F@UART_InitPassword@payload",
+    "ID": "c:uart_comm.c@5256@F@UART_InitPassword@payload",
     "What": "Variable",
     "defdec": "Def",
     "display": "payload",
     "location": {
       "column": "13",
-      "line": "343",
+      "line": "201",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "payload",
@@ -124933,13 +124597,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@10527@F@UART_InitPassword@i",
+    "ID": "c:uart_comm.c@5300@F@UART_InitPassword@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
-      "column": "13",
-      "line": "344",
+      "column": "18",
+      "line": "202",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "i",
@@ -124953,7 +124617,7 @@
     "display": "uint8_t UART_Authenticate(const char *, uint8_t)",
     "location": {
       "column": "9",
-      "line": "358",
+      "line": "209",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_Authenticate",
@@ -124961,13 +124625,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@11120@F@UART_Authenticate@payload",
+    "ID": "c:uart_comm.c@5630@F@UART_Authenticate@payload",
     "What": "Variable",
     "defdec": "Def",
     "display": "payload",
     "location": {
       "column": "13",
-      "line": "360",
+      "line": "211",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "payload",
@@ -124975,97 +124639,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@11163@F@UART_Authenticate@i",
+    "ID": "c:uart_comm.c@5702@F@UART_Authenticate@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
-      "column": "13",
-      "line": "361",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "i",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UART_AuthenticateWithTimeout",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "uint8_t UART_AuthenticateWithTimeout(const char *, uint8_t, uint8_t *)",
-    "location": {
-      "column": "9",
-      "line": "376",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "UART_AuthenticateWithTimeout",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@11847@F@UART_AuthenticateWithTimeout@payload",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "payload",
-    "location": {
-      "column": "13",
-      "line": "378",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "payload",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@11890@F@UART_AuthenticateWithTimeout@data",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "data",
-    "location": {
-      "column": "13",
-      "line": "379",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "data",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@11912@F@UART_AuthenticateWithTimeout@dataLen",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "dataLen",
-    "location": {
-      "column": "13",
-      "line": "380",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "dataLen",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@11938@F@UART_AuthenticateWithTimeout@status",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "status",
-    "location": {
-      "column": "13",
-      "line": "381",
-      "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
-    },
-    "name": "status",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:uart_comm.c@11959@F@UART_AuthenticateWithTimeout@i",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "i",
-    "location": {
-      "column": "13",
-      "line": "382",
+      "column": "18",
+      "line": "213",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "i",
@@ -125079,7 +124659,7 @@
     "display": "uint8_t UART_SetTimeout(uint8_t)",
     "location": {
       "column": "9",
-      "line": "402",
+      "line": "220",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_SetTimeout",
@@ -125087,13 +124667,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@12667@F@UART_SetTimeout@payload",
+    "ID": "c:uart_comm.c@6062@F@UART_SetTimeout@payload",
     "What": "Variable",
     "defdec": "Def",
     "display": "payload",
     "location": {
       "column": "13",
-      "line": "404",
+      "line": "224",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "payload",
@@ -125107,7 +124687,7 @@
     "display": "uint8_t UART_ChangePassword(const char *)",
     "location": {
       "column": "9",
-      "line": "418",
+      "line": "229",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_ChangePassword",
@@ -125115,13 +124695,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@13174@F@UART_ChangePassword@payload",
+    "ID": "c:uart_comm.c@6274@F@UART_ChangePassword@payload",
     "What": "Variable",
     "defdec": "Def",
     "display": "payload",
     "location": {
       "column": "13",
-      "line": "420",
+      "line": "231",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "payload",
@@ -125129,13 +124709,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@13213@F@UART_ChangePassword@i",
+    "ID": "c:uart_comm.c@6318@F@UART_ChangePassword@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
-      "column": "13",
-      "line": "421",
+      "column": "18",
+      "line": "232",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "i",
@@ -125149,7 +124729,7 @@
     "display": "uint8_t UART_GetTimeout(uint8_t *)",
     "location": {
       "column": "9",
-      "line": "434",
+      "line": "239",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_GetTimeout",
@@ -125157,13 +124737,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@13736@F@UART_GetTimeout@data",
+    "ID": "c:uart_comm.c@6601@F@UART_GetTimeout@data",
     "What": "Variable",
     "defdec": "Def",
     "display": "data",
     "location": {
       "column": "13",
-      "line": "436",
+      "line": "241",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "data",
@@ -125171,13 +124751,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@13758@F@UART_GetTimeout@dataLen",
+    "ID": "c:uart_comm.c@6623@F@UART_GetTimeout@dataLen",
     "What": "Variable",
     "defdec": "Def",
     "display": "dataLen",
     "location": {
       "column": "13",
-      "line": "437",
+      "line": "242",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "dataLen",
@@ -125185,13 +124765,13 @@
     "scope": null
   },
   {
-    "ID": "c:uart_comm.c@13784@F@UART_GetTimeout@status",
+    "ID": "c:uart_comm.c@6649@F@UART_GetTimeout@status",
     "What": "Variable",
     "defdec": "Def",
     "display": "status",
     "location": {
       "column": "13",
-      "line": "438",
+      "line": "243",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "status",
@@ -125205,7 +124785,7 @@
     "display": "uint8_t UART_CloseDoor(void)",
     "location": {
       "column": "9",
-      "line": "452",
+      "line": "251",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_CloseDoor",
@@ -125219,7 +124799,7 @@
     "display": "uint8_t UART_OpenDoor(void)",
     "location": {
       "column": "9",
-      "line": "460",
+      "line": "257",
       "path": "C:\\Users\\Ahmed Fahmy\\Downloads\\embedded project\\Door-Locker-Embedded-System-\\frontend\\uart_comm.c"
     },
     "name": "UART_OpenDoor",
