@@ -45,7 +45,7 @@ static void I2C0_Init(void)
     
     /* I2C Master init */
     I2C0_MCR_R = 0x10;
-    I2C0_MTPR_R = 24;  /* 100kHz @ 50MHz */
+    I2C0_MTPR_R = 7;  /* 100kHz @ 16MHz: TPR = (16MHz / (2*10*100kHz)) - 1 = 7 */
 }
 
 static void I2C0_Write(uint8_t data)

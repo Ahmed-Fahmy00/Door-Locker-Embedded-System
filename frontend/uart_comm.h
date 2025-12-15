@@ -1,7 +1,11 @@
 /*****************************************************************************
  * File: uart_comm.h
  * Description: UART Communication Layer for HMI_ECU <-> Control_ECU
- * UART1: PB0 (Rx), PB1 (Tx) - 9600 baud, 8N1
+ * UART1: PB0 (Rx), PB1 (Tx) - 115200 baud, 8N1
+ * 
+ * Packet Protocol:
+ *   Request:  [SOF=0x7E] [LEN] [CMD] [PAYLOAD...]
+ *   Response: [SOF=0xFE] [LEN=2] [CMD] [STATUS]
  *****************************************************************************/
 
 #ifndef UART_COMM_H
@@ -15,26 +19,35 @@
 #define MAX_ATTEMPTS        3
 
 /*===========================================================================
- * UART Command Codes (HMI_ECU -> Control_ECU)
+ * Protocol Constants
  *===========================================================================*/
-#define CMD_SAVE_PASSWORD       0x10    /* Save password to EEPROM (signup) */
-#define CMD_VERIFY_PASSWORD     0x11    /* Verify password (signin) */
-#define CMD_CHANGE_PASSWORD     0x12    /* Change password (old + new) */
-#define CMD_SAVE_TIMEOUT        0x13    /* Save timeout to EEPROM */
-#define CMD_GET_TIMEOUT         0x14    /* Get timeout from EEPROM */
-#define CMD_CHECK_FIRST_TIME    0x15    /* Check if first time (no password) */
+#define SOF_REQUEST         0x7E    /* Start of frame for requests */
+#define SOF_RESPONSE        0xFE    /* Start of frame for responses */
 
 /*===========================================================================
- * UART Response Codes (Control_ECU -> HMI_ECU)
+ * Command IDs (must match backend uart_handler.h)
  *===========================================================================*/
-#define RESP_OK                 0x20    /* Success */
-#define RESP_PASSWORD_CORRECT   0x21    /* Password correct, door opening */
-#define RESP_PASSWORD_WRONG     0x22    /* Password incorrect */
-#define RESP_LOCKOUT            0x23    /* Lockout activated (buzzer on) */
-#define RESP_DOOR_CLOSED        0x24    /* Door has closed */
-#define RESP_FIRST_TIME         0x25    /* First time, need signup */
-#define RESP_NOT_FIRST_TIME     0x26    /* Password exists, go to signin */
-#define RESP_ERROR              0x2F    /* Error */
+#define CMD_INIT_PASSWORD       0x01    /* Initialize password (signup) */
+#define CMD_AUTH                0x02    /* Authenticate (signin) */
+#define CMD_SET_TIMEOUT         0x03    /* Set timeout value */
+#define CMD_CHANGE_PASSWORD     0x04    /* Change password */
+#define CMD_GET_TIMEOUT         0x05    /* Get timeout value */
+#define CMD_CLOSE_DOOR          0x06    /* Close door after timeout */
+#define CMD_OPEN_DOOR           0x07    /* Open door (motor forward) */
+
+/*===========================================================================
+ * Auth Modes (for CMD_AUTH)
+ *===========================================================================*/
+#define AUTH_MODE_CHECK_ONLY    0x00    /* Just verify password */
+#define AUTH_MODE_OPEN_DOOR     0x01    /* Verify + open door if correct */
+
+/*===========================================================================
+ * Status Codes (must match backend uart_handler.h)
+ *===========================================================================*/
+#define STATUS_OK               0x00    /* Success */
+#define STATUS_ERROR            0x01    /* General error */
+#define STATUS_AUTH_FAIL        0x02    /* Authentication failed / wrong password */
+#define STATUS_UNKNOWN_CMD      0xFF    /* Communication timeout / unknown command */
 
 /*===========================================================================
  * Function Prototypes
@@ -43,29 +56,28 @@
 /* Initialize UART1 */
 void UART_Init(void);
 
-/* Check if first time setup needed */
-bool UART_IsFirstTime(void);
+/* CMD 0x01: Initialize password (signup) */
+uint8_t UART_InitPassword(const char *password);
 
-/* Save password to backend EEPROM (signup) */
-bool UART_SavePassword(const char *password);
+/* CMD 0x02: Authenticate */
+uint8_t UART_Authenticate(const char *password, uint8_t mode);
 
-/* Verify password with backend (signin) */
-/* Returns: RESP_PASSWORD_CORRECT, RESP_PASSWORD_WRONG, or RESP_LOCKOUT */
-uint8_t UART_VerifyPassword(const char *password);
+/* CMD 0x02: Authenticate with timeout return (for door open) */
+uint8_t UART_AuthenticateWithTimeout(const char *password, uint8_t mode, uint8_t *outTimeout);
 
-/* Change password (sends old + new) */
-uint8_t UART_ChangePassword(const char *oldPassword, const char *newPassword);
+/* CMD 0x03: Set timeout (5-30 seconds) */
+uint8_t UART_SetTimeout(uint8_t seconds);
 
-/* Save timeout to backend EEPROM */
-bool UART_SaveTimeout(uint8_t timeoutSeconds);
+/* CMD 0x04: Change password */
+uint8_t UART_ChangePassword(const char *newPassword);
 
-/* Get timeout from backend EEPROM */
-uint8_t UART_GetTimeout(void);
+/* CMD 0x05: Get timeout value from backend */
+uint8_t UART_GetTimeout(uint8_t *outTimeout);
 
-/* Wait for door closed signal from backend */
-void UART_WaitDoorClosed(void);
+/* CMD 0x06: Close door (after timeout countdown) */
+uint8_t UART_CloseDoor(void);
 
-/* Get lockout time from backend */
-uint8_t UART_GetLockoutTime(void);
+/* CMD 0x07: Open door (motor forward 3 sec) */
+uint8_t UART_OpenDoor(void);
 
 #endif /* UART_COMM_H */

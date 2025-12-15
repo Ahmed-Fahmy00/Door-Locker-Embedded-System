@@ -1,6 +1,6 @@
 /*****************************************************************************
  * File: potentiometer.c
- * Description: ADC Driver for Potentiometer on PE3
+ * Description: ADC Driver for Potentiometer on PB5 (AIN11)
  *****************************************************************************/
 
 #include <stdint.h>
@@ -21,17 +21,21 @@
 
 void ADC0_Init_PE3(void)
 {
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE));
+    /* Enable Port B for PB5 */
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOB));
 
+    /* Enable ADC0 */
     SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0));
 
-    GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3);
+    /* Configure PB5 as ADC input */
+    GPIOPinTypeADC(GPIO_PORTB_BASE, GPIO_PIN_5);
 
+    /* Configure ADC sequencer 3 for single sample on AIN11 (PB5) */
     ADCSequenceDisable(ADC0_BASE, 3);
     ADCSequenceConfigure(ADC0_BASE, 3, ADC_TRIGGER_PROCESSOR, 0);
-    ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH0 | ADC_CTL_IE | ADC_CTL_END);
+    ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH11 | ADC_CTL_IE | ADC_CTL_END);
     ADCSequenceEnable(ADC0_BASE, 3);
     ADCIntClear(ADC0_BASE, 3);
 }

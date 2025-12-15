@@ -1,6 +1,6 @@
 /*****************************************************************************
  * File: potentiometer.h
- * Description: ADC Driver Header for Potentiometer
+ * Description: ADC Driver Header for Potentiometer on PB5 (AIN11)
  *****************************************************************************/
 
 #ifndef POTENTIOMETER_H
@@ -8,7 +8,7 @@
 
 #include <stdint.h>
 
-/* Initialize ADC0 on PE3 (AIN0) */
+/* Initialize ADC0 on PB5 (AIN11) */
 void ADC0_Init_PE3(void);
 
 /* Read raw ADC value (0-4095) */

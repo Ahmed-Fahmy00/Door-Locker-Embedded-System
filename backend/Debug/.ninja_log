@@ -1,0 +1,17 @@
+# ninja log v5
+65	610	7875017490206602	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/gptm0_oneshot.o	2ea98f777c19c661
+34	115	7875034383113915	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/components/buzzer.o	66c344fb14e5376c
+41	157	7875034383183908	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/LIB/startup_ewarm.o	14118eef1652ac9c
+2	97	7875106472858432	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/main.o	54b71efeef46c64e
+0	241	7875017486519033	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/components/timeout.o	6e65f26a976b6a46
+28	140	7875100604352600	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/eeprom_handler.o	2d5f5c1941efd9a0
+2	164	7875100604502659	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/components/motor.o	48178521e12d7ea8
+24	107	7875100604022635	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/components/timer.o	96fdf62bd5a44478
+27	232	7875106474187367	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/uart_handler.o	19262d221f2e9d0e
+42	536	7875017489281349	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/lib/startup_ewarm.o	be839c7787972b8f
+49	556	7875017489281349	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/MCAL/systick.o	980b697e2574c650
+58	693	7875017491011960	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/MCAL/dio.o	1b1481fca33b7a30
+247	378	7875106475645156	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Exe/Backend.out	c26ea008ee18f8b7
+1	109	7875107869154836	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/main.o	54b71efeef46c64e
+2	181	7875107873486165	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Obj/uart_handler.o	19262d221f2e9d0e
+195	293	7875107874621017	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/backend/Debug/Exe/Backend.out	c26ea008ee18f8b7

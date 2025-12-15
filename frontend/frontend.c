@@ -2,10 +2,6 @@
  * File: frontend.c
  * Description: Frontend Application Logic for Door Locker Security System
  * HMI_ECU - Handles LCD, Keypad, Potentiometer, User Interaction
- * 
- * Flow:
- *   Welcome -> Signup (first time) -> Main Menu
- *   Main Menu: A=Signin, B=Change Password, C=Set Timeout, #=Cancel
  *****************************************************************************/
 
 #include <stdint.h>
@@ -16,6 +12,7 @@
 #include "components/lcd.h"
 #include "components/keypad.h"
 #include "components/potentiometer.h"
+#include "components/led.h"
 #include "MCAL/systick.h"
 
 /* Current state */
@@ -27,6 +24,12 @@ static char confirmBuffer[PASSWORD_LENGTH + 1];
 
 /* Attempt counter */
 static uint8_t attemptCount = 0;
+
+/* Door timeout - received from backend in AUTH response */
+static uint8_t doorTimeout = 10;
+
+/* First time flag */
+static bool isFirstTime = true;
 
 /*****************************************************************************
  * Helper Functions
@@ -51,7 +54,6 @@ static char waitForKey(void)
     return key;
 }
 
-/* Returns: true if password entered, false if cancelled (back) */
 static bool getPasswordFromKeypad(char *buffer)
 {
     uint8_t i = 0;
@@ -62,13 +64,11 @@ static bool getPasswordFromKeypad(char *buffer)
         
         if (key == '#') {
             if (i > 0) {
-                /* Delete last character */
                 i--;
                 LCD_SetCursor(1, i);
                 LCD_WriteChar(' ');
                 LCD_SetCursor(1, i);
             } else {
-                /* Empty - go back */
                 return false;
             }
         }
@@ -77,7 +77,6 @@ static bool getPasswordFromKeypad(char *buffer)
             LCD_WriteChar('*');
             i++;
         }
-        /* Ignore other keys */
     }
     buffer[PASSWORD_LENGTH] = '\0';
     return true;
@@ -91,17 +90,18 @@ static bool stringsMatch(const char *s1, const char *s2, uint8_t len)
     return true;
 }
 
+
 /*****************************************************************************
  * STATE: Welcome Screen
  *****************************************************************************/
 static void handleWelcome(void)
 {
+    LED_Blue();  /* Blue = System starting */
     showMessage("Door Locker", "Security System");
     DelayMs(2000);
+    LED_Off();
     
-    /* Always go to signup first time, then main menu */
-    /* Check with backend if password exists */
-    if (UART_IsFirstTime()) {
+    if (isFirstTime) {
         currentState = STATE_SIGNUP;
     } else {
         currentState = STATE_MAIN_MENU;
@@ -109,54 +109,58 @@ static void handleWelcome(void)
 }
 
 /*****************************************************************************
- * STATE: Signup (First Time Password Setup)
- * Note: Cannot go back from signup - must create password
+ * STATE: Signup - Enter password twice, verify match, send CMD 0x01
  *****************************************************************************/
 static void handleSignup(void)
 {
     bool done = false;
     
     while (!done) {
-        /* Enter password */
         showMessage("Create Password:", "");
         LCD_SetCursor(1, 0);
         if (!getPasswordFromKeypad(passwordBuffer)) {
-            /* Can't go back from signup, just restart */
             continue;
         }
         
         DelayMs(300);
         
-        /* Confirm password */
         showMessage("Confirm Password", "");
         LCD_SetCursor(1, 0);
         if (!getPasswordFromKeypad(confirmBuffer)) {
-            /* Go back to enter password */
             continue;
         }
         
-        /* Check match */
         if (stringsMatch(passwordBuffer, confirmBuffer, PASSWORD_LENGTH)) {
+            LED_Yellow();  /* Yellow = Processing */
             showMessage("Saving...", "");
             
-            if (UART_SavePassword(passwordBuffer)) {
+            uint8_t status = UART_InitPassword(passwordBuffer);
+            
+            if (status == STATUS_OK) {
+                LED_Green();  /* Green = Success */
                 showMessage("Password Saved!", "");
                 DelayMs(1500);
+                LED_Off();
+                isFirstTime = false;
                 done = true;
                 currentState = STATE_MAIN_MENU;
             } else {
+                LED_Red();  /* Red = Error */
                 showMessage("Save Failed!", "Try Again");
                 DelayMs(1500);
+                LED_Off();
             }
         } else {
+            LED_Red();  /* Red = Mismatch */
             showMessage("Mismatch!", "Try Again");
             DelayMs(1500);
+            LED_Off();
         }
     }
 }
 
 /*****************************************************************************
- * STATE: Main Menu - Wait for A, B, C, or #
+ * STATE: Main Menu
  *****************************************************************************/
 static void handleMainMenu(void)
 {
@@ -164,7 +168,6 @@ static void handleMainMenu(void)
     
     showMessage("A:Sign B:ChgPwd", "C:Time #:Cancel");
     
-    /* Wait for valid menu key */
     while (1) {
         key = waitForKey();
         
@@ -179,18 +182,17 @@ static void handleMainMenu(void)
                 currentState = STATE_SET_TIMEOUT;
                 return;
             case '#':
-                /* Cancel - just refresh menu */
                 showMessage("A:Sign B:ChgPwd", "C:Time #:Cancel");
                 break;
             default:
-                /* Ignore other keys, stay in menu */
                 break;
         }
     }
 }
 
+
 /*****************************************************************************
- * STATE: Signin (Password Verification) - Up to 3 attempts
+ * STATE: Signin - Send CMD 0x02 (MODE=1)
  *****************************************************************************/
 static void handleSignin(void)
 {
@@ -198,111 +200,167 @@ static void handleSignin(void)
     LCD_SetCursor(1, 0);
     
     if (!getPasswordFromKeypad(passwordBuffer)) {
-        /* User pressed # when empty - go back to menu */
         currentState = STATE_MAIN_MENU;
         return;
     }
     
+    LED_Yellow();  /* Yellow = Verifying */
     showMessage("Verifying...", "");
-    uint8_t response = UART_VerifyPassword(passwordBuffer);
     
-    if (response == RESP_PASSWORD_CORRECT) {
+    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_OPEN_DOOR);
+    
+    if (status == STATUS_OK) {
         attemptCount = 0;
+        LED_Green();  /* Green = Access granted */
         showMessage("Access Granted!", "Door Opening...");
-        currentState = STATE_DOOR_OPENING;
+        DelayMs(1500);
+        currentState = STATE_DOOR_OPEN;
     } 
-    else if (response == RESP_LOCKOUT) {
-        attemptCount = 0;
-        currentState = STATE_LOCKOUT;
+    else if (status == STATUS_UNKNOWN_CMD) {
+        /* Communication error - don't count as wrong password */
+        LED_Blink(LED_YELLOW, 3, 200);  /* Yellow blink = Comm error */
+        showMessage("Comm Error!", "Try Again");
+        DelayMs(1500);
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
     }
     else {
-        /* RESP_PASSWORD_WRONG */
+        /* Wrong password (STATUS_AUTH_FAIL or STATUS_ERROR) */
         attemptCount++;
+        LED_Red();  /* Red = Wrong password */
         
         if (attemptCount >= MAX_ATTEMPTS) {
-            /* 4th wrong attempt triggers lockout */
+            showMessage("Too many tries!", "Locking out...");
+            DelayMs(1500);
             currentState = STATE_LOCKOUT;
         } else {
             char buffer[17];
             snprintf(buffer, sizeof(buffer), "%d tries left", MAX_ATTEMPTS - attemptCount);
             showMessage("Wrong Password!", buffer);
             DelayMs(1500);
+            LED_Off();
             currentState = STATE_MAIN_MENU;
         }
     }
 }
 
 /*****************************************************************************
- * STATE: Change Password
+ * STATE: Change Password - CMD 0x02 (MODE=0) then CMD 0x04
  *****************************************************************************/
 static void handleChangePassword(void)
 {
-    /* Enter old password */
+    LED_Blue();  /* Blue = Change password mode */
     showMessage("Old Password:", "");
     LCD_SetCursor(1, 0);
     
     if (!getPasswordFromKeypad(passwordBuffer)) {
-        /* Go back to menu */
+        LED_Off();
         currentState = STATE_MAIN_MENU;
         return;
     }
     
+    LED_Yellow();  /* Yellow = Verifying */
+    showMessage("Verifying...", "");
+    
+    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY);
+    
+    if (status == STATUS_UNKNOWN_CMD) {
+        /* Communication error */
+        LED_Blink(LED_YELLOW, 3, 200);
+        showMessage("Comm Error!", "Try Again");
+        DelayMs(1500);
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
+        return;
+    }
+    
+    if (status != STATUS_OK) {
+        attemptCount++;
+        LED_Red();  /* Red = Wrong password */
+        if (attemptCount >= MAX_ATTEMPTS) {
+            currentState = STATE_LOCKOUT;
+            return;
+        }
+        showMessage("Wrong Password!", "");
+        DelayMs(1500);
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
+        return;
+    }
+    
+    attemptCount = 0;
+    LED_Blue();  /* Blue = Enter new password */
     DelayMs(300);
     
     /* Enter new password */
     showMessage("New Password:", "");
     LCD_SetCursor(1, 0);
     
-    if (!getPasswordFromKeypad(confirmBuffer)) {
-        /* Go back to menu */
+    if (!getPasswordFromKeypad(passwordBuffer)) {
+        LED_Off();
         currentState = STATE_MAIN_MENU;
         return;
     }
     
-    showMessage("Changing...", "");
-    uint8_t response = UART_ChangePassword(passwordBuffer, confirmBuffer);
+    DelayMs(300);
     
-    if (response == RESP_OK) {
-        showMessage("Password Changed", "");
-        attemptCount = 0;
-        DelayMs(1500);
-    }
-    else if (response == RESP_LOCKOUT) {
-        currentState = STATE_LOCKOUT;
+    /* Confirm new password */
+    showMessage("Confirm New Pwd:", "");
+    LCD_SetCursor(1, 0);
+    
+    if (!getPasswordFromKeypad(confirmBuffer)) {
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
         return;
     }
-    else {
-        attemptCount++;
-        if (attemptCount >= MAX_ATTEMPTS) {
-            currentState = STATE_LOCKOUT;
-            return;
-        }
-        showMessage("Wrong Old Pass!", "");
+    
+    /* Check if passwords match */
+    if (!stringsMatch(passwordBuffer, confirmBuffer, PASSWORD_LENGTH)) {
+        LED_Red();  /* Red = Mismatch */
+        showMessage("Mismatch!", "Not Changed");
         DelayMs(1500);
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
+        return;
     }
+    
+    LED_Yellow();  /* Yellow = Saving */
+    showMessage("Saving...", "");
+    
+    status = UART_ChangePassword(passwordBuffer);
+    
+    if (status == STATUS_OK) {
+        LED_Green();  /* Green = Success */
+        showMessage("Password Changed", "");
+    } else {
+        LED_Red();  /* Red = Failed */
+        showMessage("Change Failed!", "");
+    }
+    DelayMs(1500);
+    LED_Off();
     
     currentState = STATE_MAIN_MENU;
 }
 
+
 /*****************************************************************************
- * STATE: Set Timeout (using Potentiometer)
- * D = Save, # = Cancel
+ * STATE: Set Timeout - Adjust with potentiometer, verify password, CMD 0x03
  *****************************************************************************/
 static void handleSetTimeout(void)
 {
     char buffer[17];
     char key = 0;
-    uint32_t timeout;
+    uint32_t newTimeout;
     
+    LED_Cyan();  /* Cyan = Settings mode */
     showMessage("Adjust Timeout", "D:Save #:Cancel");
-    DelayMs(1000);
+    DelayMs(500);
     
-    /* Live display potentiometer value */
     while (key != 'D' && key != '#') {
-        timeout = GetScaledTimeout();
+        newTimeout = GetScaledTimeout();
         
         LCD_SetCursor(1, 0);
-        snprintf(buffer, sizeof(buffer), "Time: %2lu sec   ", timeout);
+        snprintf(buffer, sizeof(buffer), "Time: %2lu sec   ", newTimeout);
         LCD_WriteString(buffer);
         
         key = Keypad_GetKey();
@@ -310,41 +368,58 @@ static void handleSetTimeout(void)
     }
     
     if (key == 'D') {
-        /* Save - verify password first */
         showMessage("Enter Password:", "");
         LCD_SetCursor(1, 0);
         
         if (!getPasswordFromKeypad(passwordBuffer)) {
-            /* Go back to menu */
+            LED_Off();
             currentState = STATE_MAIN_MENU;
             return;
         }
         
-        uint8_t response = UART_VerifyPassword(passwordBuffer);
+        LED_Yellow();  /* Yellow = Verifying */
+        showMessage("Verifying...", "");
         
-        if (response == RESP_PASSWORD_CORRECT) {
+        uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY);
+        
+        if (status == STATUS_UNKNOWN_CMD) {
+            /* Communication error */
+            LED_Blink(LED_YELLOW, 3, 200);
+            showMessage("Comm Error!", "Try Again");
+            DelayMs(1500);
+            LED_Off();
+            currentState = STATE_MAIN_MENU;
+            return;
+        }
+        
+        if (status == STATUS_OK) {
             attemptCount = 0;
-            if (UART_SaveTimeout((uint8_t)timeout)) {
+            
+            status = UART_SetTimeout((uint8_t)newTimeout);
+            
+            if (status == STATUS_OK) {
+                LED_Green();  /* Green = Success */
                 showMessage("Timeout Saved!", "");
             } else {
-                showMessage("Save Failed!", "");
+                LED_Red();  /* Red = Failed */
+                showMessage("Save Failed!", "Try Again");
             }
             DelayMs(1500);
-        }
-        else if (response == RESP_LOCKOUT) {
-            currentState = STATE_LOCKOUT;
-            return;
+            LED_Off();
         }
         else {
             attemptCount++;
+            LED_Red();  /* Red = Wrong password */
             if (attemptCount >= MAX_ATTEMPTS) {
                 currentState = STATE_LOCKOUT;
                 return;
             }
             showMessage("Wrong Password!", "Not Saved");
             DelayMs(1500);
+            LED_Off();
         }
     } else {
+        LED_Off();
         showMessage("Cancelled", "");
         DelayMs(1000);
     }
@@ -353,49 +428,77 @@ static void handleSetTimeout(void)
 }
 
 /*****************************************************************************
- * STATE: Door Opening (backend controls motor)
- *****************************************************************************/
-static void handleDoorOpening(void)
-{
-    showMessage("Door Opening...", "Please Wait");
-    DelayMs(3000);
-    currentState = STATE_DOOR_OPEN;
-}
-
-/*****************************************************************************
- * STATE: Door Open (countdown)
+ * STATE: Door Open - Get timeout, open door, then countdown
+ * Flow: GET_TIMEOUT -> OPEN_DOOR (3 sec) -> countdown -> CLOSE_DOOR
  *****************************************************************************/
 static void handleDoorOpen(void)
 {
     char buffer[17];
-    uint8_t timeout = UART_GetTimeout();
+    uint8_t remaining = 0;
+    uint8_t status;
+    uint8_t retryCount = 0;
     
-    if (timeout == 0) timeout = 15;  /* Default */
+    /* Step 1: Get timeout from backend */
+    showMessage("Door Opening...", "Getting time...");
     
+    while (retryCount < 5) {
+        status = UART_GetTimeout(&remaining);
+        
+        if (status == STATUS_OK && remaining >= 5 && remaining <= 30) {
+            break;
+        }
+        
+        retryCount++;
+        snprintf(buffer, sizeof(buffer), "Retry %d/5...", retryCount);
+        LCD_SetCursor(1, 0);
+        LCD_WriteString(buffer);
+        DelayMs(300);
+    }
+    
+    /* Default if failed */
+    if (remaining < 5 || remaining > 30) {
+        remaining = 10;
+    }
+    
+    /* Step 2: Open door (motor forward 3 sec) */
+    LED_Green();
+    showMessage("Door Opening...", "Please Wait");
+    
+    UART_OpenDoor();  /* Backend responds immediately, then runs motor */
+    
+    /* Wait for motor to finish opening (3 seconds) */
+    DelayMs(3500);
+    
+    /* Step 3: Door is now open - show countdown */
     showMessage("Door Open", "");
     
-    while (timeout > 0) {
+    while (remaining > 0) {
         LCD_SetCursor(1, 0);
-        snprintf(buffer, sizeof(buffer), "Closing in: %2d s", timeout);
+        snprintf(buffer, sizeof(buffer), "Closing in: %2d s", remaining);
         LCD_WriteString(buffer);
         
         DelayMs(1000);
-        timeout--;
+        remaining--;
     }
     
     currentState = STATE_DOOR_CLOSING;
 }
 
 /*****************************************************************************
- * STATE: Door Closing
+ * STATE: Door Closing - Send CMD 0x06 to backend to close door
  *****************************************************************************/
 static void handleDoorClosing(void)
 {
+    LED_Yellow();  /* Yellow = Door closing */
     showMessage("Door Closing...", "Please Wait");
     
-    /* Wait for backend signal */
-    UART_WaitDoorClosed();
+    /* Send close door command to backend - backend will run motor reverse 3 sec */
+    UART_CloseDoor();
     
+    /* Wait for motor to finish (3 seconds) */
+    DelayMs(3500);
+    
+    LED_Off();  /* Off = Door locked/idle */
     showMessage("Door Locked", "");
     DelayMs(1500);
     
@@ -403,48 +506,88 @@ static void handleDoorClosing(void)
 }
 
 /*****************************************************************************
- * STATE: Lockout (buzzer activated by backend)
+ * STATE: Lockout - Request timeout from backend for lockout duration
  *****************************************************************************/
 static void handleLockout(void)
 {
     char buffer[17];
-    uint8_t remaining = UART_GetLockoutTime();
+    uint8_t lockoutTime = 0;
+    uint8_t status;
+    uint8_t retryCount = 0;
     
-    if (remaining == 0) remaining = 30;
-    
+    LED_Red();  /* Red = Lockout/Alarm */
     showMessage("!! LOCKED OUT !!", "Buzzer Active");
     
-    while (remaining > 0) {
+    /* Small delay before UART request */
+    DelayMs(300);
+    
+    /* Keep trying to get timeout from backend - NEVER use local fallback */
+    while (retryCount < 5) {
+        status = UART_GetTimeout(&lockoutTime);
+        
+        /* Check if we got a valid timeout */
+        if (status == STATUS_OK && lockoutTime >= 5 && lockoutTime <= 30) {
+            break;  /* Success! */
+        }
+        
+        retryCount++;
+        snprintf(buffer, sizeof(buffer), "Retry %d/5...", retryCount);
         LCD_SetCursor(1, 0);
-        snprintf(buffer, sizeof(buffer), "Wait: %2d seconds", remaining);
+        LCD_WriteString(buffer);
+        DelayMs(300);
+    }
+    
+    /* If still no valid timeout after retries, keep retrying indefinitely */
+    while (lockoutTime < 5 || lockoutTime > 30) {
+        showMessage("!! LOCKED OUT !!", "Getting time...");
+        DelayMs(500);
+        status = UART_GetTimeout(&lockoutTime);
+        if (status == STATUS_OK && lockoutTime >= 5 && lockoutTime <= 30) {
+            break;
+        }
+    }
+    
+    showMessage("!! LOCKED OUT !!", "");
+    
+    /* Blink red during lockout countdown */
+    while (lockoutTime > 0) {
+        LCD_SetCursor(1, 0);
+        snprintf(buffer, sizeof(buffer), "Wait: %2d seconds", lockoutTime);
         LCD_WriteString(buffer);
         
-        DelayMs(1000);
-        remaining--;
+        /* Blink red LED */
+        LED_Red();
+        DelayMs(500);
+        LED_Off();
+        DelayMs(500);
+        lockoutTime--;
     }
     
     attemptCount = 0;
+    LED_Green();  /* Green = Lockout over */
     showMessage("Lockout Over", "");
     DelayMs(1500);
+    LED_Off();
     
     currentState = STATE_MAIN_MENU;
 }
+
 
 /*****************************************************************************
  * Main Entry Point
  *****************************************************************************/
 void Frontend_Start(void)
 {
-    /* Initialize peripherals */
     LCD_Init();
     Keypad_Init();
     ADC0_Init_PE3();
     UART_Init();
+    LED_Init();
     
     currentState = STATE_WELCOME;
     attemptCount = 0;
+    isFirstTime = true;
     
-    /* Main loop */
     while (1) {
         switch (currentState) {
             case STATE_WELCOME:
@@ -464,9 +607,6 @@ void Frontend_Start(void)
                 break;
             case STATE_SET_TIMEOUT:
                 handleSetTimeout();
-                break;
-            case STATE_DOOR_OPENING:
-                handleDoorOpening();
                 break;
             case STATE_DOOR_OPEN:
                 handleDoorOpen();

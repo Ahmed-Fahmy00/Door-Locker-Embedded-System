@@ -1,0 +1,180 @@
+================================================================================
+FRONTEND (HMI_ECU) - DATA SHEET
+Door Locker Security System
+TM4C123GH6PM LaunchPad
+================================================================================
+
+MICROCONTROLLER: TM4C123GH6PM (Tiva C Series)
+CLOCK: 16 MHz (Main Oscillator)
+
+================================================================================
+PIN ASSIGNMENTS
+================================================================================
+
+J1     J3          J4    J2
++3.3V  VBUS        PF2   GND
+PB5    GND         PF3   PB2
+PB0    PD0         PB3   P30
+PB1    PD1         PC4   PF0
+PE4    PD2         PC5   RST
+PE5    PD3         PC6   PB7
+PB4    PE1         PC7   PB6
+PA5    PE2         PD6   PA4
+PA6    PE3         PD7   PA3
+PA7    PF1         PF4   PA2
+
+UART1 (Communication with Backend):
+-----------------------------------
+  PB0 (J1) - UART1 RX    <- Connect to Backend TX (PB1)
+  PB1 (J1) - UART1 TX    -> Connect to Backend RX (PB0)
+  Baud Rate: 115200, 8N1
+
+LCD (I2C0 - PCF8574 Backpack):
+------------------------------
+  PB2 (J2) - I2C0 SCL    -> LCD SCL
+  PB3 (J4) - I2C0 SDA    -> LCD SDA
+  I2C Address: 0x27 (or 0x3F)
+  Speed: 100 kHz
+
+KEYPAD (4x4 Matrix):
+--------------------
+  Rows (Inputs with Pull-up) - J4:
+    PC4 - Row 0
+    PC5 - Row 1
+    PC6 - Row 2
+    PC7 - Row 3
+
+  Columns (Outputs) - J2:
+    PB6 - Col 0
+    PA4 - Col 1
+    PA3 - Col 2
+    PA2 - Col 3
+
+  Keypad Layout:
+    Col0  Col1  Col2  Col3
+    [1]   [2]   [3]   [A]   Row0
+    [4]   [5]   [6]   [B]   Row1
+    [7]   [8]   [9]   [C]   Row2
+    [*]   [0]   [#]   [D]   Row3
+
+POTENTIOMETER (ADC):
+--------------------
+  PB5 (J1) - ADC0 Channel 11 (AIN11)
+  Range: 0-4095 (12-bit)
+  Scaled Output: 5-30 seconds (for timeout)
+
+RGB LED (Onboard):
+------------------
+  PF1 - Red LED
+  PF2 - Blue LED
+  PF3 - Green LED
+
+  Color Codes:
+    Blue    = System starting / Processing
+    Yellow  = Verifying password
+    Green   = Success (access granted)
+    Red     = Error (wrong password)
+    Cyan    = Settings mode
+
+================================================================================
+PHYSICAL WIRING LAYOUT
+================================================================================
+
+        LEFT SIDE (J1 + J3)              RIGHT SIDE (J4 + J2)
+        ===================              ====================
+
+J1:                                  J4:
+  +3.3V  -> VCC for components         PF2  (Blue LED - onboard)
+  PB5    -> Potentiometer              PF3  (Green LED - onboard)
+  PB0    -> UART RX                    PB3  -> LCD SDA
+  PB1    -> UART TX                    PC4  -> Keypad Row 0
+                                       PC5  -> Keypad Row 1
+J3:                                    PC6  -> Keypad Row 2
+  GND    -> Common Ground              PC7  -> Keypad Row 3
+
+                                     J2:
+                                       GND  -> Common Ground
+                                       PB2  -> LCD SCL
+                                       PB6  -> Keypad Col 0
+                                       PA4  -> Keypad Col 1
+                                       PA3  -> Keypad Col 2
+                                       PA2  -> Keypad Col 3
+
+================================================================================
+UART PROTOCOL
+================================================================================
+
+Request Format (Frontend -> Backend):
+  [SOF=0x7E] [LEN] [CMD] [PAYLOAD...]
+
+Response Format (Backend -> Frontend):
+  [SOF=0xFE] [LEN] [CMD] [STATUS] [DATA...]
+
+Commands:
+  0x01 - INIT_PASSWORD    LEN=6   Payload: 5 ASCII digits
+  0x02 - AUTH             LEN=7   Payload: MODE + 5 ASCII digits
+  0x03 - SET_TIMEOUT      LEN=2   Payload: SECONDS (5-30)
+  0x04 - CHANGE_PASSWORD  LEN=6   Payload: 5 ASCII digits
+  0x05 - GET_TIMEOUT      LEN=1   No payload
+
+Status Codes:
+  0x00 - OK (Success)
+  0x01 - ERROR (General error)
+  0x02 - AUTH_FAIL (Wrong password)
+  0xFF - UNKNOWN_CMD (Communication timeout)
+
+================================================================================
+APPLICATION STATES
+================================================================================
+
+  STATE_WELCOME        - Initial splash screen
+  STATE_SIGNUP         - Create password (first time)
+  STATE_MAIN_MENU      - A:Sign B:ChgPwd C:Time
+  STATE_SIGNIN         - Enter password to open door
+  STATE_CHANGE_PASSWORD- Verify old, enter new password
+  STATE_SET_TIMEOUT    - Adjust timeout with potentiometer
+  STATE_DOOR_OPEN      - Door opening countdown
+  STATE_DOOR_CLOSING   - Door closing message
+  STATE_LOCKOUT        - Buzzer active after 3 wrong attempts
+
+================================================================================
+MENU KEYS
+================================================================================
+
+  A - Sign In (open door)
+  B - Change Password
+  C - Set Timeout
+  D - Save/Confirm
+  # - Cancel/Backspace
+  * - (unused)
+  0-9 - Password digits
+
+================================================================================
+CONNECTIONS CHECKLIST
+================================================================================
+
+[ ] UART
+    [ ] PB0 (Frontend RX) <-> PB1 (Backend TX)
+    [ ] PB1 (Frontend TX) <-> PB0 (Backend RX)
+    [ ] GND <-> GND (common ground!)
+
+[ ] LCD (I2C)
+    [ ] PB2 -> SCL
+    [ ] PB3 -> SDA
+    [ ] VCC -> 3.3V
+    [ ] GND -> GND
+
+[ ] Keypad
+    [ ] PC4 -> Row 0
+    [ ] PC5 -> Row 1
+    [ ] PC6 -> Row 2
+    [ ] PC7 -> Row 3
+    [ ] PB6 -> Col 0
+    [ ] PA4 -> Col 1
+    [ ] PA3 -> Col 2
+    [ ] PA2 -> Col 3
+
+[ ] Potentiometer
+    [ ] Left pin -> GND
+    [ ] Middle pin -> PB5
+    [ ] Right pin -> 3.3V

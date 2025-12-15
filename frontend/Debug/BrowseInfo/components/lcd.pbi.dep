@@ -1,11 +1,11 @@
-C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Debug\BrowseInfo\components\lcd.pbi: \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\components\lcd.c \
+C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\Debug\BrowseInfo\components\lcd.pbi: \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\components\lcd.c \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\yvals.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Defaults.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Normal.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\components/../lib/tm4c123gh6pm.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\components/../MCAL/systick.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\components/lcd.h
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\components/../lib/tm4c123gh6pm.h \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\components/../MCAL/systick.h \
+  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Door-Locker-Embedded-System-\frontend\components/lcd.h
