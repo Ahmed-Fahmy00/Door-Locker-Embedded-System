@@ -17,30 +17,7 @@
 #include "driverlib/timer.h"
 #include "driverlib/interrupt.h"
 
-void Timer1_Init(void)
-{
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
-    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER1)) {}
 
-    TimerDisable(TIMER1_BASE, TIMER_A);
-
-    TimerConfigure(TIMER1_BASE, TIMER_CFG_ONE_SHOT);
-
-    /* Register interrupt handler */
-    TimerIntRegister(TIMER1_BASE, TIMER_A, Timer1A_Handler);
-
-    /* Clear any pending interrupt */
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-    
-    /* Enable timer interrupt */
-    TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-
-    /* Enable in NVIC */
-    IntEnable(INT_TIMER1A);
-    
-    /* Make sure master interrupts are enabled */
-    IntMasterEnable();
-}
 
 void Timer1_StartSeconds(uint32_t seconds)
 {
