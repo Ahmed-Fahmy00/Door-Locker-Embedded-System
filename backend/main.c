@@ -57,10 +57,6 @@ int main(void)
     DoorController_Init();
     UART_Handler_Init();
     
-    /* Configure and turn on red LED to indicate system is ready */
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
-    
     while (1)
     {
         UART_ProcessPending();

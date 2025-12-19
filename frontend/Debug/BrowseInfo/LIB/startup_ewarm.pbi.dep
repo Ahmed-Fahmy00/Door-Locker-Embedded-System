@@ -1,7 +1,0 @@
-C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\lib\startup_ewarm.pbi: \
-  C:\ti\TivaWare_C_Series-2.2.0.295\inc\hw_types.h \
-  C:\ti\TivaWare_C_Series-2.2.0.295\inc\hw_nvic.h \
-  D:\EMB\arm\inc\c\DLib_Product.h D:\EMB\arm\inc\c\DLib_Config_Normal.h \
-  D:\EMB\arm\inc\c\DLib_Defaults.h D:\EMB\arm\inc\c\yvals.h \
-  D:\EMB\arm\inc\c\ycheck.h D:\EMB\arm\inc\c\stdint.h \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\lib\startup_ewarm.c

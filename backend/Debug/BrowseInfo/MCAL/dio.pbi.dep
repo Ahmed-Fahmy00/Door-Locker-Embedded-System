@@ -1,7 +1,0 @@
-C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\Debug\BrowseInfo\MCAL\dio.pbi: \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\MCAL\dio.c \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\MCAL/dio.h \
-  D:\EMB\arm\inc\c\stdint.h D:\EMB\arm\inc\c\ycheck.h \
-  D:\EMB\arm\inc\c\yvals.h D:\EMB\arm\inc\c\DLib_Defaults.h \
-  D:\EMB\arm\inc\c\DLib_Config_Normal.h D:\EMB\arm\inc\c\DLib_Product.h \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\MCAL/../lib/tm4c123gh6pm.h

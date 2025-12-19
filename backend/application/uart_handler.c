@@ -6,11 +6,9 @@
  *   Request:  [SOF=0x7E] [LEN] [CMD] [PAYLOAD...]
  *   Response: [SOF=0xFE] [LEN] [CMD] [STATUS] [DATA...]
  * 
- * Debug LED (PF2 = Blue only, since PF1/PF3 used by motor):
- *   - 1 blink:  Command received
- *   - 2 blinks: Response sent OK
- *   - 3 blinks: Error
- *   - Solid ON: Processing
+ * Status LEDs:
+ *   - Green (PF3): Success/OK status
+ *   - Red (PF1):   Error/Failure status
  *****************************************************************************/
 
 #include "uart_handler.h"
@@ -31,37 +29,58 @@
 #include "driverlib/interrupt.h"
 
 /*===========================================================================
- * Debug LED (PF2 = Blue only - doesn't conflict with motor)
+ * Status LEDs (PF1 = Red, PF3 = Green)
  *===========================================================================*/
-#define LED_BLUE    GPIO_PIN_2
+#define LED_RED     GPIO_PIN_1
+#define LED_GREEN   GPIO_PIN_3
+#define LED_ALL     (LED_RED | LED_GREEN)
 
 static void LED_Init(void)
 {
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)) {}
     
-    /* Only configure PF2 - leave PF1/PF3 for motor */
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, LED_BLUE);
-    GPIOPinWrite(GPIO_PORTF_BASE, LED_BLUE, 0);
+    /* Configure PF1 (Red) and PF3 (Green) as outputs */
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, LED_ALL);
+    GPIOPinWrite(GPIO_PORTF_BASE, LED_ALL, 0);
 }
 
-static void LED_On(void)
+static void LED_AllOff(void)
 {
-    GPIOPinWrite(GPIO_PORTF_BASE, LED_BLUE, LED_BLUE);
+    GPIOPinWrite(GPIO_PORTF_BASE, LED_ALL, 0);
 }
 
-static void LED_Off(void)
+static void LED_GreenOn(void)
 {
-    GPIOPinWrite(GPIO_PORTF_BASE, LED_BLUE, 0);
+    GPIOPinWrite(GPIO_PORTF_BASE, LED_ALL, LED_GREEN);  /* Green on, Red off */
 }
 
-static void LED_Blink(uint8_t times)
+static void LED_RedOn(void)
+{
+    GPIOPinWrite(GPIO_PORTF_BASE, LED_ALL, LED_RED);    /* Red on, Green off */
+}
+
+static void LED_BlinkGreen(uint8_t times)
 {
     for (uint8_t i = 0; i < times; i++)
     {
-        LED_On();
+        LED_GreenOn();
         SysCtlDelay(SysCtlClockGet() / 20);  /* 50ms on */
-        LED_Off();
+        LED_AllOff();
+        if (i < times - 1)
+        {
+            SysCtlDelay(SysCtlClockGet() / 20);  /* 50ms off */
+        }
+    }
+}
+
+static void LED_BlinkRed(uint8_t times)
+{
+    for (uint8_t i = 0; i < times; i++)
+    {
+        LED_RedOn();
+        SysCtlDelay(SysCtlClockGet() / 20);  /* 50ms on */
+        LED_AllOff();
         if (i < times - 1)
         {
             SysCtlDelay(SysCtlClockGet() / 20);  /* 50ms off */
@@ -84,6 +103,7 @@ static volatile uint8_t rx_index = 0;
 static uint8_t rx_buf[UART_MAX_LEN];
 
 /* Flags for deferred operations (done outside ISR) */
+static volatile bool pending_open_door = false;
 static volatile bool packet_ready = false;
 static uint8_t packet_buf[UART_MAX_LEN];
 static uint8_t packet_len = 0;
@@ -137,11 +157,11 @@ static void uart_send_response(uint8_t cmd, uint8_t status, uint8_t *data, uint8
     /* Blink to show response sent */
     if (status == UART_STATUS_OK)
     {
-        LED_Blink(2);  /* 2 blinks = OK */
+        LED_BlinkGreen(2);  /* Green = OK */
     }
     else
     {
-        LED_Blink(3);  /* 3 blinks = Error */
+        LED_BlinkRed(2);    /* Red = Error */
     }
 }
 
@@ -279,7 +299,7 @@ static void handle_packet(uint8_t *buf, uint8_t len)
     
     uint8_t cmd = buf[0];
     
-    LED_On();  /* LED on while processing */
+    LED_GreenOn();  /* Green LED on while processing */
     
     switch (cmd)
     {
@@ -309,7 +329,7 @@ static void handle_packet(uint8_t *buf, uint8_t len)
             break;
     }
     
-    LED_Off();
+    LED_AllOff();
 }
 
 /*===========================================================================
@@ -317,9 +337,9 @@ static void handle_packet(uint8_t *buf, uint8_t len)
  *===========================================================================*/
 void UART_Handler_Init(void)
 {
-    /* Initialize debug LED (PF2 only) */
+    /* Initialize status LEDs (PF1=Red, PF3=Green) */
     LED_Init();
-    LED_Blink(1);  /* 1 blink = starting */
+    LED_BlinkGreen(1);  /* Green blink = starting */
     
     /* Enable UART1 and GPIO Port B */
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);
@@ -360,9 +380,10 @@ void UART_Handler_Init(void)
     
     /* Initialize state */
     rx_state = RX_WAIT_SOF;
+    pending_open_door = false;
     packet_ready = false;
     
-    LED_Blink(2);  /* 2 blinks = ready */
+    LED_BlinkGreen(2);  /* Green = ready */
 }
 
 /*===========================================================================

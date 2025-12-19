@@ -1,7 +1,0 @@
-C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\HAL\potentiometer.pbi: \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL\potentiometer.c \
-  D:\EMB\arm\inc\c\stdint.h D:\EMB\arm\inc\c\ycheck.h \
-  D:\EMB\arm\inc\c\yvals.h D:\EMB\arm\inc\c\DLib_Defaults.h \
-  D:\EMB\arm\inc\c\DLib_Config_Normal.h D:\EMB\arm\inc\c\DLib_Product.h \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL/potentiometer.h \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL/../MCAL/adc.h
