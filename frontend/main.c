@@ -14,6 +14,9 @@
 
 int main(void)
 {
+    /* Wait for hardware to stabilize after flashing/power-on */
+    SysCtlDelay(SysCtlClockGet() / 3);  /* ~1 second delay using default clock */
+    
     /* Set system clock to 16 MHz (to match backend) */
     SysCtlClockSet(
         SYSCTL_SYSDIV_1 |
@@ -24,6 +27,9 @@ int main(void)
 
     /* Initialize SysTick for delays (16MHz / 16000 = 1ms tick) */
     SysTick_Init(16000, SYSTICK_NOINT);
+    
+    /* Additional stabilization delay for I2C LCD */
+    DelayMs(200);
 
     Frontend_Start(); /* Start the frontend application */
 

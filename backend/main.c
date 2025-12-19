@@ -1,9 +1,9 @@
 #include <stdint.h>
 #include <stdbool.h>
-#include "uart_handler.h"
-#include "eeprom_handler.h"
-#include "components/timeout.h"
-#include "components/motor.h"
+#include "application/uart_handler.h"
+#include "application/eeprom_handler.h"
+#include "application/buzzer_service.h"
+#include "HAL/motor.h"
 
 /* TivaWare includes */
 #include "inc/hw_memmap.h"
@@ -52,8 +52,12 @@ int main(void)
     }
     
     set_default_auto_timeout();
-    timeout_init();
+    BuzzerService_Init();
     UART_Handler_Init();
+    
+    /* Configure and turn on red LED to indicate system is ready */
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
     
     while (1)
     {

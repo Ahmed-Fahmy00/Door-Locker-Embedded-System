@@ -25,8 +25,6 @@
 #define CMD_SET_TIMEOUT         0x03    /* Set timeout value */
 #define CMD_CHANGE_PASSWORD     0x04    /* Change password */
 #define CMD_GET_TIMEOUT         0x05    /* Get timeout value */
-#define CMD_CLOSE_DOOR          0x06    /* Close door after timeout */
-#define CMD_OPEN_DOOR           0x07    /* Open door (motor forward) */
 
 /* Auth Modes (for CMD_AUTH) */
 #define AUTH_MODE_CHECK_ONLY    0x00    /* Just verify password */
@@ -44,16 +42,12 @@ void UART_Init(void);
 /* CMD 0x01: Initialize password (signup) */
 uint8_t UART_InitPassword(const char *password);
 /* CMD 0x02: Authenticate */
-uint8_t UART_Authenticate(const char *password, uint8_t mode);
+uint8_t UART_Authenticate(const char *password, uint8_t mode, uint8_t *outTimeout);
 /* CMD 0x03: Set timeout (5-30 seconds) */
 uint8_t UART_SetTimeout(uint8_t seconds);
 /* CMD 0x04: Change password */
 uint8_t UART_ChangePassword(const char *newPassword);
 /* CMD 0x05: Get timeout value from backend */
 uint8_t UART_GetTimeout(uint8_t *outTimeout);
-/* CMD 0x06: Close door (after timeout countdown) */
-uint8_t UART_CloseDoor(void);
-/* CMD 0x07: Open door (motor forward 3 sec) */
-uint8_t UART_OpenDoor(void);
 
 #endif /* UART_COMM_H */

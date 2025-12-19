@@ -1,3 +1,10 @@
+/******************************************************************************
+ * File: gptm.c
+ * Module: General Purpose Timer Module (MCAL Layer)
+ * Description: Low-level timer hardware implementation for TM4C123GH6PM
+ * Author: Ahmedhh
+ * Date: December 18, 2025
+ ******************************************************************************/
 
 #include "gptm.h"
 #include "driverlib/sysctl.h"
@@ -7,98 +14,90 @@
 #include "inc/hw_ints.h"
 #include <stdbool.h>
 
-// Timer0A (buzzer)
-static void (*timer0a_isr)(void) = 0;
-static bool timer0a_running = false;
+/******************************************************************************
+ *          Timer0 Implementation (Full 32-bit - Buzzer)                     *
+ * Note: Uses both A and B in concatenated mode, but only A generates IRQ    *
+ ******************************************************************************/
 
-void Timer0A_Init_OneShot(void)
+// Timer0 (buzzer) - uses both A and B subtimers concatenated
+static volatile bool timer0_running = false;
+
+void Timer0_Init_OneShot(void)
 {
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0)) {}
+    
+    /* Configure as full-width (32-bit concatenated) one-shot timer */
     TimerConfigure(TIMER0_BASE, TIMER_CFG_ONE_SHOT);
-    TimerIntRegister(TIMER0_BASE, TIMER_A, timer0a_isr ? timer0a_isr : Timer0A_DefaultHandler);
+    
+    /* Enable interrupt for Timer A only (in full-width mode, only A generates IRQ) */
     TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
     IntEnable(INT_TIMER0A);
-    timer0a_running = false;
+    
+    timer0_running = false;
 }
 
-void Timer0A_Start_OneShot(uint32_t ticks)
+void Timer0_Start_OneShot(uint32_t ticks)
 {
-    TimerDisable(TIMER0_BASE, TIMER_A);
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+    TimerDisable(TIMER0_BASE, TIMER_BOTH);
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT | TIMER_TIMB_TIMEOUT);
     TimerLoadSet(TIMER0_BASE, TIMER_A, ticks - 1);
-    TimerEnable(TIMER0_BASE, TIMER_A);
-    timer0a_running = true;
+    TimerEnable(TIMER0_BASE, TIMER_BOTH);
+    timer0_running = true;
 }
 
-void Timer0A_Stop(void)
+void Timer0_Stop(void)
 {
-    TimerDisable(TIMER0_BASE, TIMER_A);
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-    timer0a_running = false;
+    TimerDisable(TIMER0_BASE, TIMER_BOTH);
+    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT | TIMER_TIMB_TIMEOUT);
+    timer0_running = false;
 }
 
-void Timer0A_SetISR(void (*handler)(void))
+bool Timer0_IsRunning(void)
 {
-    timer0a_isr = handler;
-    TimerIntRegister(TIMER0_BASE, TIMER_A, timer0a_isr ? timer0a_isr : Timer0A_DefaultHandler);
+    return timer0_running;
 }
 
-bool Timer0A_IsRunning(void)
-{
-    return timer0a_running;
-}
+/******************************************************************************
+ *          Timer1 Implementation (Full 32-bit - Motor/Door)                 *
+ * Note: Uses both A and B in concatenated mode, but only A generates IRQ    *
+ ******************************************************************************/
 
-void Timer0A_DefaultHandler(void)
-{
-    TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-    timer0a_running = false;
-}
+// Timer1 (motor/door) - uses both A and B subtimers concatenated
+static volatile bool timer1_running = false;
 
-// Timer1A (motor/door)
-static void (*timer1a_isr)(void) = 0;
-static bool timer1a_running = false;
-
-void Timer1A_Init_OneShot(void)
+void Timer1_Init_OneShot(void)
 {
     SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER1)) {}
+    
+    /* Configure as full-width (32-bit concatenated) one-shot timer */
     TimerConfigure(TIMER1_BASE, TIMER_CFG_ONE_SHOT);
-    TimerIntRegister(TIMER1_BASE, TIMER_A, timer1a_isr ? timer1a_isr : Timer1A_DefaultHandler);
+    
+    /* Enable interrupt for Timer A only (in full-width mode, only A generates IRQ) */
     TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
     IntEnable(INT_TIMER1A);
-    timer1a_running = false;
+    
+    timer1_running = false;
 }
 
-void Timer1A_Start_OneShot(uint32_t ticks)
+void Timer1_Start_OneShot(uint32_t ticks)
 {
-    TimerDisable(TIMER1_BASE, TIMER_A);
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    TimerDisable(TIMER1_BASE, TIMER_BOTH);
+    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT | TIMER_TIMB_TIMEOUT);
     TimerLoadSet(TIMER1_BASE, TIMER_A, ticks - 1);
-    TimerEnable(TIMER1_BASE, TIMER_A);
-    timer1a_running = true;
+    TimerEnable(TIMER1_BASE, TIMER_BOTH);
+    timer1_running = true;
 }
 
-void Timer1A_Stop(void)
+void Timer1_Stop(void)
 {
-    TimerDisable(TIMER1_BASE, TIMER_A);
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-    timer1a_running = false;
+    TimerDisable(TIMER1_BASE, TIMER_BOTH);
+    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT | TIMER_TIMB_TIMEOUT);
+    timer1_running = false;
 }
 
-void Timer1A_SetISR(void (*handler)(void))
+bool Timer1_IsRunning(void)
 {
-    timer1a_isr = handler;
-    TimerIntRegister(TIMER1_BASE, TIMER_A, timer1a_isr ? timer1a_isr : Timer1A_DefaultHandler);
-}
-
-bool Timer1A_IsRunning(void)
-{
-    return timer1a_running;
-}
-
-void Timer1A_DefaultHandler(void)
-{
-    TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
-    timer1a_running = false;
+    return timer1_running;
 }

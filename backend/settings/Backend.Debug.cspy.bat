@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.general.xcl" --backend -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.driver.xcl" 
+"D:\EMB\common\bin\cspybat" -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.general.xcl" --backend -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.driver.xcl" 
+"D:\EMB\common\bin\cspybat" -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.driver.xcl" 
 
 @echo off 
 :end

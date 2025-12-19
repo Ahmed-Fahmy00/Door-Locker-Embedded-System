@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include "frontend.h"
 #include "uart_comm.h"
-#include "components/lcd.h"
-#include "components/keypad.h"
-#include "components/potentiometer.h"
-#include "components/led.h"
+#include "HAL/lcd.h"
+#include "HAL/keypad.h"
+#include "HAL/potentiometer.h"
+#include "HAL/led.h"
 #include "MCAL/systick.h"
 
 static Frontend_State_t currentState = STATE_WELCOME;
@@ -169,14 +169,16 @@ static void handleSignin(void)
     LED_Yellow();
     showMessage("Verifying...", "");
     
-    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_OPEN_DOOR);
+    uint8_t timeout = 0;
+    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_OPEN_DOOR, &timeout);
     
     if (status == STATUS_OK) {
         attemptCount = 0;
         LED_Green();
         showMessage("Access Granted!", "Door Opening...");
-        DelayMs(1500);
-        currentState = STATE_DOOR_OPEN;
+        DelayMs(2000);
+        LED_Off();
+        currentState = STATE_MAIN_MENU;
     } 
     else if (status == STATUS_UNKNOWN_CMD) {
         LED_Blink(LED_YELLOW, 3, 200);
@@ -220,7 +222,7 @@ static void handleChangePassword(void)
     LED_Yellow();
     showMessage("Verifying...", "");
     
-    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY);
+    uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY, NULL);
     
     if (status == STATUS_UNKNOWN_CMD) {
         LED_Blink(LED_YELLOW, 3, 200);
@@ -305,7 +307,7 @@ static void handleSetTimeout(void)
     DelayMs(500);
     
     while (key != 'D' && key != '#') {
-        newTimeout = GetScaledTimeout();
+        newTimeout = Potentiometer_GetTimeout();
         LCD_SetCursor(1, 0);
         snprintf(buffer, sizeof(buffer), "Time: %2lu sec   ", newTimeout);
         LCD_WriteString(buffer);
@@ -326,7 +328,7 @@ static void handleSetTimeout(void)
         LED_Yellow();
         showMessage("Verifying...", "");
         
-        uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY);
+        uint8_t status = UART_Authenticate(passwordBuffer, AUTH_MODE_CHECK_ONLY, NULL);
         
         if (status == STATUS_UNKNOWN_CMD) {
             LED_Blink(LED_YELLOW, 3, 200);
@@ -368,59 +370,6 @@ static void handleSetTimeout(void)
         DelayMs(1000);
     }
     
-    currentState = STATE_MAIN_MENU;
-}
-
-/* STATE: Door Open - Get timeout, open door, countdown */
-static void handleDoorOpen(void)
-{
-    char buffer[17];
-    uint8_t remaining = 0;
-    uint8_t status;
-    uint8_t retryCount = 0;
-    
-    showMessage("Door Opening...", "Getting time...");
-    
-    while (retryCount < 5) {
-        status = UART_GetTimeout(&remaining);
-        if (status == STATUS_OK && remaining >= 5 && remaining <= 30) break;
-        retryCount++;
-        snprintf(buffer, sizeof(buffer), "Retry %d/5...", retryCount);
-        LCD_SetCursor(1, 0);
-        LCD_WriteString(buffer);
-        DelayMs(300);
-    }
-    
-    if (remaining < 5 || remaining > 30) remaining = 10;
-    
-    LED_Green();
-    showMessage("Door Opening...", "Please Wait");
-    UART_OpenDoor();
-    DelayMs(3500);
-    
-    showMessage("Door Open", "");
-    while (remaining > 0) {
-        LCD_SetCursor(1, 0);
-        snprintf(buffer, sizeof(buffer), "Closing in: %2d s", remaining);
-        LCD_WriteString(buffer);
-        DelayMs(1000);
-        remaining--;
-    }
-    
-    currentState = STATE_DOOR_CLOSING;
-}
-
-/* STATE: Door Closing */
-static void handleDoorClosing(void)
-{
-    LED_Yellow();
-    showMessage("Door Closing...", "Please Wait");
-    UART_CloseDoor();
-    DelayMs(3500);
-    
-    LED_Off();
-    showMessage("Door Locked", "");
-    DelayMs(1500);
     currentState = STATE_MAIN_MENU;
 }
 
@@ -479,7 +428,7 @@ void Frontend_Start(void)
 {
     LCD_Init();
     Keypad_Init();
-    ADC0_Init_PE3();
+    Potentiometer_Init();
     UART_Init();
     LED_Init();
     
@@ -495,8 +444,6 @@ void Frontend_Start(void)
             case STATE_SIGNIN:          handleSignin(); break;
             case STATE_CHANGE_PASSWORD: handleChangePassword(); break;
             case STATE_SET_TIMEOUT:     handleSetTimeout(); break;
-            case STATE_DOOR_OPEN:       handleDoorOpen(); break;
-            case STATE_DOOR_CLOSING:    handleDoorClosing(); break;
             case STATE_LOCKOUT:         handleLockout(); break;
             default:                    currentState = STATE_MAIN_MENU; break;
         }

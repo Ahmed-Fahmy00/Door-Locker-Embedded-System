@@ -11,8 +11,6 @@ typedef enum {
     STATE_SIGNIN,
     STATE_CHANGE_PASSWORD,
     STATE_SET_TIMEOUT,
-    STATE_DOOR_OPEN,
-    STATE_DOOR_CLOSING,
     STATE_LOCKOUT
 } Frontend_State_t;
 

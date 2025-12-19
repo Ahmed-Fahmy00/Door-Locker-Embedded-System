@@ -1,33 +1,15 @@
-"C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Componenets\keypad.c"
+"C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL\keypad.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Debug\BrowseInfo\HAL\keypad.pbi.dep
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\HAL\keypad.pbi.dep
 -o
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Debug\BrowseInfo\HAL\keypad.pbi
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\HAL\keypad.pbi
 -I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Componenets
--I
-C:\ti\TivaWare_C_Series-2.2.0.295\inc
--I
-C:\ti\TivaWare_C_Series-2.2.0.295\driverlib
--I
-C:\ti\TivaWare_C_Series-2.2.0.295
--I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Componenets\
--I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\MCAL\
--I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\lib\
--I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c\aarch32
--I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc
--I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL
 -I
 C:\ti\TivaWare_C_Series-2.2.0.295\inc
 -I
@@ -35,11 +17,29 @@ C:\ti\TivaWare_C_Series-2.2.0.295\driverlib
 -I
 C:\ti\TivaWare_C_Series-2.2.0.295
 -I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\Componenets
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\components
 -I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\MCAL
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\MCAL
 -I
-C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\lib
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\lib
+-I
+D:\EMB\arm\inc\c\aarch32
+-I
+D:\EMB\arm\inc
+-I
+D:\EMB\arm\inc\c
+-I
+C:\ti\TivaWare_C_Series-2.2.0.295\inc
+-I
+C:\ti\TivaWare_C_Series-2.2.0.295\driverlib
+-I
+C:\ti\TivaWare_C_Series-2.2.0.295
+-I
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\components
+-I
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\MCAL
+-I
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\lib
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -340,8 +340,8 @@ C:\Users\Ahmed Fahmy\Downloads\embedded project\Demo\lib
 -D__EDG_FLOAT128_ENABLING_POSSIBLE=0
 -D__EDG_INT128_EXTENSIONS_ALLOWED=0
 -DPART_TM4C123GH6PM=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c\DLib_Config_Normal.h"
--D_DLIB_CONFIG_FILE_STRING="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.0\\arm\\inc\\c\\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="D:\EMB\arm\inc\c\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_STRING="D:\\EMB\\arm\\inc\\c\\DLib_Config_Normal.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V9.10.1.308/W64 for ARM"
 -D_VA_DEFINED=
 -D_VA_LIST=struct __va_list

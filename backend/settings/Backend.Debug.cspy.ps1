@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.general.xcl" --backend -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.driver.xcl" 
+& "D:\EMB\common\bin\cspybat" -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.general.xcl" --backend -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\settings\Backend.Debug.driver.xcl" 
+& "D:\EMB\common\bin\cspybat" -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\settings\Backend.Debug.driver.xcl" 
 }

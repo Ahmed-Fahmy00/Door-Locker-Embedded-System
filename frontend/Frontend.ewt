@@ -2842,30 +2842,30 @@
         </settings>
     </configuration>
     <group>
-        <name>components</name>
+        <name>HAL</name>
         <file>
-            <name>$PROJ_DIR$\components\keypad.c</name>
+            <name>$PROJ_DIR$\HAL\keypad.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\keypad.h</name>
+            <name>$PROJ_DIR$\HAL\keypad.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\lcd.c</name>
+            <name>$PROJ_DIR$\HAL\lcd.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\lcd.h</name>
+            <name>$PROJ_DIR$\HAL\lcd.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\led.c</name>
+            <name>$PROJ_DIR$\HAL\led.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\led.h</name>
+            <name>$PROJ_DIR$\HAL\led.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\potentiometer.c</name>
+            <name>$PROJ_DIR$\HAL\potentiometer.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\potentiometer.h</name>
+            <name>$PROJ_DIR$\HAL\potentiometer.h</name>
         </file>
     </group>
     <group>
@@ -2880,10 +2880,22 @@
     <group>
         <name>MCAL</name>
         <file>
+            <name>$PROJ_DIR$\MCAL\adc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\adc.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\MCAL\dio.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\MCAL\dio.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\i2c.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\i2c.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\MCAL\systick.c</name>

@@ -2092,30 +2092,54 @@
         </settings>
     </configuration>
     <group>
-        <name>components</name>
+        <name>application</name>
         <file>
-            <name>$PROJ_DIR$\components\buzzer.c</name>
+            <name>$PROJ_DIR$\application\buzzer_service.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\buzzer.h</name>
+            <name>$PROJ_DIR$\application\buzzer_service.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\motor.c</name>
+            <name>$PROJ_DIR$\application\door_controller.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\motor.h</name>
+            <name>$PROJ_DIR$\application\door_controller.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\timeout.c</name>
+            <name>$PROJ_DIR$\application\eeprom_handler.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\timeout.h</name>
+            <name>$PROJ_DIR$\application\eeprom_handler.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\timer.c</name>
+            <name>$PROJ_DIR$\application\uart_handler.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\components\timer.h</name>
+            <name>$PROJ_DIR$\application\uart_handler.h</name>
+        </file>
+    </group>
+    <group>
+        <name>HAL</name>
+        <file>
+            <name>$PROJ_DIR$\HAL\buzzer.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\buzzer.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\motor.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\timeout.c</name>
+            <excluded>
+                <configuration>Debug</configuration>
+            </excluded>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\timeout.h</name>
         </file>
     </group>
     <group>
@@ -2136,6 +2160,12 @@
             <name>$PROJ_DIR$\MCAL\dio.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\MCAL\gptm.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\gptm.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\MCAL\systick.c</name>
         </file>
         <file>
@@ -2143,24 +2173,6 @@
         </file>
     </group>
     <file>
-        <name>$PROJ_DIR$\eeprom_handler.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\eeprom_handler.h</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\gptm0_oneshot.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\gptm0_oneshot.h</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\main.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\uart_handler.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\uart_handler.h</name>
     </file>
 </project>

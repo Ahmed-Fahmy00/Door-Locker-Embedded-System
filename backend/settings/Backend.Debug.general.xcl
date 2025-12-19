@@ -1,14 +1,14 @@
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armPROC.dll" 
+"D:\EMB\arm\bin\armPROC.dll" 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armLMIFTDI.dll" 
+"D:\EMB\arm\bin\armLMIFTDI.dll" 
 
-"C:\Users\Ahmed Fahmy\Downloads\embedded project\Door-Locker-Embedded-System-\backend\Debug\Exe\Backend.out" 
+"C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\Debug\Exe\Backend.out" 
 
---plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armbat.dll" 
+--plugin="D:\EMB\arm\bin\armbat.dll" 
 
---device_macro="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\debugger\TexasInstruments\TM4C123.dmac" 
+--device_macro="D:\EMB\arm\config\debugger\TexasInstruments\TM4C123.dmac" 
 
---flash_loader="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\flashloader\TexasInstruments\FlashTC4_H6_o.board" 
+--flash_loader="D:\EMB\arm\config\flashloader\TexasInstruments\FlashTC4_H6_o.board" 
 
 
 

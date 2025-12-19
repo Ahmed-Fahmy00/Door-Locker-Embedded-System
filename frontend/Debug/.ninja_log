@@ -1,12 +1,31 @@
 # ninja log v5
-20	247	7875083596743624	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/MCAL/dio.o	ffa23e78c4a01371
-24	135	7875290494462771	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/components/led.o	d550d98a62788057
-42	275	7875083597108820	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/MCAL/systick.o	eca82ce8cd81297a
-17	195	7875290494917974	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/components/lcd.o	1552b91dd3e6dd03
-1	514	7875290462650961	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/main.o	95401d9a424e54d3
-9	180	7875290494807989	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/components/potentiometer.o	bcc4700c79e45567
-25	186	7875083596203575	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/LIB/startup_ewarm.o	5c4fde5a1e86151e
-32	152	7875290494502770	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/components/keypad.o	75fdc3a4c0d13617
-40	288	7875290496023213	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/uart_comm.o	e3bf37f7fdb9ecbf
-48	320	7875290496323791	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Obj/frontend.o	ace289e5f01f9bd0
-333	579	7875290498907276	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/Exe/Frontend.out	a65116b1b1763ec5
+903	1033	7878114183994334	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Exe/Frontend.out	9805b65666a62f9e
+34	408	7878114177532011	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/led.o	77b2946c7c2587b9
+26	350	7878114177091450	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/lcd.o	8ab7ef97c64e84bd
+559	815	7878114181725579	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/uart_comm.o	9215e115cf9737d8
+60	636	7878114179835162	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/potentiometer.o	c97e27549594ee4f
+3	600	7878114179521571	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/keypad.o	de440425df68312
+69	712	7878114180709278	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/lib/startup_ewarm.o	972e112bffa76d3e
+43	544	7878114178839447	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/adc.o	e39069e65d8022ef
+51	683	7878114180057629	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/dio.o	8a2419f74cf4cd18
+364	499	7878114178528441	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/main.o	f1979f23bc1346af
+423	649	7878114179911397	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/systick.o	d01286390ffe8580
+79	889	7878114182445226	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/i2c.o	557bb5dd7e076117
+511	785	7878114181445596	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/frontend.o	f2e80a4cc83a50ea
+903	1033	7878114183994334	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/List/Frontend.map	9805b65666a62f9e
+2	110	7878114206744208	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Exe/Frontend.out	85aa863b3c47103b
+4	333	7878120687204662	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/keypad.o	de440425df68312
+27	409	7878120687935049	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/led.o	77b2946c7c2587b9
+35	454	7878120688184820	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/lcd.o	8ab7ef97c64e84bd
+52	549	7878120689329233	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/lib/startup_ewarm.o	972e112bffa76d3e
+346	593	7878120689635886	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/systick.o	d01286390ffe8580
+43	607	7878120689607210	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/adc.o	e39069e65d8022ef
+469	635	7878120689986157	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/main.o	f1979f23bc1346af
+61	647	7878120690042318	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/HAL/potentiometer.o	c97e27549594ee4f
+421	678	7878120690627234	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/frontend.o	f2e80a4cc83a50ea
+560	808	7878120691952265	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/uart_comm.o	9215e115cf9737d8
+70	822	7878120691930580	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/dio.o	8a2419f74cf4cd18
+85	862	7878120692464999	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Obj/MCAL/i2c.o	557bb5dd7e076117
+875	985	7878120693815571	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Exe/Frontend.out	9805b65666a62f9e
+875	985	7878120693815571	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/List/Frontend.map	9805b65666a62f9e
+3	125	7878121353090229	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/Exe/Frontend.out	85aa863b3c47103b

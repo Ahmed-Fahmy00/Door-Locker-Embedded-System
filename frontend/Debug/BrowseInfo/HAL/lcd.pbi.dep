@@ -1,11 +1,8 @@
-C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Debug\BrowseInfo\HAL\lcd.pbi: \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Componenets\lcd.c \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdint.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\yvals.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Defaults.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Normal.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Componenets/../lib/tm4c123gh6pm.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Componenets/../MCAL/systick.h \
-  C:\Users\Ahmed\ Fahmy\Downloads\embedded\ project\Demo\Componenets/lcd.h
+C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\HAL\lcd.pbi: \
+  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL\lcd.c \
+  D:\EMB\arm\inc\c\stdint.h D:\EMB\arm\inc\c\ycheck.h \
+  D:\EMB\arm\inc\c\yvals.h D:\EMB\arm\inc\c\DLib_Defaults.h \
+  D:\EMB\arm\inc\c\DLib_Config_Normal.h D:\EMB\arm\inc\c\DLib_Product.h \
+  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL/../MCAL/systick.h \
+  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL/../MCAL/i2c.h \
+  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\HAL/lcd.h

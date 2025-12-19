@@ -1,157 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>2390087642</fileChecksum>
+    <fileChecksum>1630265194</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\adc.h</file>
-            <file>$PROJ_DIR$\components\lcd.h</file>
-            <file>$PROJ_DIR$\components\potentiometer.h</file>
-            <file>$PROJ_DIR$\lib\startup_ewarm.c</file>
-            <file>$PROJ_DIR$\lib\tm4c123gh6pm.h</file>
-            <file>$PROJ_DIR$\MCAL\dio.c</file>
-            <file>$PROJ_DIR$\MCAL\dio.h</file>
-            <file>$PROJ_DIR$\components\keypad.c</file>
-            <file>$PROJ_DIR$\components\keypad.h</file>
-            <file>$PROJ_DIR$\components\lcd.c</file>
-            <file>$PROJ_DIR$\components\led.c</file>
-            <file>$PROJ_DIR$\components\led.h</file>
-            <file>$PROJ_DIR$\components\potentiometer.c</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-            <file>$PROJ_DIR$\MCAL\systick.c</file>
-            <file>$PROJ_DIR$\frontend.h</file>
-            <file>$PROJ_DIR$\uart_comm.c</file>
-            <file>$PROJ_DIR$\Debug\Exe\Frontend.out</file>
-            <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\frontend.o</file>
-            <file>$PROJ_DIR$\uart_comm.h</file>
-            <file>$PROJ_DIR$\MCAL\systick.h</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\components\lcd.o</file>
-            <file>$PROJ_DIR$\frontend.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\LIB\startup_ewarm.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\components\potentiometer.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\uart_comm.o</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\hw_nvic.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-            <file>$PROJ_DIR$\Debug\List\Frontend.map</file>
-            <file>$PROJ_DIR$\Debug\Obj\components\led.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\hw_types.h</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C123GH6.icf</file>
-            <file>$PROJ_DIR$\Debug\Obj\MCAL\dio.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\components\keypad.o</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
             <file>$PROJ_DIR$\Debug\Obj\MCAL\systick.o</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\gpio.h</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a</file>
-            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\pin_map.h</file>
+            <file>$PROJ_DIR$\frontend.h</file>
+            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C123GH6.icf</file>
+            <file>$PROJ_DIR$\lib\startup_ewarm.c</file>
+            <file>$PROJ_DIR$\HAL\lcd.h</file>
+            <file>$PROJ_DIR$\HAL\led.h</file>
+            <file>$PROJ_DIR$\MCAL\adc.c</file>
+            <file>$PROJ_DIR$\MCAL\systick.h</file>
+            <file>$PROJ_DIR$\MCAL\systick.c</file>
+            <file>$PROJ_DIR$\HAL\lcd.c</file>
+            <file>$PROJ_DIR$\MCAL\dio.h</file>
+            <file>$PROJ_DIR$\HAL\led.c</file>
+            <file>$PROJ_DIR$\lib\tm4c123gh6pm.h</file>
+            <file>$PROJ_DIR$\MCAL\adc.h</file>
+            <file>$PROJ_DIR$\HAL\keypad.h</file>
+            <file>$PROJ_DIR$\MCAL\i2c.c</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\uart_comm.h</file>
+            <file>$PROJ_DIR$\HAL\potentiometer.c</file>
+            <file>$PROJ_DIR$\MCAL\dio.c</file>
+            <file>$PROJ_DIR$\frontend.c</file>
+            <file>$PROJ_DIR$\HAL\keypad.c</file>
+            <file>$PROJ_DIR$\uart_comm.c</file>
+            <file>$PROJ_DIR$\HAL\potentiometer.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\MCAL\i2c.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\HAL\potentiometer.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\hw_types.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\MCAL\i2c.o</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\Debug\Exe\Frontend.out</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\MCAL\dio.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\HAL\keypad.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\HAL\lcd.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\MCAL\adc.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\lib\startup_ewarm.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\tm4c123gh6pm.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\uart_comm.o</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\HAL\led.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\Debug\List\Frontend.map</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\frontend.o</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\ti\TivaWare_C_Series-2.2.0.295\inc\hw_nvic.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
         </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 33 51</file>
+                </tool>
+            </outputs>
+        </file>
         <file>
             <name>$PROJ_DIR$\lib\startup_ewarm.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 27</file>
+                    <file> 41</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 33 41</file>
+                    <file> 55 28 36 50 53 30 34 42</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\MCAL\dio.c</name>
+            <name>$PROJ_DIR$\MCAL\adc.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 43</file>
+                    <file> 40</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 6 4</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\components\keypad.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 45</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 6 8</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\components\lcd.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 25</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 23 1 4</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\components\led.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 38</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 6 23 11</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\components\potentiometer.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 28</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 36 39 32 48 20 14 47 2 0 50 52 31 46 41</file>
+                    <file> 14 44 36 50 53 30 34 42</file>
                 </tool>
             </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\MCAL\systick.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 1</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 11 8 13 36 50 53 30 34 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\lcd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 39</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 5 26 8 36 50 53 30 34 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\led.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 48</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 6 11 8 36 50 53 30 34 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\i2c.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 31</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 26 13 36 50 53 30 34 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -161,52 +173,37 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 20 14 47 6 23 4</file>
+                    <file> 8 2 52 36 50 53 0 30 34 42</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\uart_comm.c</name>
+            <name>$PROJ_DIR$\HAL\potentiometer.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 30</file>
+                    <file> 27</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 48 53 20 14 44 47 4 22</file>
+                    <file> 24 14 36 50 53 30 34 42</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\Debug\Exe\Frontend.out</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 37</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 42 40 19 13 35 27 43 49 45 25 38 28 21 34 30 51</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\main.c</name>
+            <name>$PROJ_DIR$\MCAL\dio.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 34</file>
+                    <file> 35</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 48 20 14 47 23 16 31</file>
+                    <file> 11 13 36 50 53 30 34 42</file>
                 </tool>
             </inputs>
         </file>
@@ -215,24 +212,60 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 21</file>
+                    <file> 54</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36 39 32 48 20 29 14 44 47 23 8 1 11 2 16 22</file>
+                    <file> 15 5 6 24 8 2 18 36 50 53 0 30 56 34 37 42</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\HAL\keypad.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 38</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 15 11 36 50 53 30 34 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\uart_comm.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 45</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 8 13 18 36 50 53 0 25 30 34 37 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\Frontend.out</name>
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 18 37</file>
+                    <file> 51</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 38 39 48 27 40 35 31 1 54 41 49 45 29 3 32 43 46 47</file>
+                </tool>
+            </inputs>
         </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
