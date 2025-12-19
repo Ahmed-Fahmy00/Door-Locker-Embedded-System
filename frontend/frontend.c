@@ -140,16 +140,16 @@ static void handleSignup(void)
 static void handleMainMenu(void)
 {
     char key;
-    showMessage("A:Sign B:ChgPwd", "C:Time #:Cancel");
+    showMessage("A:Sign *:ChgPwd", "C:Time #:Cancel");
     
     while (1) {
         key = waitForKey();
         
         switch (key) {
             case 'A': currentState = STATE_SIGNIN; return;
-            case 'B': currentState = STATE_CHANGE_PASSWORD; return;
+            case '*': currentState = STATE_CHANGE_PASSWORD; return;
             case 'C': currentState = STATE_SET_TIMEOUT; return;
-            case '#': showMessage("A:Sign B:ChgPwd", "C:Time #:Cancel"); break;
+            case '#': showMessage("A:Sign *:ChgPwd", "C:Time #:Cancel"); break;
             default: break;
         }
     }
@@ -158,6 +158,8 @@ static void handleMainMenu(void)
 /* STATE: Signin - Authenticate and open door */
 static void handleSignin(void)
 {
+    char buffer[17];
+    
     showMessage("Enter Password:", "");
     LCD_SetCursor(1, 0);
     
@@ -175,9 +177,29 @@ static void handleSignin(void)
     if (status == STATUS_OK) {
         attemptCount = 0;
         LED_Green();
-        showMessage("Access Granted!", "Door Opening...");
+
+        
+        /* Use received timeout for countdown (default to 10 if invalid) */
+        if (timeout < 5 || timeout > 30) timeout = 10;
+        
+        /* Show countdown while door is open */
+        showMessage("Door Open", "");
+        while (timeout > 0) {
+            LCD_SetCursor(1, 0);
+            snprintf(buffer, sizeof(buffer), "Closing in: %2d s", timeout);
+            LCD_WriteString(buffer);
+            DelayMs(1000);
+            timeout--;
+        }
+        
+        /* Door closing */
+        LED_Yellow();
+        showMessage("Door Closing...", "Please Wait");
         DelayMs(2000);
+        
         LED_Off();
+        showMessage("Door Locked", "");
+        DelayMs(1500);
         currentState = STATE_MAIN_MENU;
     } 
     else if (status == STATUS_UNKNOWN_CMD) {

@@ -4,6 +4,7 @@ C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\Debug\BrowseInfo\main
   C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\eeprom.h \
   C:\ti\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h \
   C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\HAL\motor.h \
+  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\application\door_controller.h \
   C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\application\buzzer_service.h \
   C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\application\eeprom_handler.h \
   C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\backend\application\uart_handler.h \

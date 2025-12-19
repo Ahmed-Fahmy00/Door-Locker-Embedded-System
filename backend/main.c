@@ -3,6 +3,7 @@
 #include "application/uart_handler.h"
 #include "application/eeprom_handler.h"
 #include "application/buzzer_service.h"
+#include "application/door_controller.h"
 #include "HAL/motor.h"
 
 /* TivaWare includes */
@@ -53,6 +54,7 @@ int main(void)
     
     set_default_auto_timeout();
     BuzzerService_Init();
+    DoorController_Init();
     UART_Handler_Init();
     
     /* Configure and turn on red LED to indicate system is ready */

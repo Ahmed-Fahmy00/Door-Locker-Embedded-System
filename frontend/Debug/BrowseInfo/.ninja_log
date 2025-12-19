@@ -1,136 +1,31 @@
 # ninja log v5
-216	313	7875290436286403	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part1.pbi	e5687a7d0daeb5b
-309	548	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/led.xcl	3b2b0082d4fa6b4a
-210	304	7875311503641119	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part3.pbi	c9f51ef9afc0f6d6
-2	209	7875304647180331	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/main.pbi	942464128c800581
-545	742	7875049647057843	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/MCAL/dio.pbi	39120145ce4fc94f
-376	619	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/potentiometer.xcl	b3617b8e261d552b
-134	223	7875309651959391	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part0.pbi	67ccaa11055003f1
-347	572	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/frontend.xcl	897cf5e9ba22ef52
-210	504	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/lcd.xcl	c066aff5cbd2920a
-327	672	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/MCAL/systick.xcl	7cc74f985e7192a8
-614	762	7875049647163194	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/lib/startup_ewarm.pbi	ec1e4f1349e48d2d
-54	208	7875290434801095	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/potentiometer.pbi	e9dbed6ca3991cb5
-168	258	7875309652312995	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part2.pbi	57d5076752623560
-320	528	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/MCAL/dio.xcl	40f6970d0f8132d1
-338	592	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/lib/startup_ewarm.xcl	fba823854aaa483f
-358	645	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/main.xcl	735f849361e6fa83
-381	693	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/uart_comm.xcl	7bfbf26fee3da5e6
-299	714	7875049640000000	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/keypad.xcl	749f02d334e68247
-689	812	7875049648494761	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/MCAL/systick.pbi	65373becae1ef5f3
-4	198	7875311502514605	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/uart_comm.pbi	8125ddf755ac779b
-4	232	7875301999422730	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/lcd.pbi	6287e6ffe7706e7d
-5	120	7875309650864007	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/led.pbi	267d9b28dcab3e1b
-17	156	7875309651243517	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/frontend.pbi	767b1580f826a323
-3	110	7875303765377530	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/components/keypad.pbi	a0ac8479ebeb0cd0
-321	552	7875311506113617	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbd	6e000ab0722495d2
-585	2606	7875311526028054	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbw	5668944ec1bbafb1
-4	198	7875311579726529	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/uart_comm.pbi	8125ddf755ac779b
-210	307	7875311580720809	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part3.pbi	c9f51ef9afc0f6d6
-322	550	7875311583304100	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbd	6e000ab0722495d2
-578	2221	7875311599082163	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbw	5668944ec1bbafb1
-5	320	7875311706136658	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/uart_comm.pbi	8125ddf755ac779b
-339	413	7875311707122364	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend_part3.pbi	c9f51ef9afc0f6d6
-428	800	7875311710994735	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbd	6e000ab0722495d2
-818	2490	7875311727012180	C:/Users/Ahmed Fahmy/Downloads/embedded project/Door-Locker-Embedded-System-/frontend/Debug/BrowseInfo/Frontend.pbw	5668944ec1bbafb1
 2	224	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/lib/startup_ewarm.xcl	f7f8d6c6dd23b80e
 55	252	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/systick.xcl	a5c5f3e46c21a67e
+306	396	7878098865823829	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/keypad.pbi	4b9bc5bb4f6249cd
+37	292	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/keypad.xcl	43b13ab48ff46782
+209	382	7878192940944710	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
+4	272	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/led.xcl	8bf0dd50acf30543
+5	110	7878192938218687	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
+400	423	7878098866238938	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part0.pbi	45f1ff02cdd76443
+45	347	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/potentiometer.xcl	179334f52444620a
+513	570	7878098867625398	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part1.pbi	723db71758e04b64
+85	359	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.xcl	9b6efe303326a302
 76	284	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.xcl	34141a77d016deae
 62	314	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/dio.xcl	fee46a302e8ad286
 69	340	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/uart_comm.xcl	a3dd15a932a48b3b
-85	359	7878097770000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.xcl	9b6efe303326a302
-245	381	7878097779168163	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/lib/startup_ewarm.pbi	4dae67252422b849
-307	400	7878097779370601	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-274	431	7878097779674440	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/systick.pbi	f1364c6455acce0b
-373	444	7878097779802043	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-332	470	7878097780056526	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/dio.pbi	bfa07b8ffa71af9f
-435	486	7878097780245941	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part1.pbi	d954f128437edba8
-353	492	7878097780255927	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/uart_comm.pbi	68dbd126d971fa06
-474	533	7878097780720354	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part0.pbi	c3088e9bff494718
-496	549	7878097780888868	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part2.pbi	8554303beed53981
-555	651	7878097781909556	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	e39ea20e4cbf5e3d
-658	1811	7878097793072756	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-78	208	7878098864081949	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-28	250	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/lcd.xcl	ae28143d5048233
-4	272	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/led.xcl	8bf0dd50acf30543
-37	292	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/keypad.xcl	43b13ab48ff46782
-67	312	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/i2c.xcl	401602d5cbc61631
-45	347	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/potentiometer.xcl	179334f52444620a
-56	367	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/adc.xcl	ae6d152d0d04d67a
-264	386	7878098865408143	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/lcd.pbi	81104a00e74cc3d4
-286	392	7878098865586229	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/led.pbi	70456e1af872bfff
-306	396	7878098865823829	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/keypad.pbi	4b9bc5bb4f6249cd
-400	423	7878098866238938	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part0.pbi	45f1ff02cdd76443
-361	430	7878098866264004	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/potentiometer.pbi	196fee52c9c31f5f
-328	476	7878098866747567	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/i2c.pbi	62d9e00e4f935e42
-380	509	7878098867083769	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/adc.pbi	dd540229c20da536
 480	561	7878098867615409	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part2.pbi	1dac7da2b2229a96
-513	570	7878098867625398	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part1.pbi	723db71758e04b64
-578	686	7878098868874852	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-695	2350	7878098884867220	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	127	7878099695014560	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-133	211	7878099695877524	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-221	407	7878099697841310	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-422	2430	7878099717275551	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-6	81	7878099769544275	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-87	145	7878099770200353	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-153	278	7878099771526054	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-288	2356	7878099791697583	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-3	100	7878100399411600	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-105	168	7878100400130523	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-175	303	7878100401480334	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-5	1625	7878100484773444	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	104	7878102206125544	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-110	171	7878102206817741	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-178	349	7878102208548789	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-361	2522	7878102229552457	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-3	111	7878103999244749	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-116	206	7878104000195556	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-215	433	7878104002479459	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-445	2381	7878104021491792	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-5	112	7878106700324147	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-117	185	7878106701099717	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-194	385	7878106703086988	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-395	2453	7878106723091785	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-3	82	7878107128698857	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-87	157	7878107129496403	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-165	358	7878107131492284	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-369	2609	7878107153295607	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	71	7878107205302803	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-75	134	7878107205949586	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-142	279	7878107207411209	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-287	2028	7878107224302222	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-3	70	7878108891474774	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-74	133	7878108892125523	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-139	259	7878108893388641	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-266	1997	7878108910126821	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-5	96	7878108962391555	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-101	162	7878108963076202	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-168	308	7878108964542057	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-315	2220	7878108982993991	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-6	121	7878113572590431	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-127	205	7878113573462765	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-214	414	7878113575556154	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-426	2593	7878113596628976	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	95	7878113800658553	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-100	173	7878113801474413	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-180	388	7878113803628420	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-398	2409	7878113823111720	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	68	7878113925580193	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-72	128	7878113926207780	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-136	267	7878113927589028	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-275	1955	7878113943801276	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-14	93	7878119751615487	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-5	125	7878119751930801	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-132	205	7878119752752182	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-214	386	7878119754562640	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-397	2458	7878119774633007	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
+245	381	7878097779168163	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/lib/startup_ewarm.pbi	4dae67252422b849
+116	200	7878192939129197	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
+274	431	7878097779674440	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/systick.pbi	f1364c6455acce0b
 12	88	7878120281276407	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/main.pbi	50ceca82a73c95b9
-5	119	7878120281606543	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-124	192	7878120282357787	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-201	344	7878120283859646	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-353	2615	7878120304581080	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
-4	80	7878120358035805	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/frontend.pbi	d9d835f3d11c463b
-84	137	7878120358650415	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend_part3.pbi	1a417e6b3b27b62b
-144	256	7878120359842309	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbd	6a33e65f4616f31e
-263	1921	7878120375734196	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
+328	476	7878098866747567	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/i2c.pbi	62d9e00e4f935e42
+264	386	7878098865408143	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/lcd.pbi	81104a00e74cc3d4
+332	470	7878097780056526	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/dio.pbi	bfa07b8ffa71af9f
+11	163	7878164269898871	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/uart_comm.pbi	68dbd126d971fa06
+393	2643	7878192962708124	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/Frontend.pbw	352b5be47cee98e2
+28	250	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/lcd.xcl	ae28143d5048233
+67	312	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/i2c.xcl	401602d5cbc61631
+380	509	7878098867083769	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/adc.pbi	dd540229c20da536
+56	367	7878098860000000	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/MCAL/adc.xcl	ae6d152d0d04d67a
+286	392	7878098865586229	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/led.pbi	70456e1af872bfff
+361	430	7878098866264004	C:/Users/ahmed/Desktop/Door-Locker-Embedded-System/frontend/Debug/BrowseInfo/HAL/potentiometer.pbi	196fee52c9c31f5f

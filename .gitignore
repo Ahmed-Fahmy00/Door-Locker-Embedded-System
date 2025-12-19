@@ -55,7 +55,7 @@ dkms.conf
 *.dwo
 
 
-backend/debug/
+backend/Debug/
 backend/settings/
-frontend/debug/
+frontend/Debug/
 frontend/settings/

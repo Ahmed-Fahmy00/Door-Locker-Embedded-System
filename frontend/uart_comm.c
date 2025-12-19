@@ -9,9 +9,9 @@
 #include "MCAL/systick.h"
 #include <stddef.h>
 
-#define UART_TIMEOUT_LOOPS   1000000
+#define UART_TIMEOUT_LOOPS   2000000
 #define UART_MAX_RETRIES     3
-#define UART_SOF_SEARCH_MAX  50
+#define UART_SOF_SEARCH_MAX  100
 
 static uint8_t consecutiveFailures = 0;
 
@@ -103,7 +103,7 @@ static uint8_t UART_SendPacket(uint8_t cmd, const uint8_t *payload, uint8_t payl
     }
     
     UART_WaitTxComplete();
-    DelayMs(10);  /* Give backend time to process */
+    DelayMs(50);  /* Give backend time to process */
     
     return 1;
 }
@@ -147,7 +147,7 @@ static uint8_t UART_SendCommandWithRetry(uint8_t cmd, const uint8_t *payload, ui
     
     for (retry = 0; retry < UART_MAX_RETRIES; retry++) {
         if (!UART_SendPacket(cmd, payload, payloadLen)) {
-            DelayMs(5);
+            DelayMs(50);
             continue;
         }
         
@@ -158,7 +158,7 @@ static uint8_t UART_SendCommandWithRetry(uint8_t cmd, const uint8_t *payload, ui
         }
         
         UART_FlushRx();
-        DelayMs(20);
+        DelayMs(100);  /* Longer delay between retries */
     }
     
     consecutiveFailures++;

@@ -1,9 +1,2 @@
 C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\Debug\BrowseInfo\main.pbi: \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\frontend.h \
-  C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\MCAL\systick.h \
-  C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h \
-  D:\EMB\arm\inc\c\stdbool.h D:\EMB\arm\inc\c\DLib_Product.h \
-  D:\EMB\arm\inc\c\DLib_Config_Normal.h D:\EMB\arm\inc\c\DLib_Defaults.h \
-  D:\EMB\arm\inc\c\yvals.h D:\EMB\arm\inc\c\ycheck.h \
-  D:\EMB\arm\inc\c\stdint.h \
   C:\Users\ahmed\Desktop\Door-Locker-Embedded-System\frontend\main.c
