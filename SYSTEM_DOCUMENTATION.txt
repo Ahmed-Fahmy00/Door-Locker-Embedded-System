@@ -5,8 +5,8 @@
 OVERVIEW
 --------
 A two-MCU embedded security system using TM4C123GH6PM (Tiva C LaunchPad).
-- Frontend (HMI_ECU): User interface with LCD, Keypad, LEDs, Potentiometer
-- Backend (Control_ECU): Security logic with Motor, Buzzer, EEPROM
+- Frontend (HMI_ECU): User interface with LCD, Keypad, RGB LED, Potentiometer
+- Backend (Control_ECU): Security logic with Motor, Buzzer, EEPROM, Status LEDs
 
 ================================================================================
                               HARDWARE CONFIGURATION
@@ -16,26 +16,26 @@ FRONTEND (HMI_ECU)
 ------------------
 Component          | Pins              | Notes
 -------------------|-------------------|----------------------------------
-LCD (16x2)         | PB0-PB7           | 8-bit data mode
-Keypad (4x4)       | PE0-PE3, PC4-PC7  | Row/Column matrix
-RGB LED            | PF1,PF2,PF3       | Red, Blue, Green
-Potentiometer      | PE3 (ADC)         | Timeout adjustment (5-30 sec)
-UART TX            | PB1               | To Backend RX
-UART RX            | PB0               | From Backend TX
+LCD (16x2 I2C)     | PB2=SCL, PB3=SDA  | PCF8574 backpack, addr 0x27/0x3F
+Keypad (4x4)       | PC4-7=Rows        | Rows: input with pull-up
+                   | PB6,PA4,PA3,PA2   | Cols: output, active low
+RGB LED            | PF1,PF2,PF3       | Red, Blue, Green (onboard)
+Potentiometer      | PB5 (ADC AIN11)   | Timeout adjustment (5-30 sec)
+UART1 TX           | PB1               | To Backend RX
+UART1 RX           | PB0               | From Backend TX
 
 BACKEND (Control_ECU)
 ---------------------
 Component          | Pins              | Notes
 -------------------|-------------------|----------------------------------
-Motor IN1          | PC4               | Forward (J4 connector)
-Motor IN2          | PC5               | Reverse (J4 connector)
-Red LED            | PF1               | Door closing indicator
-Green LED          | PF3               | Door opening indicator
-Blue LED           | PF2               | Debug/status
-Buzzer             | PA5               | Lockout alarm
-UART TX            | PB1               | To Frontend RX
-UART RX            | PB0               | From Frontend TX
-EEPROM             | Internal          | Password & timeout storage
+Motor IN1          | PF0               | Clockwise (door open)
+Motor IN2          | PF4               | Counter-CW (door close)
+Status LED Red     | PF1               | Error/Auth fail indicator
+Status LED Green   | PF3               | Success/OK indicator
+Buzzer             | PA5               | Lockout alarm (active buzzer)
+UART1 TX           | PB1               | To Frontend RX
+UART1 RX           | PB0               | From Frontend TX
+EEPROM             | Internal          | Password and timeout storage
 
 ================================================================================
                               UART COMMUNICATION PROTOCOL
@@ -59,43 +59,45 @@ Response (Backend -> Frontend):
 
 COMMAND LIST
 ------------
-CMD  | Name              | Request Payload      | Response Data    | Description
------|-------------------|----------------------|------------------|------------------
-0x01 | INIT_PASSWORD     | 5 ASCII digits       | None             | Create password
-0x02 | AUTH              | MODE(1) + 5 digits   | None             | Authenticate
-0x03 | SET_TIMEOUT       | SECONDS(1)           | None             | Set timeout (5-30)
-0x04 | CHANGE_PASSWORD   | 5 ASCII digits       | None             | Change password
-0x05 | GET_TIMEOUT       | None                 | TIMEOUT(1)       | Get timeout value
-0x06 | CLOSE_DOOR        | None                 | None             | Close door (motor reverse)
-0x07 | OPEN_DOOR         | None                 | None             | Open door (motor forward)
+CMD  | Name              | Request Payload      | Response Data
+-----|-------------------|----------------------|------------------
+0x01 | INIT_PASSWORD     | 5 ASCII digits       | None
+0x02 | AUTH              | MODE(1) + 5 digits   | TIMEOUT (mode=1)
+0x03 | SET_TIMEOUT       | SECONDS(1)           | None
+0x04 | CHANGE_PASSWORD   | 5 ASCII digits       | None
+0x05 | GET_TIMEOUT       | None                 | TIMEOUT(1)
 
 STATUS CODES
 ------------
 0x00 = STATUS_OK         - Success
 0x01 = STATUS_ERROR      - General error
 0x02 = STATUS_AUTH_FAIL  - Wrong password
-0xFF = STATUS_UNKNOWN    - Communication timeout
+0xFF = STATUS_UNKNOWN    - Communication timeout (frontend-only)
 
 AUTH MODES (CMD 0x02)
 ---------------------
-0x00 = CHECK_ONLY   - Just verify password (for change password, set timeout)
-0x01 = OPEN_DOOR    - Verify + prepare for door opening
+0x00 = CHECK_ONLY   - Just verify password
+0x01 = OPEN_DOOR    - Verify + trigger automated door sequence
 
 ================================================================================
-                              SYSTEM STATES & SCENARIOS
+                              SYSTEM STATES
 ================================================================================
 
 FRONTEND STATES
 ---------------
-STATE_WELCOME         -> Initial boot screen
+STATE_WELCOME         -> Initial boot screen (Blue LED, 2 sec)
 STATE_SIGNUP          -> First-time password creation
-STATE_MAIN_MENU       -> A:Sign B:ChgPwd C:Time
+STATE_MAIN_MENU       -> A:Sign *:ChgPwd C:Time #:Cancel
 STATE_SIGNIN          -> Enter password to open door
 STATE_CHANGE_PASSWORD -> Change existing password
-STATE_SET_TIMEOUT     -> Adjust timeout with potentiometer
-STATE_DOOR_OPEN       -> Door opening + countdown
-STATE_DOOR_CLOSING    -> Door closing
-STATE_LOCKOUT         -> 3 wrong attempts - buzzer active
+STATE_SET_TIMEOUT     -> Adjust timeout with potentiometer (Cyan LED)
+STATE_LOCKOUT         -> 3 wrong attempts - buzzer active (Red LED blink)
+
+BACKEND STATES (Door Controller)
+--------------------------------
+DOOR_IDLE             -> Door closed, not moving
+DOOR_OPENING          -> Motor CW, door opening
+DOOR_CLOSING          -> Motor CCW, door closing
 
 ================================================================================
                               SCENARIO FLOWS
@@ -103,76 +105,72 @@ STATE_LOCKOUT         -> 3 wrong attempts - buzzer active
 
 SCENARIO 1: FIRST TIME SETUP (SIGNUP)
 -------------------------------------
-1. System boots -> STATE_WELCOME (2 sec)
-2. -> STATE_SIGNUP
-3. User enters 5-digit password
-4. User confirms password
-5. If match: Frontend sends CMD_INIT_PASSWORD
-6. Backend stores in EEPROM, responds OK
-7. -> STATE_MAIN_MENU
+1. System boots -> STATE_WELCOME (Blue LED, 2 sec)
+2. isFirstTime=true -> STATE_SIGNUP
+3. User enters 5-digit password on keypad
+4. User confirms password (re-enter)
+5. If match: Frontend sends CMD_INIT_PASSWORD with 5 ASCII digits
+6. Backend converts to uint32, stores in EEPROM, responds OK
+7. isFirstTime=false -> STATE_MAIN_MENU
 
-SCENARIO 2: SUCCESSFUL DOOR OPEN
---------------------------------
+SCENARIO 2: SUCCESSFUL DOOR OPEN (Automated Sequence)
+-----------------------------------------------------
 1. User at STATE_MAIN_MENU presses 'A'
-2. -> STATE_SIGNIN, user enters password
-3. Frontend sends CMD_AUTH (mode=0x01, password)
-4. Backend verifies, sets pending_open_door=true, responds OK
-5. -> STATE_DOOR_OPEN
-6. Frontend sends CMD_GET_TIMEOUT
-7. Backend responds with timeout value (no buzzer because pending_open_door)
-8. Frontend sends CMD_OPEN_DOOR
-9. Backend responds OK immediately, then runs motor FORWARD 3 sec (Green LED)
-10. Frontend waits 3.5 sec, shows "Door Opening..."
-11. Frontend shows countdown: "Closing in: XX s"
-12. Countdown reaches 0 -> STATE_DOOR_CLOSING
-13. Frontend sends CMD_CLOSE_DOOR
-14. Backend responds OK immediately, then runs motor REVERSE 3 sec (Red LED)
-15. Frontend waits 3.5 sec, shows "Door Closing..."
-16. -> STATE_MAIN_MENU
+2. -> STATE_SIGNIN, user enters password (Yellow LED)
+3. Frontend sends CMD_AUTH (mode=0x01, 5 digits)
+4. Backend verifies password against EEPROM
+5. If OK: Backend gets timeout from EEPROM
+6. Backend sends response with STATUS_OK and TIMEOUT
+7. Backend calls DoorController_OpenDoor(timeout)
+   - Motor starts CW (door opens)
+   - Timer1 starts for timeout seconds
+8. Frontend receives OK + timeout (Green LED)
+9. Frontend shows countdown
+10. Backend Timer1 expires -> Motor CCW for 2 sec
+11. Backend Timer1 expires again -> Motor stops, IDLE
+12. Frontend countdown ends -> STATE_MAIN_MENU
 
 SCENARIO 3: WRONG PASSWORD (< 3 ATTEMPTS)
 -----------------------------------------
 1. User enters wrong password
-2. Frontend sends CMD_AUTH
-3. Backend responds STATUS_AUTH_FAIL
-4. Frontend shows "Wrong Password! X tries left"
+2. Frontend sends CMD_AUTH (mode=0x01)
+3. Backend responds STATUS_AUTH_FAIL (Red LED blink)
+4. Frontend shows error message (Red LED)
 5. attemptCount++
 6. -> STATE_MAIN_MENU
 
 SCENARIO 4: LOCKOUT (3 WRONG ATTEMPTS)
 --------------------------------------
 1. User enters wrong password 3rd time
-2. Frontend sends CMD_AUTH, gets AUTH_FAIL
-3. attemptCount reaches MAX_ATTEMPTS (3)
-4. -> STATE_LOCKOUT
-5. Frontend sends CMD_GET_TIMEOUT
-6. Backend responds with timeout, activates BUZZER (no pending_open_door flag)
-7. Frontend shows "!! LOCKED OUT !!" with countdown
-8. Red LED blinks during lockout
-9. Countdown ends -> attemptCount reset -> STATE_MAIN_MENU
+2. attemptCount reaches MAX_ATTEMPTS (3)
+3. -> STATE_LOCKOUT (Red LED)
+4. Frontend sends CMD_GET_TIMEOUT
+5. Backend activates BuzzerService for timeout duration
+6. Backend responds with timeout value
+7. Frontend shows lockout countdown
+8. Backend Timer0 expires -> Buzzer OFF
+9. Frontend countdown ends -> attemptCount=0 -> STATE_MAIN_MENU
 
 SCENARIO 5: CHANGE PASSWORD
 ---------------------------
-1. User at STATE_MAIN_MENU presses 'B'
-2. -> STATE_CHANGE_PASSWORD
-3. User enters OLD password
-4. Frontend sends CMD_AUTH (mode=0x00) - check only
-5. If OK: User enters NEW password twice
-6. If match: Frontend sends CMD_CHANGE_PASSWORD
-7. Backend updates EEPROM, responds OK
-8. -> STATE_MAIN_MENU
+1. User presses '*' at main menu
+2. User enters OLD password
+3. Frontend sends CMD_AUTH (mode=0x00) - check only
+4. If OK: User enters NEW password twice
+5. If match: Frontend sends CMD_CHANGE_PASSWORD
+6. Backend updates EEPROM, responds OK
+7. -> STATE_MAIN_MENU
 
 SCENARIO 6: SET TIMEOUT
 -----------------------
-1. User at STATE_MAIN_MENU presses 'C'
-2. -> STATE_SET_TIMEOUT
-3. User adjusts potentiometer (5-30 sec range)
-4. User presses 'D' to save
-5. User enters password for verification
-6. Frontend sends CMD_AUTH (mode=0x00)
-7. If OK: Frontend sends CMD_SET_TIMEOUT
-8. Backend updates EEPROM, responds OK
-9. -> STATE_MAIN_MENU
+1. User presses 'C' at main menu (Cyan LED)
+2. User adjusts potentiometer (5-30 sec)
+3. User presses 'D' to save
+4. User enters password for verification
+5. Frontend sends CMD_AUTH (mode=0x00)
+6. If OK: Frontend sends CMD_SET_TIMEOUT
+7. Backend stores in EEPROM, responds OK
+8. -> STATE_MAIN_MENU
 
 ================================================================================
                               LED INDICATORS
@@ -180,107 +178,89 @@ SCENARIO 6: SET TIMEOUT
 
 FRONTEND RGB LED
 ----------------
-Blue     = System starting / Change password mode / Settings mode
+Blue     = System starting / Settings mode
 Yellow   = Processing / Verifying
-Green    = Success / Access granted / Door open
+Green    = Success / Door open countdown
 Red      = Error / Wrong password / Lockout
-Cyan     = Settings mode
-Blinking = Communication error (yellow) / Lockout countdown (red)
+Cyan     = Timeout adjustment mode
 
-BACKEND LEDs
-------------
-Green (PF3)  = Door opening (motor forward)
-Red (PF1)    = Door closing (motor reverse)
-Blue (PF2)   = Debug - blinks on command receive/response
+BACKEND STATUS LEDs
+-------------------
+Green Blink (2x) = Response sent with STATUS_OK
+Red Blink (2x)   = Response sent with ERROR or AUTH_FAIL
+Green ON         = Processing command
+All OFF          = Idle
 
 ================================================================================
                               TIMING SPECIFICATIONS
 ================================================================================
 
-Motor Operations
-----------------
-- Door Open:  Motor Forward for 3 seconds
-- Door Close: Motor Reverse for 3 seconds
+Motor Operations (DoorController)
+---------------------------------
+- Door Open:  Motor CW for 5-30 seconds (configurable)
+- Door Close: Motor CCW for 2 seconds (fixed)
 
-Timeouts
---------
-- Door Open Countdown: 5-30 seconds (configurable via potentiometer)
-- Lockout Duration: Same as door timeout (5-30 seconds)
-- UART Receive Timeout: ~1 second
-- UART Retry Count: 3 attempts
+Buzzer Operations (BuzzerService)
+---------------------------------
+- Lockout Duration: 5-30 seconds (same as timeout)
+- Automatic shutoff via Timer0 interrupt
+
+Default Values
+--------------
+- Timeout: 11 seconds
+- Max Attempts: 3
 
 Delays
 ------
 - Welcome Screen: 2000 ms
 - Message Display: 1500 ms
-- Frontend wait after OPEN_DOOR: 3500 ms
-- Frontend wait after CLOSE_DOOR: 3500 ms
-
-================================================================================
-                              ERROR HANDLING
-================================================================================
-
-UART Communication
-------------------
-- Automatic retry (3 attempts) on timeout
-- UART re-initialization after 2 consecutive failures
-- RX buffer flush before each command
-- Error flag clearing on receive errors
-
-Password Validation
--------------------
-- Must be exactly 5 digits (0-9)
-- Stored as uint32_t in EEPROM
-- Confirmation required for new passwords
-
-EEPROM
-------
-- Default timeout set on first boot (if value is 0 or 0xFFFFFFFF)
-- Password stored at EEPROM offset 0x00
-- Timeout stored at EEPROM offset 0x04
+- LED Blink: 50 ms on/off
 
 ================================================================================
                               FILE STRUCTURE
 ================================================================================
 
 backend/
-├── main.c              - Main loop, initialization
-├── uart_handler.c/h    - UART protocol, command handlers
-├── eeprom_handler.c/h  - Password & timeout storage
-├── components/
-│   ├── motor.c/h       - Motor control (PC4/PC5)
-│   ├── buzzer.c/h      - Buzzer control (PA5)
-│   ├── timeout.c/h     - Timeout/buzzer activation
-│   └── timer.c/h       - Timer utilities
+  main.c                      - Entry point
+  application/
+    uart_handler.c/h          - UART protocol
+    eeprom_handler.c/h        - Password/timeout storage
+    door_controller.c/h       - Automated door sequence
+    buzzer_service.c/h        - Lockout buzzer control
+  HAL/
+    motor.c/h                 - Motor GPIO
+    buzzer.c/h                - Buzzer GPIO
+  MCAL/
+    gptm.c/h                  - Timer drivers
 
 frontend/
-├── main.c              - Entry point
-├── frontend.c/h        - State machine, UI logic
-├── uart_comm.c/h       - UART communication layer
-├── components/
-│   ├── lcd.c/h         - LCD driver
-│   ├── keypad.c/h      - Keypad driver
-│   ├── led.c/h         - RGB LED control
-│   └── potentiometer.c/h - ADC for timeout adjustment
-├── MCAL/
-│   ├── dio.c/h         - Digital I/O
-│   └── systick.c/h     - Delay functions
+  main.c                      - Entry point
+  frontend.c/h                - State machine
+  uart_comm.c/h               - UART communication
+  HAL/
+    lcd.c/h                   - I2C LCD driver
+    keypad.c/h                - Keypad driver
+    led.c/h                   - RGB LED control
+    potentiometer.c/h         - ADC driver
+  MCAL/
+    systick.c/h               - Delay functions
+
+================================================================================
+                              EEPROM MEMORY MAP
+================================================================================
+
+Offset  | Size | Description
+--------|------|----------------------------------
+0x0000  | 4    | Password (uint32_t)
+0x0004  | 4    | Timeout (uint32_t, 5-30 seconds)
+0x0008  | 4    | Reserved
 
 ================================================================================
                               QUICK REFERENCE
 ================================================================================
 
-Main Menu Options:
-  A = Sign in (open door)
-  B = Change password
-  C = Set timeout
-  # = Cancel/Back
+Main Menu: A=Sign In, *=Change Password, C=Set Timeout, #=Cancel
+Password:  0-9=Digits, #=Backspace
+Timeout:   Potentiometer=Adjust, D=Save, #=Cancel
 
-Password Entry:
-  0-9 = Enter digit
-  #   = Backspace / Cancel
-
-Timeout Setting:
-  Potentiometer = Adjust value (5-30 sec)
-  D = Save
-  # = Cancel
+================================================================================

@@ -5,7 +5,7 @@ TM4C123GH6PM LaunchPad
 ================================================================================
 
 MICROCONTROLLER: TM4C123GH6PM (Tiva C Series)
-CLOCK: 16 MHz (Main Oscillator)
+CLOCK: 16 MHz (Main Oscillator) - Must match backend for UART timing
 
 ================================================================================
 PIN ASSIGNMENTS
@@ -14,7 +14,7 @@ PIN ASSIGNMENTS
 J1     J3          J4    J2
 +3.3V  VBUS        PF2   GND
 PB5    GND         PF3   PB2
-PB0    PD0         PB3   P30
+PB0    PD0         PB3   PE0
 PB1    PD1         PC4   PF0
 PE4    PD2         PC5   RST
 PE5    PD3         PC6   PB7
@@ -23,58 +23,105 @@ PA5    PE2         PD6   PA4
 PA6    PE3         PD7   PA3
 PA7    PF1         PF4   PA2
 
-UART1 (Communication with Backend):
------------------------------------
+--------------------------------------------------------------------------------
+UART1 (Communication with Backend)
+--------------------------------------------------------------------------------
   PB0 (J1) - UART1 RX    <- Connect to Backend TX (PB1)
   PB1 (J1) - UART1 TX    -> Connect to Backend RX (PB0)
-  Baud Rate: 115200, 8N1
+  
+  Configuration:
+    Baud Rate: 115200
+    Data Bits: 8
+    Stop Bits: 1
+    Parity: None
+    IBRD: 8, FBRD: 44 (for 16MHz clock)
 
-LCD (I2C0 - PCF8574 Backpack):
-------------------------------
-  PB2 (J2) - I2C0 SCL    -> LCD SCL
-  PB3 (J4) - I2C0 SDA    -> LCD SDA
-  I2C Address: 0x27 (or 0x3F)
-  Speed: 100 kHz
+--------------------------------------------------------------------------------
+LCD (I2C0 - PCF8574 Backpack)
+--------------------------------------------------------------------------------
+  PB2 (J2) - I2C0 SCL    -> LCD SCL pin
+  PB3 (J4) - I2C0 SDA    -> LCD SDA pin
+  VCC      - 3.3V or 5V  -> LCD VCC
+  GND      - Ground      -> LCD GND
+  
+  Configuration:
+    I2C Address: 0x27 (common) or 0x3F (alternate)
+    Speed: 100 kHz (standard mode)
+    Display: 16x2 characters, HD44780 compatible
+    Mode: 4-bit data mode via PCF8574 I/O expander
 
-KEYPAD (4x4 Matrix):
---------------------
-  Rows (Inputs with Pull-up) - J4:
-    PC4 - Row 0
-    PC5 - Row 1
-    PC6 - Row 2
-    PC7 - Row 3
+--------------------------------------------------------------------------------
+KEYPAD (4x4 Matrix)
+--------------------------------------------------------------------------------
+  Rows (Inputs with Internal Pull-up) - Port C:
+    PC4 (J4) - Row 0
+    PC5 (J4) - Row 1
+    PC6 (J4) - Row 2
+    PC7 (J4) - Row 3
 
-  Columns (Outputs) - J2:
-    PB6 - Col 0
-    PA4 - Col 1
-    PA3 - Col 2
-    PA2 - Col 3
+  Columns (Outputs, Active Low) - Mixed Ports:
+    PB6 (J2) - Col 0
+    PA4 (J2) - Col 1
+    PA3 (J2) - Col 2
+    PA2 (J2) - Col 3
 
   Keypad Layout:
-    Col0  Col1  Col2  Col3
-    [1]   [2]   [3]   [A]   Row0
-    [4]   [5]   [6]   [B]   Row1
-    [7]   [8]   [9]   [C]   Row2
-    [*]   [0]   [#]   [D]   Row3
+         Col0  Col1  Col2  Col3
+         PB6   PA4   PA3   PA2
+    Row0 [1]   [2]   [3]   [A]   PC4
+    Row1 [4]   [5]   [6]   [B]   PC5
+    Row2 [7]   [8]   [9]   [C]   PC6
+    Row3 [*]   [0]   [#]   [D]   PC7
 
-POTENTIOMETER (ADC):
---------------------
+  Key Functions:
+    A   = Sign In (open door)
+    *   = Change Password
+    C   = Set Timeout
+    D   = Save/Confirm
+    #   = Cancel/Backspace
+    0-9 = Password digits
+
+--------------------------------------------------------------------------------
+POTENTIOMETER (ADC)
+--------------------------------------------------------------------------------
   PB5 (J1) - ADC0 Channel 11 (AIN11)
-  Range: 0-4095 (12-bit)
-  Scaled Output: 5-30 seconds (for timeout)
+  
+  Wiring:
+    Left pin   -> GND
+    Middle pin -> PB5
+    Right pin  -> 3.3V
+  
+  Configuration:
+    ADC Resolution: 12-bit (0-4095)
+    Sample Sequencer: SS3 (single sample)
+    Scaled Output: 5-30 seconds (for timeout adjustment)
+    
+  Scaling Formula:
+    timeout = 5 + (adc_value * 25) / 4095
 
-RGB LED (Onboard):
-------------------
-  PF1 - Red LED
-  PF2 - Blue LED
-  PF3 - Green LED
+--------------------------------------------------------------------------------
+RGB LED (Onboard)
+--------------------------------------------------------------------------------
+  PF1 (J3) - Red LED
+  PF2 (J4) - Blue LED
+  PF3 (J4) - Green LED
+  
+  Color Definitions:
+    LED_OFF     = 0x00
+    LED_RED     = 0x02 (PF1)
+    LED_BLUE    = 0x04 (PF2)
+    LED_GREEN   = 0x08 (PF3)
+    LED_YELLOW  = 0x0A (PF1 + PF3)
+    LED_CYAN    = 0x0C (PF2 + PF3)
+    LED_MAGENTA = 0x06 (PF1 + PF2)
+    LED_WHITE   = 0x0E (PF1 + PF2 + PF3)
 
-  Color Codes:
-    Blue    = System starting / Processing
-    Yellow  = Verifying password
-    Green   = Success (access granted)
-    Red     = Error (wrong password)
-    Cyan    = Settings mode
+  Color Meanings:
+    Blue    = System starting / Settings mode / Processing
+    Yellow  = Verifying password / Waiting for response
+    Green   = Success / Access granted / Door open
+    Red     = Error / Wrong password / Lockout
+    Cyan    = Timeout adjustment mode (potentiometer active)
 
 ================================================================================
 PHYSICAL WIRING LAYOUT
@@ -85,13 +132,13 @@ PHYSICAL WIRING LAYOUT
 
 J1:                                  J4:
   +3.3V  -> VCC for components         PF2  (Blue LED - onboard)
-  PB5    -> Potentiometer              PF3  (Green LED - onboard)
-  PB0    -> UART RX                    PB3  -> LCD SDA
-  PB1    -> UART TX                    PC4  -> Keypad Row 0
+  PB5    -> Potentiometer middle       PF3  (Green LED - onboard)
+  PB0    -> UART RX (from Backend)     PB3  -> LCD SDA
+  PB1    -> UART TX (to Backend)       PC4  -> Keypad Row 0
                                        PC5  -> Keypad Row 1
 J3:                                    PC6  -> Keypad Row 2
   GND    -> Common Ground              PC7  -> Keypad Row 3
-
+  PF1    (Red LED - onboard)
                                      J2:
                                        GND  -> Common Ground
                                        PB2  -> LCD SCL
@@ -99,6 +146,18 @@ J3:                                    PC6  -> Keypad Row 2
                                        PA4  -> Keypad Col 1
                                        PA3  -> Keypad Col 2
                                        PA2  -> Keypad Col 3
+
+================================================================================
+APPLICATION STATES
+================================================================================
+
+  STATE_WELCOME         - Initial splash screen (2 sec, Blue LED)
+  STATE_SIGNUP          - First-time password creation
+  STATE_MAIN_MENU       - A:Sign *:ChgPwd C:Time #:Cancel
+  STATE_SIGNIN          - Enter password to open door
+  STATE_CHANGE_PASSWORD - Verify old, enter new password
+  STATE_SET_TIMEOUT     - Adjust timeout with potentiometer (Cyan LED)
+  STATE_LOCKOUT         - 3 wrong attempts, buzzer active (Red LED blink)
 
 ================================================================================
 UART PROTOCOL
@@ -110,61 +169,80 @@ Request Format (Frontend -> Backend):
 Response Format (Backend -> Frontend):
   [SOF=0xFE] [LEN] [CMD] [STATUS] [DATA...]
 
-Commands:
-  0x01 - INIT_PASSWORD    LEN=6   Payload: 5 ASCII digits
-  0x02 - AUTH             LEN=7   Payload: MODE + 5 ASCII digits
-  0x03 - SET_TIMEOUT      LEN=2   Payload: SECONDS (5-30)
-  0x04 - CHANGE_PASSWORD  LEN=6   Payload: 5 ASCII digits
-  0x05 - GET_TIMEOUT      LEN=1   No payload
+Commands Sent by Frontend:
+--------------------------
+  CMD 0x01 - INIT_PASSWORD
+    Request:  [0x7E] [6] [0x01] [D1] [D2] [D3] [D4] [D5]
+    Response: [0xFE] [2] [0x01] [STATUS]
+    Purpose:  Store initial password during signup
+
+  CMD 0x02 - AUTH
+    Request:  [0x7E] [7] [0x02] [MODE] [D1] [D2] [D3] [D4] [D5]
+    Response: [0xFE] [3] [0x02] [STATUS] [TIMEOUT] (if mode=1 and OK)
+    Modes:    0x00 = Check only, 0x01 = Open door
+    Purpose:  Verify password, optionally trigger door open
+
+  CMD 0x03 - SET_TIMEOUT
+    Request:  [0x7E] [2] [0x03] [SECONDS]
+    Response: [0xFE] [2] [0x03] [STATUS]
+    Range:    5-30 seconds
+    Purpose:  Store new timeout value
+
+  CMD 0x04 - CHANGE_PASSWORD
+    Request:  [0x7E] [6] [0x04] [D1] [D2] [D3] [D4] [D5]
+    Response: [0xFE] [2] [0x04] [STATUS]
+    Purpose:  Update stored password
+
+  CMD 0x05 - GET_TIMEOUT
+    Request:  [0x7E] [1] [0x05]
+    Response: [0xFE] [3] [0x05] [STATUS] [TIMEOUT]
+    Purpose:  Get timeout value AND activate lockout buzzer
 
 Status Codes:
-  0x00 - OK (Success)
-  0x01 - ERROR (General error)
-  0x02 - AUTH_FAIL (Wrong password)
-  0xFF - UNKNOWN_CMD (Communication timeout)
+  0x00 = STATUS_OK         - Success
+  0x01 = STATUS_ERROR      - General error
+  0x02 = STATUS_AUTH_FAIL  - Wrong password
+  0xFF = STATUS_UNKNOWN    - Communication timeout (frontend-only)
 
 ================================================================================
-APPLICATION STATES
+COMMUNICATION ERROR HANDLING
 ================================================================================
 
-  STATE_WELCOME        - Initial splash screen
-  STATE_SIGNUP         - Create password (first time)
-  STATE_MAIN_MENU      - A:Sign B:ChgPwd C:Time
-  STATE_SIGNIN         - Enter password to open door
-  STATE_CHANGE_PASSWORD- Verify old, enter new password
-  STATE_SET_TIMEOUT    - Adjust timeout with potentiometer
-  STATE_DOOR_OPEN      - Door opening countdown
-  STATE_DOOR_CLOSING   - Door closing message
-  STATE_LOCKOUT        - Buzzer active after 3 wrong attempts
+  - Automatic retry: 3 attempts per command
+  - SOF search: Up to 100 bytes to find response start
+  - UART re-init: After 2 consecutive failures
+  - RX buffer flush: Before each command send
+  - Timeout loops: ~2,000,000 iterations per byte
 
 ================================================================================
-MENU KEYS
+TIMING SPECIFICATIONS
 ================================================================================
 
-  A - Sign In (open door)
-  B - Change Password
-  C - Set Timeout
-  D - Save/Confirm
-  # - Cancel/Backspace
-  * - (unused)
-  0-9 - Password digits
+  Welcome Screen:        2000 ms
+  Message Display:       1500 ms
+  Password Entry:        Blocking (waits for 5 digits)
+  UART Response Wait:    ~1 second timeout
+  Retry Delay:           100 ms between retries
+  Post-Send Delay:       50 ms (backend processing time)
+  Lockout Countdown:     5-30 seconds (from backend)
 
 ================================================================================
 CONNECTIONS CHECKLIST
 ================================================================================
 
-[ ] UART
+[ ] UART (Cross-connect with Backend)
     [ ] PB0 (Frontend RX) <-> PB1 (Backend TX)
     [ ] PB1 (Frontend TX) <-> PB0 (Backend RX)
-    [ ] GND <-> GND (common ground!)
+    [ ] GND <-> GND (CRITICAL: common ground!)
 
-[ ] LCD (I2C)
-    [ ] PB2 -> SCL
-    [ ] PB3 -> SDA
-    [ ] VCC -> 3.3V
+[ ] LCD (I2C via PCF8574)
+    [ ] PB2 -> LCD SCL
+    [ ] PB3 -> LCD SDA
+    [ ] VCC -> 3.3V or 5V
     [ ] GND -> GND
+    [ ] Verify I2C address (0x27 or 0x3F)
 
-[ ] Keypad
+[ ] Keypad (4x4 Matrix)
     [ ] PC4 -> Row 0
     [ ] PC5 -> Row 1
     [ ] PC6 -> Row 2
@@ -178,3 +256,28 @@ CONNECTIONS CHECKLIST
     [ ] Left pin -> GND
     [ ] Middle pin -> PB5
     [ ] Right pin -> 3.3V
+
+[ ] Power
+    [ ] LaunchPad powered via USB
+    [ ] Common ground with backend board
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+frontend/
+├── main.c                 - Entry point, clock & SysTick init
+├── frontend.c             - State machine, UI logic
+├── frontend.h             - State enum, function prototypes
+├── uart_comm.c            - UART protocol implementation
+├── uart_comm.h            - Command/status definitions
+├── HAL/
+│   ├── lcd.c/h            - I2C LCD driver (PCF8574 + HD44780)
+│   ├── keypad.c/h         - 4x4 matrix keypad driver
+│   ├── led.c/h            - RGB LED control
+│   └── potentiometer.c/h  - ADC driver for timeout adjustment
+├── MCAL/
+│   └── systick.c/h        - SysTick timer for delays
+└── lib/                   - TivaWare library files
+
+================================================================================

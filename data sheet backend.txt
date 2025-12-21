@@ -23,57 +23,73 @@ PA5    PE2         PD6   PA4
 PA6    PE3         PD7   PA3
 PA7    PF1         PF4   PA2
 
-UART1 (Communication with Frontend):
-------------------------------------
+--------------------------------------------------------------------------------
+UART1 (Communication with Frontend)
+--------------------------------------------------------------------------------
   PB0 (J1) - UART1 RX    <- Connect to Frontend TX (PB1)
   PB1 (J1) - UART1 TX    -> Connect to Frontend RX (PB0)
-  Baud Rate: 115200, 8N1
+  
+  Configuration:
+    Baud Rate: 115200
+    Data Bits: 8
+    Stop Bits: 1
+    Parity: None
+    FIFO: Enabled (1/8 level trigger)
+    Interrupts: RX and RT (receive timeout)
 
-MOTOR (DC Motor via H-Bridge Driver):
--------------------------------------
-  PC4 (J4) - Motor IN1   -> H-Bridge IN1 (Forward)
-  PC5 (J4) - Motor IN2   -> H-Bridge IN2 (Reverse)
+--------------------------------------------------------------------------------
+MOTOR (DC Motor via H-Bridge Driver)
+--------------------------------------------------------------------------------
+  PF0 (J2) - Motor IN1   -> H-Bridge IN1 (Clockwise / Door Open)
+  PF4 (J2) - Motor IN2   -> H-Bridge IN2 (Counter-Clockwise / Door Close)
+  
+  Note: PF0 requires unlocking (NMI pin)
   
   Motor Control Logic:
-    Forward (Door Open):  IN1=HIGH, IN2=LOW  (Green LED on)
-    Reverse (Door Close): IN1=LOW,  IN2=HIGH (Red LED on)
-    Stop:                 IN1=LOW,  IN2=LOW  (LEDs off)
+    Clockwise (Door Open):   IN1=HIGH, IN2=LOW
+    Counter-CW (Door Close): IN1=LOW,  IN2=HIGH
+    Stop:                    IN1=LOW,  IN2=LOW
 
   H-Bridge Connections:
     Motor+  -> H-Bridge OUT1
     Motor-  -> H-Bridge OUT2
     VCC     -> External 5V-12V (motor power)
     GND     -> Common Ground
+    Logic VCC -> 3.3V (if required by H-Bridge)
 
-STATUS LEDs (Onboard RGB):
---------------------------
-  PF1 (J3) - Red LED     -> Door closing indicator
-  PF2 (J4) - Blue LED    -> Debug/status indicator
-  PF3 (J4) - Green LED   -> Door opening indicator
+--------------------------------------------------------------------------------
+STATUS LEDs (Onboard RGB - Used for Response Indication)
+--------------------------------------------------------------------------------
+  PF1 (J3) - Red LED     -> Error/Auth fail indicator
+  PF3 (J4) - Green LED   -> Success/OK indicator
 
   LED Behavior:
-    Green ON     = Motor forward (door opening)
-    Red ON       = Motor reverse (door closing)
-    Blue Blink   = Command received/response sent
-    All OFF      = Idle/motor stopped
+    Green Blink (2x) = Response sent with STATUS_OK
+    Red Blink (2x)   = Response sent with STATUS_ERROR or AUTH_FAIL
+    Green ON         = Processing command
+    All OFF          = Idle
 
-BUZZER (Active Buzzer):
------------------------
+--------------------------------------------------------------------------------
+BUZZER (Active Buzzer)
+--------------------------------------------------------------------------------
   PA5 (J1) - Buzzer Signal -> Buzzer positive (long leg)
   GND      - Buzzer Ground -> Buzzer negative (short leg)
   
   Buzzer Activation:
-    - Activated during lockout (3 wrong password attempts)
+    - Activated by BuzzerService when GET_TIMEOUT command received
     - Duration: Same as configured timeout (5-30 seconds)
+    - Automatically turns off via Timer0 interrupt
 
-EEPROM (Internal):
-------------------
-  Password Offset:    0x00 (4 bytes, uint32_t)
-  Timeout Offset:     0x04 (4 bytes, uint32_t)
+--------------------------------------------------------------------------------
+EEPROM (Internal)
+--------------------------------------------------------------------------------
+  Password Offset:      0x00 (4 bytes, uint32_t)
+  Timeout Offset:       0x04 (4 bytes, uint32_t)
+  Potentiometer Offset: 0x08 (4 bytes, uint32_t) - Reserved
   
   Default Values:
     Password: Set by user on first signup
-    Timeout:  10 seconds (if EEPROM is blank/0xFFFFFFFF)
+    Timeout:  11 seconds (if EEPROM is blank/0xFFFFFFFF or 0)
 
 ================================================================================
 PHYSICAL WIRING LAYOUT
@@ -83,14 +99,14 @@ PHYSICAL WIRING LAYOUT
         ===================              ====================
 
 J1:                                  J4:
-  +3.3V  -> VCC for logic              PF2  (Blue LED - Debug)
-  PB0    -> UART RX (from Frontend)    PF3  (Green LED - Door Open)
-  PB1    -> UART TX (to Frontend)      PC4  -> Motor IN1 (Forward)
-  PA5    -> Buzzer Signal              PC5  -> Motor IN2 (Reverse)
-
-J3:                                  J2:
-  GND    -> Common Ground              GND  -> Common Ground
-  PF1    (Red LED - Door Close)
+  +3.3V  -> VCC for logic              PF2  (Blue LED - unused)
+  PB0    -> UART RX (from Frontend)    PF3  (Green LED - OK indicator)
+  PB1    -> UART TX (to Frontend)
+  PA5    -> Buzzer Signal            J2:
+                                       GND  -> Common Ground
+J3:                                    PF0  -> Motor IN1 (CW)
+  GND    -> Common Ground              PF4  -> Motor IN2 (CCW)
+  PF1    (Red LED - Error indicator)
 
 ================================================================================
 UART PROTOCOL
@@ -108,40 +124,36 @@ COMMAND HANDLERS:
 CMD 0x01 - INIT_PASSWORD
   Request:  [0x7E] [6] [0x01] [D1] [D2] [D3] [D4] [D5]
   Response: [0xFE] [2] [0x01] [STATUS]
-  Action:   Store 5-digit password in EEPROM
+  Action:   Convert 5 ASCII digits to uint32, store in EEPROM
 
 CMD 0x02 - AUTH
   Request:  [0x7E] [7] [0x02] [MODE] [D1] [D2] [D3] [D4] [D5]
-  Response: [0xFE] [2] [0x02] [STATUS]
+  Response: [0xFE] [2] [0x02] [STATUS]           (mode=0)
+            [0xFE] [3] [0x02] [STATUS] [TIMEOUT] (mode=1, if OK)
   Modes:    0x00 = Check only, 0x01 = Open door
-  Action:   Verify password, set pending_open_door flag if mode=1
+  Action:   
+    - Verify password against EEPROM
+    - If mode=1 and OK: Get timeout, send response with timeout,
+      then call DoorController_OpenDoor(timeout)
 
 CMD 0x03 - SET_TIMEOUT
   Request:  [0x7E] [2] [0x03] [SECONDS]
   Response: [0xFE] [2] [0x03] [STATUS]
-  Range:    5-30 seconds
+  Range:    5-30 seconds (validated)
   Action:   Store timeout value in EEPROM
 
 CMD 0x04 - CHANGE_PASSWORD
   Request:  [0x7E] [6] [0x04] [D1] [D2] [D3] [D4] [D5]
   Response: [0xFE] [2] [0x04] [STATUS]
-  Action:   Update password in EEPROM
+  Action:   Convert 5 ASCII digits to uint32, update EEPROM
 
-CMD 0x05 - GET_TIMEOUT
+CMD 0x05 - GET_TIMEOUT (Lockout Command)
   Request:  [0x7E] [1] [0x05]
   Response: [0xFE] [3] [0x05] [STATUS] [TIMEOUT_VALUE]
-  Action:   If pending_open_door: return timeout (no buzzer)
-            Else: return timeout AND activate buzzer (lockout)
-
-CMD 0x06 - CLOSE_DOOR
-  Request:  [0x7E] [1] [0x06]
-  Response: [0xFE] [2] [0x06] [STATUS]
-  Action:   Respond immediately, then motor REVERSE 3 seconds
-
-CMD 0x07 - OPEN_DOOR
-  Request:  [0x7E] [1] [0x07]
-  Response: [0xFE] [2] [0x07] [STATUS]
-  Action:   Respond immediately, then motor FORWARD 3 seconds
+  Action:   
+    - Read timeout from EEPROM
+    - Activate BuzzerService for timeout duration
+    - Send response with timeout value
 
 STATUS CODES:
 -------------
@@ -150,48 +162,77 @@ STATUS CODES:
   0x02 - UART_STATUS_AUTH_FAIL Wrong password
 
 ================================================================================
-MOTOR OPERATION SEQUENCE
+DOOR CONTROLLER (Automated Sequence)
 ================================================================================
 
-DOOR OPEN SEQUENCE:
-  1. Frontend sends CMD_OPEN_DOOR
-  2. Backend responds immediately with STATUS_OK
-  3. Backend runs motor FORWARD for 3 seconds
-  4. Green LED (PF3) ON during forward
-  5. Motor stops, Green LED OFF
-
-DOOR CLOSE SEQUENCE:
-  1. Frontend sends CMD_CLOSE_DOOR
-  2. Backend responds immediately with STATUS_OK
-  3. Backend runs motor REVERSE for 3 seconds
-  4. Red LED (PF1) ON during reverse
-  5. Motor stops, Red LED OFF
-
-COMPLETE DOOR CYCLE:
-  AUTH (mode=1) -> GET_TIMEOUT -> OPEN_DOOR -> [countdown] -> CLOSE_DOOR
-
-================================================================================
-LOCKOUT OPERATION
-================================================================================
-
-TRIGGER: 3 consecutive wrong password attempts (tracked by frontend)
+The DoorController module handles the complete door open/close sequence
+automatically using Timer1.
 
 SEQUENCE:
-  1. Frontend sends CMD_GET_TIMEOUT (without prior AUTH mode=1)
-  2. Backend detects no pending_open_door flag
-  3. Backend activates buzzer for timeout duration
-  4. Backend responds with timeout value
-  5. Frontend shows lockout countdown
-  6. Buzzer stops after timeout expires
+  1. DoorController_OpenDoor(seconds) called by AUTH handler
+  2. Motor starts CW (door opens)
+  3. Timer1 runs for 'seconds' duration
+  4. Timer1 ISR triggers: Motor switches to CCW (door closes)
+  5. Timer1 runs for 2 seconds (fixed close time)
+  6. Timer1 ISR triggers: Motor stops, state returns to IDLE
+
+STATES:
+  DOOR_IDLE    - Door closed, not moving
+  DOOR_OPENING - Motor CW, door opening
+  DOOR_CLOSING - Motor CCW, door closing
+
+TIMING:
+  Open Duration:  5-30 seconds (from EEPROM timeout)
+  Close Duration: 2 seconds (fixed)
 
 ================================================================================
-DEBUG LED PATTERNS (Blue LED - PF2)
+BUZZER SERVICE (Lockout Alarm)
 ================================================================================
 
-  1 blink  = System starting / Command received
-  2 blinks = Response sent successfully
-  3 blinks = Error response sent
-  Solid ON = Processing command
+The BuzzerService module handles lockout buzzer with automatic timeout
+using Timer0.
+
+ACTIVATION:
+  - Triggered by GET_TIMEOUT command (CMD 0x05)
+  - Buzzer turns ON immediately
+  - Timer0 starts for timeout duration
+  - Timer0 ISR automatically turns buzzer OFF
+
+FUNCTIONS:
+  BuzzerService_Init()      - Initialize buzzer GPIO and Timer0
+  BuzzerService_Activate(s) - Turn on buzzer for 's' seconds
+  BuzzerService_Cancel()    - Immediately stop buzzer
+  BuzzerService_IsActive()  - Check if buzzer is currently on
+
+================================================================================
+TIMER USAGE
+================================================================================
+
+Timer0 (Full 32-bit mode):
+  - Used by: BuzzerService
+  - Purpose: Automatic buzzer timeout
+  - ISR: Timer0A_Handler (turns off buzzer)
+
+Timer1 (Full 32-bit mode):
+  - Used by: DoorController
+  - Purpose: Door open/close timing
+  - ISR: Timer1A_Handler (state transitions)
+
+Note: Both timers use full 32-bit mode (A+B concatenated).
+Only Timer A generates the timeout interrupt in this configuration.
+ISR handlers must be registered in startup_ewarm.c vector table.
+
+================================================================================
+INITIALIZATION SEQUENCE (main.c)
+================================================================================
+
+  1. Set system clock to 16 MHz
+  2. Enable and initialize EEPROM peripheral
+  3. Set default timeout if EEPROM is blank
+  4. Initialize BuzzerService (buzzer GPIO + Timer0)
+  5. Initialize DoorController (motor GPIO + Timer1)
+  6. Initialize UART_Handler (UART1 + status LEDs)
+  7. Enter main loop: UART_ProcessPending()
 
 ================================================================================
 CONNECTIONS CHECKLIST
@@ -203,8 +244,8 @@ CONNECTIONS CHECKLIST
     [ ] GND <-> GND (CRITICAL: common ground!)
 
 [ ] Motor (via H-Bridge)
-    [ ] PC4 -> H-Bridge IN1
-    [ ] PC5 -> H-Bridge IN2
+    [ ] PF0 -> H-Bridge IN1 (CW)
+    [ ] PF4 -> H-Bridge IN2 (CCW)
     [ ] H-Bridge OUT1 -> Motor+
     [ ] H-Bridge OUT2 -> Motor-
     [ ] H-Bridge VCC -> External motor power (5-12V)
@@ -225,19 +266,24 @@ TIMING SPECIFICATIONS
 ================================================================================
 
 Motor Operations:
-  Door Open Duration:   3 seconds (forward)
-  Door Close Duration:  3 seconds (reverse)
+  Door Open Duration:   5-30 seconds (configurable via EEPROM)
+  Door Close Duration:  2 seconds (fixed)
 
 UART:
   Baud Rate:           115200 bps
   Response Time:       < 10 ms (for non-motor commands)
+  FIFO Level:          1/8 (2 bytes trigger)
 
 EEPROM:
   Write Time:          ~6 ms per word
   Read Time:           Immediate
 
 Buzzer:
-  Lockout Duration:    5-30 seconds (configurable)
+  Lockout Duration:    5-30 seconds (from EEPROM timeout)
+
+LED Blink:
+  On Time:             50 ms
+  Off Time:            50 ms
 
 ================================================================================
 MEMORY MAP
@@ -246,34 +292,40 @@ MEMORY MAP
 EEPROM Layout:
   0x0000 - 0x0003: Password (uint32_t, 5 digits as number)
   0x0004 - 0x0007: Timeout (uint32_t, seconds)
-  0x0008 - 0x000B: (Reserved for future use)
+  0x0008 - 0x000B: Potentiometer (uint32_t, reserved)
 
-RAM Variables:
-  pending_open_door:   Flag set by AUTH mode=1, cleared by GET_TIMEOUT
-  packet_ready:        Flag set by ISR when packet received
-  rx_state:            UART receive state machine
+RAM Variables (uart_handler.c):
+  rx_state:       UART receive state machine
+  rx_buf[32]:     Receive buffer
+  packet_buf[32]: Processed packet buffer
+  packet_ready:   Flag for main loop processing
+  packet_len:     Length of received packet
+
+RAM Variables (door_controller.c):
+  doorState:      Current door state (IDLE/OPENING/CLOSING)
+
+RAM Variables (buzzer_service.c):
+  buzzer_active:  Buzzer on/off state
 
 ================================================================================
 FILE STRUCTURE
 ================================================================================
 
 backend/
-├── main.c                 - Main loop, system init
-├── uart_handler.c         - UART protocol, command dispatch
-├── uart_handler.h         - Command/status definitions
-├── eeprom_handler.c       - Password & timeout EEPROM access
-├── eeprom_handler.h       - EEPROM offsets, function prototypes
-├── components/
-│   ├── motor.c            - Motor GPIO, forward/reverse/stop
-│   ├── motor.h            - Motor state enum, function prototypes
-│   ├── buzzer.c           - Buzzer GPIO control
-│   ├── buzzer.h           - Buzzer function prototypes
-│   ├── timeout.c          - Timeout activation (buzzer)
-│   ├── timeout.h          - Timeout function prototypes
-│   ├── timer.c            - Timer utilities
-│   └── timer.h            - Timer function prototypes
-├── lib/                   - TivaWare library files
-├── MCAL/                  - Low-level drivers
-└── data sheet backend.txt - This file
+├── main.c                      - Entry point, init sequence
+├── application/
+│   ├── uart_handler.c/h        - UART protocol, command dispatch
+│   ├── eeprom_handler.c/h      - Password & timeout EEPROM access
+│   ├── door_controller.c/h     - Automated door sequence (Timer1)
+│   └── buzzer_service.c/h      - Lockout buzzer control (Timer0)
+├── HAL/
+│   ├── motor.c/h               - Motor GPIO control (PF0, PF4)
+│   ├── buzzer.c/h              - Buzzer GPIO control (PA5)
+│   ├── timeout.c/h             - DEPRECATED (use buzzer_service)
+│   └── timer.c/h               - DEPRECATED (use door_controller)
+├── MCAL/
+│   └── gptm.c/h                - Timer0 & Timer1 drivers
+├── lib/                        - TivaWare library files
+└── ARCHITECTURE.md             - Architecture documentation
 
 ================================================================================

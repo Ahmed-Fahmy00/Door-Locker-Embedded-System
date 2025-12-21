@@ -19,26 +19,25 @@ A two-MCU embedded security system using TM4C123GH6PM (Tiva C LaunchPad).
 │   Screen    │     │ (1st time)  │     │             │
 └─────────────┘     └─────────────┘     └──────┬──────┘
                                                │
-                         ┌─────────────────────┼─────────────────────┐
-                         v                     v                     v
-                   ┌──────────┐          ┌──────────┐          ┌──────────┐
-                   │ Sign In  │          │  Change  │          │   Set    │
-                   │   (A)    │          │ Pass (B) │          │ Time (C) │
-                   └────┬─────┘          └──────────┘          └──────────┘
-                        │
-           ┌────────────┼────────────┐
-           v            v            v
-     ┌──────────┐ ┌──────────┐ ┌──────────┐
-     │ Success  │ │  Wrong   │ │ Lockout  │
-     │Door Opens│ │ Password │ │ (Buzzer) │
-     └────┬─────┘ └──────────┘ └──────────┘
-          │
-          v
-     ┌──────────┐     ┌──────────┐     ┌──────────┐
-     │  Motor   │────>│ Countdown│────>│  Motor   │
-     │ Forward  │     │ (5-30s)  │     │ Reverse  │
-     │  3 sec   │     │          │     │  3 sec   │
-     └──────────┘     └──────────┘     └──────────┘
+                    ┌──────────────────────────┼──────────────────────────┐
+                    v                          v                          v
+              ┌──────────┐              ┌──────────┐              ┌──────────┐
+              │ Sign In  │              │  Change  │              │   Set    │
+              │   (A)    │              │ Pass (*) │              │ Time (C) │
+              └────┬─────┘              └──────────┘              └──────────┘
+                   │
+      ┌────────────┼────────────┐
+      v            v            v
+┌──────────┐ ┌──────────┐ ┌──────────┐
+│ Success  │ │  Wrong   │ │ Lockout  │
+│Door Opens│ │ Password │ │ (Buzzer) │
+└────┬─────┘ └──────────┘ └──────────┘
+     │
+     v
+┌──────────────────────────────────────┐
+│  Automated Door Sequence (Backend)   │
+│  Motor CW (open) → Timer → Motor CCW │
+└──────────────────────────────────────┘
 ```
 
 ---
@@ -48,7 +47,7 @@ A two-MCU embedded security system using TM4C123GH6PM (Tiva C LaunchPad).
 | Key | Function                    |
 | --- | --------------------------- |
 | A   | Sign In (open door)         |
-| B   | Change Password             |
+| \*  | Change Password             |
 | C   | Set Timeout (potentiometer) |
 | D   | Save/Confirm                |
 | #   | Cancel/Backspace            |
@@ -60,69 +59,65 @@ A two-MCU embedded security system using TM4C123GH6PM (Tiva C LaunchPad).
 
 ### Frontend (HMI_ECU)
 
-#### UART
+#### UART1
 
 | Signal | Pin | Description     |
 | ------ | --- | --------------- |
 | RX     | PB0 | From Backend TX |
 | TX     | PB1 | To Backend RX   |
 
-#### LCD (I2C)
+#### LCD (I2C0 - PCF8574 Backpack)
 
-| Signal | Pin | Description |
-| ------ | --- | ----------- |
-| SCL    | PB2 | I2C Clock   |
-| SDA    | PB3 | I2C Data    |
+| Signal | Pin | Description    |
+| ------ | --- | -------------- |
+| SCL    | PB2 | I2C Clock      |
+| SDA    | PB3 | I2C Data       |
+| Addr   | -   | 0x27 (or 0x3F) |
 
-#### Keypad Rows (Input with Pull-up)
+#### Keypad (4x4 Matrix)
 
-| Signal | Pin |
-| ------ | --- |
-| Row 0  | PC4 |
-| Row 1  | PC5 |
-| Row 2  | PC6 |
-| Row 3  | PC7 |
+| Signal | Pin | Type               |
+| ------ | --- | ------------------ |
+| Row 0  | PC4 | Input with Pull-up |
+| Row 1  | PC5 | Input with Pull-up |
+| Row 2  | PC6 | Input with Pull-up |
+| Row 3  | PC7 | Input with Pull-up |
+| Col 0  | PB6 | Output             |
+| Col 1  | PA4 | Output             |
+| Col 2  | PA3 | Output             |
+| Col 3  | PA2 | Output             |
 
-#### Keypad Columns (Output)
+#### Potentiometer (ADC)
 
-| Signal | Pin |
-| ------ | --- |
-| Col 0  | PB6 |
-| Col 1  | PA4 |
-| Col 2  | PA3 |
-| Col 3  | PA2 |
-
-#### Potentiometer
-
-| Signal | Pin | Description |
-| ------ | --- | ----------- |
-| Signal | PB5 | ADC (AIN11) |
+| Signal | Pin | Description         |
+| ------ | --- | ------------------- |
+| Signal | PB5 | ADC0 AIN11 (0-4095) |
 
 #### RGB LED (Onboard)
 
-| Color | Pin | Meaning       |
-| ----- | --- | ------------- |
-| Red   | PF1 | Error/Lockout |
-| Blue  | PF2 | Processing    |
-| Green | PF3 | Success       |
+| Color | Pin | Meaning             |
+| ----- | --- | ------------------- |
+| Red   | PF1 | Error/Lockout       |
+| Blue  | PF2 | Processing/Settings |
+| Green | PF3 | Success             |
 
 ---
 
 ### Backend (Control_ECU)
 
-#### UART
+#### UART1
 
 | Signal | Pin | Description      |
 | ------ | --- | ---------------- |
 | RX     | PB0 | From Frontend TX |
 | TX     | PB1 | To Frontend RX   |
 
-#### Motor (via H-Bridge on J4)
+#### Motor (via H-Bridge)
 
-| Signal        | Pin | Description   |
-| ------------- | --- | ------------- |
-| IN1 (Forward) | PC4 | Motor forward |
-| IN2 (Reverse) | PC5 | Motor reverse |
+| Signal | Pin | Description |
+| ------ | --- | ----------- |
+| IN1    | PF0 | Motor CW    |
+| IN2    | PF4 | Motor CCW   |
 
 #### Buzzer
 
@@ -132,11 +127,10 @@ A two-MCU embedded security system using TM4C123GH6PM (Tiva C LaunchPad).
 
 #### Status LEDs (Onboard)
 
-| Color | Pin | Meaning      |
-| ----- | --- | ------------ |
-| Red   | PF1 | Door closing |
-| Blue  | PF2 | Debug        |
-| Green | PF3 | Door opening |
+| Color | Pin | Meaning         |
+| ----- | --- | --------------- |
+| Red   | PF1 | Error/Auth fail |
+| Green | PF3 | Success/OK      |
 
 ---
 
@@ -154,15 +148,13 @@ Response: [SOF=0xFE] [LEN] [CMD] [STATUS] [DATA...]
 
 ### Commands
 
-| CMD  | Name            | Payload         | Response         | Description        |
-| ---- | --------------- | --------------- | ---------------- | ------------------ |
-| 0x01 | INIT_PASSWORD   | 5 digits        | STATUS           | Create password    |
-| 0x02 | AUTH            | MODE + 5 digits | STATUS           | Authenticate       |
-| 0x03 | SET_TIMEOUT     | SECONDS         | STATUS           | Set timeout (5-30) |
-| 0x04 | CHANGE_PASSWORD | 5 digits        | STATUS           | Change password    |
-| 0x05 | GET_TIMEOUT     | -               | STATUS + TIMEOUT | Get timeout value  |
-| 0x06 | CLOSE_DOOR      | -               | STATUS           | Motor reverse 3s   |
-| 0x07 | OPEN_DOOR       | -               | STATUS           | Motor forward 3s   |
+| CMD  | Name            | Payload         | Response Data    | Description                   |
+| ---- | --------------- | --------------- | ---------------- | ----------------------------- |
+| 0x01 | INIT_PASSWORD   | 5 ASCII digits  | -                | Create password (signup)      |
+| 0x02 | AUTH            | MODE + 5 digits | TIMEOUT (mode=1) | Authenticate + auto door open |
+| 0x03 | SET_TIMEOUT     | SECONDS (5-30)  | -                | Set door open duration        |
+| 0x04 | CHANGE_PASSWORD | 5 ASCII digits  | -                | Change password               |
+| 0x05 | GET_TIMEOUT     | -               | TIMEOUT          | Get timeout + activate buzzer |
 
 ### Status Codes
 
@@ -171,55 +163,57 @@ Response: [SOF=0xFE] [LEN] [CMD] [STATUS] [DATA...]
 | 0x00 | OK        | Success        |
 | 0x01 | ERROR     | General error  |
 | 0x02 | AUTH_FAIL | Wrong password |
+| 0xFF | UNKNOWN   | Comm timeout   |
 
 ### Auth Modes (CMD 0x02)
 
 | Mode | Description                                  |
 | ---- | -------------------------------------------- |
 | 0x00 | Check only (for change password/set timeout) |
-| 0x01 | Open door (sets pending_open_door flag)      |
+| 0x01 | Open door (triggers automated door sequence) |
 
 ---
 
-## Door Open Sequence
+## Door Open Sequence (Automated)
+
+When AUTH with mode=1 succeeds, the backend automatically:
+
+1. Responds with STATUS_OK + timeout value
+2. Starts motor CW (door opens) for `timeout` seconds
+3. Automatically reverses motor CCW (door closes) for 2 seconds
+4. Returns to idle
 
 ```
 Frontend                          Backend
    │                                 │
-   │──── AUTH (mode=1) ─────────────>│ Verify password
-   │<─── STATUS_OK ──────────────────│ Set pending_open_door
+   │──── AUTH (mode=1, pwd) ────────>│ Verify password
+   │<─── STATUS_OK + TIMEOUT ────────│ Start DoorController
+   │                                 │ Motor CW for timeout sec
+   │     [Show countdown]            │ (Green LED blinks)
    │                                 │
-   │──── GET_TIMEOUT ───────────────>│ Return timeout
-   │<─── STATUS_OK + TIMEOUT ────────│ Clear pending_open_door
+   │                                 │ [Timer expires]
+   │                                 │ Motor CCW for 2 sec
+   │                                 │ (Red LED blinks)
    │                                 │
-   │──── OPEN_DOOR ─────────────────>│ Respond immediately
-   │<─── STATUS_OK ──────────────────│ Motor FORWARD 3 sec
-   │                                 │ (Green LED)
-   │     [Wait 3.5 sec]              │
-   │     [Show countdown]            │
-   │                                 │
-   │──── CLOSE_DOOR ────────────────>│ Respond immediately
-   │<─── STATUS_OK ──────────────────│ Motor REVERSE 3 sec
-   │                                 │ (Red LED)
-   │     [Wait 3.5 sec]              │
-   │                                 │
+   │                                 │ Motor stops, IDLE
 ```
 
 ---
 
 ## Lockout Sequence
 
-Triggered after 3 wrong password attempts:
+Triggered after 3 wrong password attempts (tracked by frontend):
 
 ```
 Frontend                          Backend
    │                                 │
-   │──── GET_TIMEOUT ───────────────>│ No pending_open_door
-   │<─── STATUS_OK + TIMEOUT ────────│ Activate BUZZER
+   │──── GET_TIMEOUT ───────────────>│ Activate BuzzerService
+   │<─── STATUS_OK + TIMEOUT ────────│ Buzzer ON for timeout sec
    │                                 │
    │     [Show lockout countdown]    │ [Buzzer sounds]
    │     [Red LED blinks]            │
-   │                                 │
+   │                                 │ [Timer expires]
+   │                                 │ Buzzer OFF
 ```
 
 ---
@@ -238,22 +232,21 @@ Frontend                          Backend
 
 ### Backend LEDs
 
-| LED         | Meaning                      |
-| ----------- | ---------------------------- |
-| Green (PF3) | Motor forward (door opening) |
-| Red (PF1)   | Motor reverse (door closing) |
-| Blue (PF2)  | Debug (blinks on commands)   |
+| LED         | Meaning                  |
+| ----------- | ------------------------ |
+| Green (PF3) | Success/OK response      |
+| Red (PF1)   | Error/Auth fail response |
 
 ---
 
 ## Timing
 
-| Operation                  | Duration                       |
-| -------------------------- | ------------------------------ |
-| Door Open (motor forward)  | 3 seconds                      |
-| Door Close (motor reverse) | 3 seconds                      |
-| Door Open Countdown        | 5-30 seconds (configurable)    |
-| Lockout Duration           | 5-30 seconds (same as timeout) |
+| Operation               | Duration                       |
+| ----------------------- | ------------------------------ |
+| Door Open (motor CW)    | 5-30 seconds (configurable)    |
+| Door Close (motor CCW)  | 2 seconds (fixed)              |
+| Lockout/Buzzer Duration | 5-30 seconds (same as timeout) |
+| Default Timeout         | 11 seconds                     |
 
 ---
 
@@ -262,30 +255,46 @@ Frontend                          Backend
 ```
 Door-Locker-Embedded-System/
 ├── frontend/
-│   ├── main.c
+│   ├── main.c                # Entry point, clock setup
 │   ├── frontend.c/h          # State machine, UI logic
-│   ├── uart_comm.c/h         # UART communication
-│   ├── components/
-│   │   ├── lcd.c/h
-│   │   ├── keypad.c/h
-│   │   ├── led.c/h
-│   │   └── potentiometer.c/h
+│   ├── uart_comm.c/h         # UART protocol layer
+│   ├── HAL/
+│   │   ├── lcd.c/h           # I2C LCD driver (PCF8574)
+│   │   ├── keypad.c/h        # 4x4 matrix keypad
+│   │   ├── led.c/h           # RGB LED control
+│   │   └── potentiometer.c/h # ADC for timeout
 │   └── MCAL/
+│       └── systick.c/h       # Delay functions
 │
 ├── backend/
-│   ├── main.c
-│   ├── uart_handler.c/h      # UART protocol, commands
-│   ├── eeprom_handler.c/h    # Password & timeout storage
-│   ├── components/
-│   │   ├── motor.c/h
-│   │   ├── buzzer.c/h
-│   │   └── timeout.c/h
+│   ├── main.c                # Entry point, init sequence
+│   ├── application/
+│   │   ├── uart_handler.c/h  # UART protocol, commands
+│   │   ├── eeprom_handler.c/h# Password & timeout storage
+│   │   ├── door_controller.c/h # Automated door sequence
+│   │   └── buzzer_service.c/h  # Lockout buzzer control
+│   ├── HAL/
+│   │   ├── motor.c/h         # Motor GPIO control
+│   │   └── buzzer.c/h        # Buzzer GPIO control
 │   └── MCAL/
+│       └── gptm.c/h          # Timer0 & Timer1 drivers
 │
-├── SYSTEM_DOCUMENTATION.txt  # Full system documentation
+├── tests/                    # Test files
 ├── data sheet frontend.txt   # Frontend wiring details
+├── data sheet backend.txt    # Backend wiring details
+├── SYSTEM_DOCUMENTATION.txt  # Full system documentation
 └── README.md                 # This file
 ```
+
+---
+
+## EEPROM Memory Map
+
+| Offset | Size | Description              |
+| ------ | ---- | ------------------------ |
+| 0x00   | 4    | Password (uint32_t)      |
+| 0x04   | 4    | Timeout (uint32_t)       |
+| 0x08   | 4    | Potentiometer (reserved) |
 
 ---
 
@@ -296,15 +305,4 @@ Door-Locker-Embedded-System/
 3. **Common ground** between both boards
 4. **Power both boards** via USB
 5. **First boot:** Create 5-digit password
-6. **Use menu:** A=Sign In, B=Change Password, C=Set Timeout
-
----
-
-## Documentation Files
-
-| File                             | Description                     |
-| -------------------------------- | ------------------------------- |
-| `SYSTEM_DOCUMENTATION.txt`       | Complete system documentation   |
-| `data sheet frontend.txt`        | Frontend pin assignments/wiring |
-| `backend/data sheet backend.txt` | Backend pin assignments/wiring  |
-| `frontend/WIRING_GUIDE.txt`      | Frontend wiring checklist       |
+6. **Use menu:** A=Sign In, \*=Change Password, C=Set Timeout
