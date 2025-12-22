@@ -2842,6 +2842,51 @@
         </settings>
     </configuration>
     <group>
+        <name>application</name>
+        <file>
+            <name>$PROJ_DIR$\application\application.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\application.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\auth_handlers.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\auth_handlers.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\input_handler.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\input_handler.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\menu_handlers.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\menu_handlers.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_commands.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_commands.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_protocol.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_protocol.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\ui_display.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\ui_display.h</name>
+        </file>
+    </group>
+    <group>
         <name>HAL</name>
         <file>
             <name>$PROJ_DIR$\HAL\keypad.c</name>
@@ -2903,20 +2948,14 @@
         <file>
             <name>$PROJ_DIR$\MCAL\systick.h</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\uart.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\uart.h</name>
+        </file>
     </group>
     <file>
-        <name>$PROJ_DIR$\frontend.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\frontend.h</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\main.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\uart_comm.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\uart_comm.h</name>
     </file>
 </project>

@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include "driverlib/sysctl.h"
 #include "MCAL/systick.h"
-#include "frontend.h"
+#include "application/application.h"
 
 int main(void)
 {
