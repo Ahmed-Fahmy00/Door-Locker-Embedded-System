@@ -141,3 +141,8 @@ if (status == STATUS_OK) {
 - **Baud Rate:** 115200
 - **Config:** 8N1 (8 data bits, no parity, 1 stop bit)
 - **System Clock:** 16 MHz (both Tiva boards)
+
+
+## Grading Rubric (25 Marks)
+
+![Grading Rubric](rubric.png)
