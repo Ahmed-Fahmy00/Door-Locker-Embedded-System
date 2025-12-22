@@ -2112,10 +2112,22 @@
             <name>$PROJ_DIR$\application\eeprom_handler.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\application\uart_commands.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_commands.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\application\uart_handler.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\application\uart_handler.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_protocol.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\application\uart_protocol.h</name>
         </file>
     </group>
     <group>
@@ -2131,6 +2143,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\HAL\motor.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\status_led.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\HAL\status_led.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\HAL\timeout.c</name>
@@ -2170,6 +2188,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\MCAL\systick.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\uart.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\MCAL\uart.h</name>
         </file>
     </group>
     <file>

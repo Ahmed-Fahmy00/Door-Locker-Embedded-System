@@ -1,42 +1,27 @@
+/******************************************************************************
+ * File: uart_handler.h
+ * Module: UART Handler (Application Layer)
+ * Description: Main UART handler API for Backend
+ ******************************************************************************/
+
 #ifndef UART_HANDLER_H
 #define UART_HANDLER_H
 
 #include <stdint.h>
 
-/* =========================
-   RX Protocol
-   ========================= */
-#define UART_SOF_RX      0x7E
-#define UART_MAX_LEN     32
-
-/* =========================
-   TX Protocol
-   ========================= */
-#define UART_SOF_TX      0xFE
-#define UART_TX_LEN      2
-#define UART_TX_LEN_WITH_DATA 3
-
-/* =========================
-   Command IDs
-   ========================= */
-#define CMD_INIT_PASSWORD     0x01
-#define CMD_AUTH              0x02
-#define CMD_SET_TIMEOUT       0x03
-#define CMD_CHANGE_PASSWORD   0x04
-#define CMD_TIMEOUT           0x05
-
-/* =========================
-   Status Codes
-   ========================= */
-#define UART_STATUS_OK        0x00
-#define UART_STATUS_ERROR     0x01
-#define UART_STATUS_AUTH_FAIL 0x02
-
-/* =========================
-   Public API
-   ========================= */
+/**
+ * @brief Initialize UART handler (LEDs, UART driver, protocol)
+ */
 void UART_Handler_Init(void);
+
+/**
+ * @brief Process pending UART packets (call from main loop)
+ */
+void UART_ProcessPending(void);
+
+/**
+ * @brief UART1 Interrupt Handler (defined in MCAL/uart.c)
+ */
 void UART1IntHandler(void);
-void UART_ProcessPending(void);  /* Call from main loop */
 
 #endif /* UART_HANDLER_H */
