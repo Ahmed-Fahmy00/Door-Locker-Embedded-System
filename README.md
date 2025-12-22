@@ -306,3 +306,167 @@ Door-Locker-Embedded-System/
 4. **Power both boards** via USB
 5. **First boot:** Create 5-digit password
 6. **Use menu:** A=Sign In, \*=Change Password, C=Set Timeout
+
+## Code Quality Violations and Resolutions
+
+During the development of the Door Locker Security System, several code quality and standard-compliance violations were identified. These violations were documented and resolved to improve reliability, safety, and maintainability of the embedded software. The following are five key violations encountered and how they were fixed.
+
+---
+
+### **Violation 1: Use of Magic Numbers**
+
+**Description:**
+Hard-coded numeric values were used directly in the code for critical parameters such as password length, UART commands, timeout values, and retry limits.
+
+**Example (Before):**
+
+```c
+if (attempts == 3) {
+    Buzzer_On(10);
+}
+```
+
+**Issue:**
+Magic numbers reduce readability, make maintenance difficult, and violate coding standards such as MISRA C.
+
+**Solution (After):**
+
+```c
+#define MAX_PASSWORD_ATTEMPTS   3
+#define ALARM_DURATION_SEC      10
+
+if (attempts == MAX_PASSWORD_ATTEMPTS) {
+    Buzzer_On(ALARM_DURATION_SEC);
+}
+```
+
+**Result:**
+Improved code clarity, easier modification, and compliance with coding standards.
+
+---
+
+### **Violation 2: Blocking Delays Using Busy-Wait Loops**
+
+**Description:**
+The software initially relied on blocking delay functions (e.g., `_delay_ms()` or `while` loops) to handle door timing and buzzer activation.
+
+**Example (Before):**
+
+```c
+Motor_Open();
+_delay_ms(5000);
+Motor_Close();
+```
+
+**Issue:**
+Blocking delays waste CPU time and prevent the system from responding to interrupts or UART communication.
+
+**Solution (After):**
+
+```c
+Start_Timer(DOOR_OPEN_TIME);
+system_state = DOOR_OPENING;
+```
+
+Timers and state machines were used to handle delays asynchronously.
+
+**Result:**
+Improved system responsiveness and better real-time behavior.
+
+---
+
+### **Violation 3: Lack of Input Validation**
+
+**Description:**
+User input from the keypad and UART was used without sufficient validation, especially during password entry and timeout configuration.
+
+**Example (Before):**
+
+```c
+password[i] = Keypad_GetKey();
+```
+
+**Issue:**
+Invalid inputs could cause incorrect behavior or memory corruption.
+
+**Solution (After):**
+
+```c
+char key = Keypad_GetKey();
+if ((key >= '0') && (key <= '9')) {
+    password[i] = key;
+}
+```
+
+**Result:**
+Improved system robustness and prevention of invalid password values.
+
+---
+
+### **Violation 4: Global Variables Used Without Encapsulation**
+
+**Description:**
+Several global variables were accessible across multiple modules without restriction.
+
+**Example (Before):**
+
+```c
+uint8 password[5];
+uint8 attempts;
+```
+
+**Issue:**
+Uncontrolled access to global variables increases coupling and risk of unintended modifications.
+
+**Solution (After):**
+
+```c
+static uint8 password[PASSWORD_LENGTH];
+static uint8 attempts;
+
+uint8 Get_Attempts(void);
+void Reset_Attempts(void);
+```
+
+Access was restricted using `static` and controlled via getter/setter functions.
+
+**Result:**
+Better modularity, reduced side effects, and cleaner architecture.
+
+---
+
+### **Violation 5: Missing Return Value Checks**
+
+**Description:**
+The return values of critical functions (UART, EEPROM operations) were ignored.
+
+**Example (Before):**
+
+```c
+UART_SendByte(COMMAND_OPEN_DOOR);
+EEPROM_Write(PASSWORD_ADDR, password);
+```
+
+**Issue:**
+Failures in communication or storage could go undetected, leading to undefined system behavior.
+
+**Solution (After):**
+
+```c
+if (UART_SendByte(COMMAND_OPEN_DOOR) != UART_OK) {
+    Handle_UART_Error();
+}
+
+if (EEPROM_Write(PASSWORD_ADDR, password) != EEPROM_OK) {
+    Handle_EEPROM_Error();
+}
+```
+
+**Result:**
+Improved error handling and system reliability.
+
+---
+
+## **Conclusion**
+
+Addressing these violations significantly improved the software’s reliability, readability, and compliance with embedded coding standards. The applied fixes enhanced real-time performance, modularity, and fault tolerance, contributing to a more robust Door Locker Security System.
