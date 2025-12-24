@@ -470,3 +470,7 @@ Improved error handling and system reliability.
 ## **Conclusion**
 
 Addressing these violations significantly improved the software’s reliability, readability, and compliance with embedded coding standards. The applied fixes enhanced real-time performance, modularity, and fault tolerance, contributing to a more robust Door Locker Security System.
+
+## Grading Rubric (25 Marks)
+
+![Grading Rubric](rubric.png)

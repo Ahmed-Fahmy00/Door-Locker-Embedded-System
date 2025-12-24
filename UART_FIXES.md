@@ -143,6 +143,3 @@ if (status == STATUS_OK) {
 - **System Clock:** 16 MHz (both Tiva boards)
 
 
-## Grading Rubric (25 Marks)
-
-![Grading Rubric](rubric.png)
